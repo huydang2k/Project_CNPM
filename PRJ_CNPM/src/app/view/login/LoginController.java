@@ -1,7 +1,8 @@
-package app.view;
+package app.view.login;
 
-import app.controller.UserController;
+import app.service.UserService;
 import app.model.form.LoginForm;
+import app.view.CommonController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,8 +15,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
-    UserController userController;
+public class LoginController implements Initializable {
+    CommonController commonController;
+    UserService userService;
 
     @FXML
     private TextField usernameTextField;
@@ -28,12 +30,10 @@ public class Controller implements Initializable {
         String password = passwordField.getText();
         LoginForm loginForm = new LoginForm(username, password);
         try{
-            boolean loginSuccess = userController.login(loginForm);
+            boolean loginSuccess = userService.login(loginForm);
             if(loginSuccess){
                 //switch scene
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setContentText("Đăng nhập thành công");
-                alert.show();
+                commonController.toHome();
             }else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setContentText("Đăng nhập thất bại");
@@ -49,6 +49,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        userController = new UserController();
+        userService = new UserService();
+        commonController = new CommonController();
     }
 }

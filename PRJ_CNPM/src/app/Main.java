@@ -1,5 +1,6 @@
 package app;
 
+import app.view.CommonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,10 +13,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
+            CommonController.primaryStage = primaryStage;
             MyConnection myConnection = new MyConnection();
             myConnection.connectDB();
-            Parent root = FXMLLoader.load(getClass().getResource("view/fxml/login.fxml"));
-            primaryStage.setTitle("Hello World");
+            Parent root = FXMLLoader.load(getClass().getResource("view/login/login.fxml"));
+            primaryStage.setTitle("Quản lý phát thưởng - phát quà");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
 

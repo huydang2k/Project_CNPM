@@ -1,4 +1,4 @@
-package app.controller;
+package app.service;
 
 import app.model.User;
 import app.model.form.LoginForm;
@@ -7,11 +7,11 @@ import app.repository.UserRepoImpl;
 
 import java.sql.SQLException;
 
-public class UserController {
+public class UserService {
     UserRepo userRepo;
 
 
-    public UserController() {
+    public UserService() {
         userRepo = new UserRepoImpl();
     }
 
