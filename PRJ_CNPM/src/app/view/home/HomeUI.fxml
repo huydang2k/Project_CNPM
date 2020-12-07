@@ -13,9 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.15" maxHeight="-Infinity"
-           fx:controller="app.view.home.HomeController"
-           maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.home.HomeController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -29,9 +27,9 @@
                </children>
             </AnchorPane>
             <Button layoutX="12.0" layoutY="169.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Trang chủ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
-            <Button onAction="#toPhatQua" layoutX="13.0" layoutY="204.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
-            <Button onAction="#toPhatThuong" layoutX="11.0" layoutY="281.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
-            <Button onAction="#toThongKe" layoutX="20.0" layoutY="338.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
+            <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" onAction="#toPhatQua" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+            <Button layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#toPhatThuong" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
+            <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" onAction="#toThongKe" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -46,17 +44,17 @@
             </AnchorPane>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="47.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="260.0">
                <image>
-                  <Image url="@../../../images/pass.png" />
+                  <Image url="@../../../images/home.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="32.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="160.0">
                <image>
-                  <Image url="@../../../images/pass.png" />
+                  <Image url="@../../../images/present.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="280.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="360.0">
                <image>
-                  <Image url="@../../../images/pass.png" />
+                  <Image url="@../../../images/child.png" />
                </image>
             </ImageView>
             <Label layoutX="255.0" layoutY="191.0" text="Đợt phát quà/ phát thưởng sắp tới" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0">

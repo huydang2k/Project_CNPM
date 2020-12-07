@@ -28,13 +28,13 @@ public class CommonController implements Initializable {
         }
     }
     public void toHome(){
-        primaryStage.setScene(makeScene("home/HomeUI.fxml"));
+        switchScene(makeScene("home/HomeUI.fxml"));
     }
     public void toPhatQua(){
-        primaryStage.setScene(makeScene("phatqua/PQUI.fxml"));
+        switchScene(makeScene("phatqua/PQUI.fxml"));
     }
     public void toPhatThuong(){
-        primaryStage.setScene(makeScene("phatthuong/PTUI.fxml"));
+        switchScene(makeScene("phatthuong/PTUI.fxml"));
     }
     public void toThongKe(){
        // primaryStage.setScene(makeScene("thongke/TKUI.fxml"));
