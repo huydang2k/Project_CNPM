@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -35,12 +39,13 @@
          <children>
             <AnchorPane prefHeight="150.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label layoutX="459.0" layoutY="52.0" text="Trang chủ" AnchorPane.leftAnchor="440.0" AnchorPane.rightAnchor="440.0" AnchorPane.topAnchor="50.0">
+                  <Label layoutX="251.0" layoutY="95.0" text=" " />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="136.0" layoutX="-4.0" stroke="BLACK" strokeType="INSIDE" width="1093.0" />
+                  <Label layoutX="451.0" layoutY="42.0" text="Trang chủ" AnchorPane.leftAnchor="451.0" AnchorPane.rightAnchor="429.0" AnchorPane.topAnchor="42.0">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="251.0" layoutY="95.0" text=" " />
                </children>
             </AnchorPane>
             <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-width: 10; -fx-border-color: black;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="265.0">
@@ -48,30 +53,34 @@
                   <Image url="@../../../images/present.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="20.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="379.0">
+            <ImageView fitHeight="100.0" fitWidth="125.0" layoutX="2.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="372.0">
                <image>
                   <Image url="@../../../images/child.png" />
                </image>
             </ImageView>
-            <Label fx:id="soLuongHocSinhLabel" layoutX="150.0" layoutY="297.0" text="Số học sinh trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="297.0">
+            <Label fx:id="soLuongHocSinhLabel" contentDisplay="CENTER" layoutX="149.0" layoutY="282.0" lineSpacing="3.0" prefHeight="66.0" prefWidth="262.0" text="Số học sinh trên địa bàn:" textAlignment="CENTER" AnchorPane.leftAnchor="149.0" AnchorPane.topAnchor="282.0">
                <font>
                   <Font size="24.0" />
                </font></Label>
-            <Label fx:id="soLuongThieuNhiLabel" layoutX="296.0" layoutY="371.0" text="Số thiếu nhi trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="390.0">
+            <Label fx:id="soLuongThieuNhiLabel" layoutX="146.0" layoutY="391.0" text="Số thiếu nhi trên địa bàn:" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="391.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="158.0">
+            <ImageView fitHeight="87.0" fitWidth="89.0" layoutX="21.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="170.0">
                <image>
                   <Image url="@../../../images/home.png" />
                </image>
             </ImageView>
-            <Label fx:id="soLuongHoKhauLabel" layoutX="150.0" layoutY="191.0" text="Số hộ khẩu trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="191.0">
+            <Label fx:id="soLuongHoKhauLabel" layoutX="151.0" layoutY="191.0" text="Số hộ khẩu trên địa bàn:" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="196.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <Box layoutX="96.0" layoutY="516.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="77.0" layoutX="138.0" layoutY="277.0" stroke="BLACK" strokeType="INSIDE" width="655.0" AnchorPane.topAnchor="277.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="77.0" layoutX="138.0" layoutY="375.0" stroke="BLACK" strokeType="INSIDE" width="655.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa00" height="77.0" layoutX="138.0" layoutY="176.0" stroke="BLACK" strokeType="INSIDE" width="655.0" />
          </children>
       </AnchorPane>
   </items>

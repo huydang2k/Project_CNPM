@@ -17,16 +17,22 @@
          <image>
             <Image url="@../../../images/nen.jpg" />
          </image></ImageView>
-        <Label layoutX="270.0" layoutY="45.0" prefHeight="27.0" prefWidth="60.0" text="LOGIN" textFill="WHITE">
+        <Label layoutX="285.0" layoutY="44.0" prefHeight="38.0" prefWidth="75.0" text="LOGIN" textAlignment="CENTER" textFill="WHITE">
             <font>
-                <Font size="18.0" />
+                <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="283.0" layoutY="109.0" text="Username" textFill="WHITE" />
-        <Label layoutX="285.0" layoutY="159.0" text="Password" textFill="WHITE" />
+        <Label layoutX="285.0" layoutY="108.0" prefHeight="20.0" prefWidth="75.0" text="Username" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+        <Label layoutX="285.0" layoutY="158.0" text="Password" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
         <TextField fx:id="usernameTextField" layoutX="372.0" layoutY="105.0" prefHeight="25.0" prefWidth="166.0" promptText="Username" />
         <PasswordField fx:id="passwordField" layoutX="372.0" layoutY="155.0" prefHeight="25.0" prefWidth="166.0" promptText="Password" />
-        <Button layoutX="285.0" layoutY="221.0" mnemonicParsing="false"  onAction="#loginClick" prefHeight="38.0" prefWidth="257.0" style="-fx-background-color: pink;" text="Login">
+        <Button layoutX="285.0" layoutY="221.0" mnemonicParsing="false" onAction="#loginClick" prefHeight="38.0" prefWidth="257.0" style="-fx-background-color: #79b5b1;" text="Login" textFill="#f5f5f5">
             <font>
                 <Font size="17.0" />
             </font>
