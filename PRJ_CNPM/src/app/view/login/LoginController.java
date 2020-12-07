@@ -3,6 +3,7 @@ package app.view.login;
 import app.service.UserService;
 import app.model.form.LoginForm;
 import app.view.CommonController;
+import app.view.home.HomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +34,7 @@ public class LoginController implements Initializable {
             if(loginSuccess){
                 //switch scene
                 commonController.toHome();
+
             }else {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setContentText("Đăng nhập thất bại");
