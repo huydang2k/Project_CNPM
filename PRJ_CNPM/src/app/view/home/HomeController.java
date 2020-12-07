@@ -1,6 +1,7 @@
 package app.view.home;
 
 import app.service.HoKhauService;
+import app.service.HocSinhService;
 import app.view.CommonController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,10 +11,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
+    HocSinhService hocSinhService;
     HoKhauService hoKhauService;
     CommonController commonController;
     @FXML
-    private Label dotQuaSapToiLabel;
+    private Label soLuongHocSinhLabel;
     @FXML
     private Label soLuongHoKhauLabel;
     @FXML
@@ -29,16 +31,19 @@ public class HomeController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        hocSinhService = new HocSinhService();
         hoKhauService = new HoKhauService();
         commonController = new CommonController();
         try{
             soLuongHoKhauLabel.setText(soLuongHoKhauLabel.getText()
                     +" "+
                     hoKhauService.soLuongHoKhau());
-            System.out.println(hoKhauService.soLuongThieuNhi());
             soLuongThieuNhiLabel.setText(soLuongThieuNhiLabel.getText()
                     +" "+
                     hoKhauService.soLuongThieuNhi());
+            soLuongHocSinhLabel.setText(soLuongHocSinhLabel.getText()
+                    +" "+
+                    hocSinhService.soLuongHocSinh());
         } catch (Exception ex){
             ex.printStackTrace();
         }

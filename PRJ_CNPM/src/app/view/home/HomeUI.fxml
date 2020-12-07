@@ -40,14 +40,10 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
+                  <Label layoutX="251.0" layoutY="95.0" text=" " />
                </children>
             </AnchorPane>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="20.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="258.0">
-               <image>
-                  <Image url="@../../../images/home.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="32.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" style="fx-border: 2px;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="160.0">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-width: 10; -fx-border-color: black;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="265.0">
                <image>
                   <Image url="@../../../images/present.jpg" />
                </image>
@@ -57,16 +53,21 @@
                   <Image url="@../../../images/child.png" />
                </image>
             </ImageView>
-            <Label fx:id="dotQuaSapToiLabel" layoutX="255.0" layoutY="191.0" text="Đợt phát quà/ phát thưởng sắp tới:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="190.0">
+            <Label fx:id="soLuongHocSinhLabel" layoutX="150.0" layoutY="297.0" text="Số học sinh trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="297.0">
                <font>
                   <Font size="24.0" />
                </font></Label>
-            <Label fx:id="soLuongHoKhauLabel" layoutX="270.0" layoutY="265.0" text="Số hộ khẩu trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="290.0">
+            <Label fx:id="soLuongThieuNhiLabel" layoutX="296.0" layoutY="371.0" text="Số thiếu nhi trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="390.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="soLuongThieuNhiLabel" layoutX="296.0" layoutY="371.0" text="Số thiếu nhi trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="390.0">
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="14.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="158.0">
+               <image>
+                  <Image url="@../../../images/home.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="soLuongHoKhauLabel" layoutX="150.0" layoutY="191.0" text="Số hộ khẩu trên địa bàn:" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="191.0">
                <font>
                   <Font size="24.0" />
                </font>
