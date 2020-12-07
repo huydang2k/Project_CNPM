@@ -28,9 +28,8 @@ public class LoginController implements Initializable {
     public void loginClick(ActionEvent e){
         String username = usernameTextField.getText();
         String password = passwordField.getText();
-        LoginForm loginForm = new LoginForm(username, password);
         try{
-            boolean loginSuccess = userService.login(loginForm);
+            boolean loginSuccess = userService.verifyUser(username,password);
             if(loginSuccess){
                 //switch scene
                 commonController.toHome();

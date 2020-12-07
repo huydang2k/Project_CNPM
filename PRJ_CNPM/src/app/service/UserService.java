@@ -3,7 +3,6 @@ package app.service;
 import app.model.User;
 import app.model.form.LoginForm;
 import app.repository.UserRepo;
-import app.repository.UserRepoImpl;
 
 import java.sql.SQLException;
 
@@ -12,11 +11,11 @@ public class UserService {
 
 
     public UserService() {
-        userRepo = new UserRepoImpl();
+        userRepo = new UserRepo();
     }
 
-    public boolean login(LoginForm loginForm) throws SQLException, ClassNotFoundException{
-        User user = userRepo.login(loginForm);
+    public boolean verifyUser(String username, String password) throws SQLException, ClassNotFoundException{
+        User user = userRepo.getUser(username,password);
         if (user == null){
             return false;
         }else{

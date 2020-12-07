@@ -1,9 +1,9 @@
 package app.model;
 
 public class HoKhau {
-    private int ID;
+    private Integer ID;
     private String maHoKhau;
-    private int idChuHo;
+    private Integer idChuHo;
     private String maKhuVuc;
     private String diaChi;
     private String ngayLap;
