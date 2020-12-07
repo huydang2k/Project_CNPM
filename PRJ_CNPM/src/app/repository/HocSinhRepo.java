@@ -9,7 +9,11 @@ import java.sql.SQLException;
 public class HocSinhRepo extends BaseRepo<HocSinh> {
     @Override
     public HocSinh getObject(ResultSet rs) throws SQLException {
-        return null;
+        HocSinh hocSinh = new HocSinh();
+        hocSinh.setMaHS(rs.getInt("maHS"));
+        hocSinh.setIdNhanKhau(rs.getInt(rs.getInt("idNhanKhau")));
+        hocSinh.setHocVan(rs.getString("hocVan"));
+        return hocSinh;
     }
     public int soLuongHocSinh()throws SQLException,ClassNotFoundException{
         String sql = "select count(maHS) as c from hoc_sinh";

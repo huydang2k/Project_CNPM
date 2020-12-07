@@ -1,10 +1,12 @@
 package app.model;
 
+import java.sql.Date;
+
 public class NhanKhau {
     private Integer ID;
     private String maNhanKhau;
     private String hoTen;
-    private String namSing;
+    private Date namSing;
     private String gioiTinh;
     private String diaChiHienNay;
     private String trinhDoHocVan;
@@ -13,6 +15,32 @@ public class NhanKhau {
     private String noiLamViec;
 
     public NhanKhau() {
+    }
+
+    public NhanKhau(Integer ID, String maNhanKhau, String hoTen, Date namSing, String gioiTinh, String diaChiHienNay, String trinhDoHocVan, String trinhDoChuyenMon, String ngheNghiep, String noiLamViec) {
+        this.ID = ID;
+        this.maNhanKhau = maNhanKhau;
+        this.hoTen = hoTen;
+        this.namSing = namSing;
+        this.gioiTinh = gioiTinh;
+        this.diaChiHienNay = diaChiHienNay;
+        this.trinhDoHocVan = trinhDoHocVan;
+        this.trinhDoChuyenMon = trinhDoChuyenMon;
+        this.ngheNghiep = ngheNghiep;
+        this.noiLamViec = noiLamViec;
+    }
+
+    public String toString(){
+        return "NhanKhau{ ID = " + ID +
+                ",  maNhanKhau = \'"+ maNhanKhau +"\'" +
+                ", namSinh = \'"+ namSing +"\'" +
+                ", gioiTinh = \'"+ gioiTinh +"\'" +
+                ", diaChiHienNay = \'"+ diaChiHienNay +"\'" +
+                ", trinhDoHocVan = \'"+ trinhDoHocVan +"\'" +
+                ", trinhDoChuyenMon = \'"+ trinhDoChuyenMon +"\'" +
+                ", ngheNghiep = \'"+ ngheNghiep +"\'" +
+                ", noiLamViec = \'"+ noiLamViec +"\'" +
+                "}";
     }
 
     public Integer getID() {
@@ -39,11 +67,11 @@ public class NhanKhau {
         this.hoTen = hoTen;
     }
 
-    public String getNamSing() {
+    public Date getNamSing() {
         return namSing;
     }
 
-    public void setNamSing(String namSing) {
+    public void setNamSing(Date namSing) {
         this.namSing = namSing;
     }
 
@@ -92,19 +120,6 @@ public class NhanKhau {
     }
 
     public void setNoiLamViec(String noiLamViec) {
-        this.noiLamViec = noiLamViec;
-    }
-
-    public NhanKhau(Integer ID, String maNhanKhau, String hoTen, String namSing, String gioiTinh, String diaChiHienNay, String trinhDoHocVan, String trinhDoChuyenMon, String ngheNghiep, String noiLamViec) {
-        this.ID = ID;
-        this.maNhanKhau = maNhanKhau;
-        this.hoTen = hoTen;
-        this.namSing = namSing;
-        this.gioiTinh = gioiTinh;
-        this.diaChiHienNay = diaChiHienNay;
-        this.trinhDoHocVan = trinhDoHocVan;
-        this.trinhDoChuyenMon = trinhDoChuyenMon;
-        this.ngheNghiep = ngheNghiep;
         this.noiLamViec = noiLamViec;
     }
 }

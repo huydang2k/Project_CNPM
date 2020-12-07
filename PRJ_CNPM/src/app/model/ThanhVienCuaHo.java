@@ -5,6 +5,22 @@ public class ThanhVienCuaHo {
     private Integer idHoKhau;
     private String quanHeVoiChuHo;
 
+    public ThanhVienCuaHo() {
+    }
+
+    public ThanhVienCuaHo(Integer idNhanKhau, Integer idHoKhau, String quanHeVoiChuHo) {
+        this.idNhanKhau = idNhanKhau;
+        this.idHoKhau = idHoKhau;
+        this.quanHeVoiChuHo = quanHeVoiChuHo;
+    }
+
+    public String toString(){
+        return "ThanhVienCuaHo{ idNhanKhau = " + idNhanKhau +
+                ", idHoKhau = " + idHoKhau +
+                ", quanHeVoiChuHo = \'"+ quanHeVoiChuHo +"\'" +
+                "}";
+    }
+
     public Integer getIdNhanKhau() {
         return idNhanKhau;
     }
@@ -29,12 +45,4 @@ public class ThanhVienCuaHo {
         this.quanHeVoiChuHo = quanHeVoiChuHo;
     }
 
-    public ThanhVienCuaHo(Integer idNhanKhau, Integer idHoKhau, String quanHeVoiChuHo) {
-        this.idNhanKhau = idNhanKhau;
-        this.idHoKhau = idHoKhau;
-        this.quanHeVoiChuHo = quanHeVoiChuHo;
-    }
-
-    public ThanhVienCuaHo() {
-    }
 }

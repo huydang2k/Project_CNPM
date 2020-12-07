@@ -6,6 +6,8 @@ import app.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BaseRepo<T> {
     public PreparedStatement prepare(String sql) throws SQLException, ClassNotFoundException{
@@ -22,4 +24,12 @@ public abstract class BaseRepo<T> {
         }
     }
     public abstract T getObject(ResultSet rs) throws SQLException;
+
+    public List<T> getList(ResultSet rs) throws SQLException{
+        List<T> data = new ArrayList<>();
+        while(rs.next()){
+            data.add(getObject(rs));
+        }
+        return data;
+    }
 }

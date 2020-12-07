@@ -9,7 +9,13 @@ import java.util.ArrayList;
 public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
     @Override
     public DSPhatQua getObject(ResultSet rs) throws SQLException {
-        return null;
+        DSPhatQua dsPhatQua = new DSPhatQua();
+        dsPhatQua.setMaDS(rs.getInt("maDS"));
+        dsPhatQua.setSuKien(rs.getString("suKien"));
+        dsPhatQua.setNgayTao(rs.getDate("ngayTao"));
+        dsPhatQua.setTrangThai(rs.getInt("trangThai"));
+        dsPhatQua.setTongChiPhi(rs.getDouble("tongChiPhi"));
+        return dsPhatQua;
     }
     public ArrayList<DSPhatQua> tatCaDanhSachPhatQua(){
         return null;

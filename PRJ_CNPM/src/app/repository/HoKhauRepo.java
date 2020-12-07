@@ -10,7 +10,17 @@ import java.sql.SQLException;
 public class HoKhauRepo extends BaseRepo<HoKhau> {
     @Override
     public HoKhau getObject(ResultSet rs) throws SQLException {
-        return null;
+        HoKhau hoKhau = new HoKhau();
+        hoKhau.setID(rs.getInt("ID"));
+        hoKhau.setMaHoKhau(rs.getString("maHoKhau"));
+        hoKhau.setIdChuHo(rs.getInt("idChuHo"));
+        hoKhau.setMaKhuVuc(rs.getString("maKhuVuc"));
+        hoKhau.setDiaChi(rs.getString("diaChi"));
+        hoKhau.setNgayLap(rs.getDate("ngayLap"));
+        hoKhau.setNgayChuyenDi(rs.getDate("ngayChuyenDi"));
+        hoKhau.setLyDoChuyen(rs.getString("lyDoChuyen"));
+        hoKhau.setNguoiThucHien(rs.getInt("nguoiThucHien"));
+        return hoKhau;
     }
     public int soLuongHoKhau() throws SQLException, ClassNotFoundException {
         String sql = "SELECT count(ID) FROM ho_khau";

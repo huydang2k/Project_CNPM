@@ -14,6 +14,13 @@ public class HocSinh {
     public HocSinh() {
     }
 
+    public String toString(){
+        return "HocSinh{maHS = " + maHS +
+                ", idNhanKhau = " + idNhanKhau +
+                ", hocVan = \'"+hocVan+"\' " +
+                "}";
+    }
+
     public Integer getMaHS() {
         return maHS;
     }

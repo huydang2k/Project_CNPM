@@ -7,6 +7,26 @@ public class DuocNhanQua {
     private Double mucQua;
     private Boolean duocXacNhan;
 
+    public DuocNhanQua() {
+    }
+
+    public DuocNhanQua(Integer maDS, Integer idNhanKhau, String phanQua, Double mucQua, Boolean duocXacNhan) {
+        this.maDS = maDS;
+        this.idNhanKhau = idNhanKhau;
+        this.phanQua = phanQua;
+        this.mucQua = mucQua;
+        this.duocXacNhan = duocXacNhan;
+    }
+
+    public String toString(){
+        return "DuocNhanQua{ maDS = " + maDS +
+                ", idNhanKhau = " + idNhanKhau +
+                ", phanQua = \'"+ phanQua +"\'" +
+                ", mucQua = " + mucQua +
+                ", duocXacNhan = " + duocXacNhan +
+                "}";
+    }
+
     public Integer getMaDS() {
         return maDS;
     }
@@ -47,14 +67,4 @@ public class DuocNhanQua {
         this.duocXacNhan = duocXacNhan;
     }
 
-    public DuocNhanQua(Integer maDS, Integer idNhanKhau, String phanQua, Double mucQua, Boolean duocXacNhan) {
-        this.maDS = maDS;
-        this.idNhanKhau = idNhanKhau;
-        this.phanQua = phanQua;
-        this.mucQua = mucQua;
-        this.duocXacNhan = duocXacNhan;
-    }
-
-    public DuocNhanQua() {
-    }
 }

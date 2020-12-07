@@ -4,11 +4,30 @@ public class DuocNhanThuong {
     private Integer maDS;
     private Integer maHS;
     private String thanhTich;
-    private String xeoLoai;
+    private String xepLoai;
     private Double mucThuong;
     private Boolean duocXacNhan;
 
     public DuocNhanThuong() {
+    }
+
+    public DuocNhanThuong(Integer maDS, Integer maHS, String thanhTich, String xepLoai, Double mucThuong, Boolean duocXacNhan) {
+        this.maDS = maDS;
+        this.maHS = maHS;
+        this.thanhTich = thanhTich;
+        this.xepLoai = xepLoai;
+        this.mucThuong = mucThuong;
+        this.duocXacNhan = duocXacNhan;
+    }
+
+    public String toString(){
+        return "DuocNhanThuong{ maDS = " + maDS +
+                ", maHS = " + maHS +
+                ", thanhTich = \'"+ thanhTich +"\'" +
+                ", xepLoai = \'"+ xepLoai +"\'" +
+                ", mucThuong = " + mucThuong +
+                ", duocXacNhan = " + duocXacNhan +
+                "}";
     }
 
     public Integer getMaDS() {
@@ -35,12 +54,12 @@ public class DuocNhanThuong {
         this.thanhTich = thanhTich;
     }
 
-    public String getXeoLoai() {
-        return xeoLoai;
+    public String getXepLoai() {
+        return xepLoai;
     }
 
-    public void setXeoLoai(String xeoLoai) {
-        this.xeoLoai = xeoLoai;
+    public void setXepLoai(String xepLoai) {
+        this.xepLoai = xepLoai;
     }
 
     public Double getMucThuong() {
@@ -56,15 +75,6 @@ public class DuocNhanThuong {
     }
 
     public void setDuocXacNhan(Boolean duocXacNhan) {
-        this.duocXacNhan = duocXacNhan;
-    }
-
-    public DuocNhanThuong(Integer maDS, Integer maHS, String thanhTich, String xeoLoai, Double mucThuong, Boolean duocXacNhan) {
-        this.maDS = maDS;
-        this.maHS = maHS;
-        this.thanhTich = thanhTich;
-        this.xeoLoai = xeoLoai;
-        this.mucThuong = mucThuong;
         this.duocXacNhan = duocXacNhan;
     }
 }

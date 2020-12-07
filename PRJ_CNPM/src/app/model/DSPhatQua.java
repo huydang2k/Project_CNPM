@@ -1,11 +1,33 @@
 package app.model;
 
+import java.sql.Date;
+
 public class DSPhatQua {
     private Integer maDS;
     private String suKien;
-    private String ngayTao;
-    private Boolean trangThai;
+    private Date ngayTao;
+    private Integer trangThai;
     private Double tongChiPhi;
+
+    public DSPhatQua() {
+    }
+
+    public DSPhatQua(Integer maDS, String suKien, Date ngayTao, Integer trangThai, Double tongChiPhi) {
+        this.maDS = maDS;
+        this.suKien = suKien;
+        this.ngayTao = ngayTao;
+        this.trangThai = trangThai;
+        this.tongChiPhi = tongChiPhi;
+    }
+
+    public String toString(){
+        return "DSPhatQua{maDS = " + maDS +
+                ", suKien = \'"+ suKien +"\'" +
+                ", ngayTao = \'"+ ngayTao +"\'" +
+                ", trangThai = " + trangThai +
+                ", tongChiPhi = " + tongChiPhi +
+                "}";
+    }
 
     public Integer getMaDS() {
         return maDS;
@@ -23,19 +45,19 @@ public class DSPhatQua {
         this.suKien = suKien;
     }
 
-    public String getNgayTao() {
+    public Date getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(String ngayTao) {
+    public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
     }
 
-    public Boolean getTrangThai() {
+    public Integer getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(Boolean trangThai) {
+    public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
     }
 
@@ -45,16 +67,5 @@ public class DSPhatQua {
 
     public void setTongChiPhi(Double tongChiPhi) {
         this.tongChiPhi = tongChiPhi;
-    }
-
-    public DSPhatQua(Integer maDS, String suKien, String ngayTao, Boolean trangThai, Double tongChiPhi) {
-        this.maDS = maDS;
-        this.suKien = suKien;
-        this.ngayTao = ngayTao;
-        this.trangThai = trangThai;
-        this.tongChiPhi = tongChiPhi;
-    }
-
-    public DSPhatQua() {
     }
 }

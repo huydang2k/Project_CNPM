@@ -10,7 +10,12 @@ import java.util.ArrayList;
 public class DSPhatThuongRepo extends BaseRepo<DSPhatThuong> {
     @Override
     public DSPhatThuong getObject(ResultSet rs) throws SQLException {
-        return null;
+        DSPhatThuong dsPhatThuong = new DSPhatThuong();
+        dsPhatThuong.setMaDS(rs.getInt("maDS"));
+        dsPhatThuong.setSuKien(rs.getString("suKien"));
+        dsPhatThuong.setNgayTao(rs.getDate("ngayTao"));
+        dsPhatThuong.setTongChiPhi(rs.getDouble("tongChiPhi"));
+        return dsPhatThuong;
     }
     public ArrayList<DSPhatThuong> tatCaDanhSachPhatThuong(){
         return null;
