@@ -4,6 +4,7 @@ public class DuocNhanThuong {
     private Integer maDS;
     private Integer maHS;
     private String thanhTich;
+    private Boolean minhChung;
     private String xepLoai;
     private Double mucThuong;
     private Boolean duocXacNhan;
@@ -11,10 +12,19 @@ public class DuocNhanThuong {
     public DuocNhanThuong() {
     }
 
-    public DuocNhanThuong(Integer maDS, Integer maHS, String thanhTich, String xepLoai, Double mucThuong, Boolean duocXacNhan) {
+    public Boolean getMinhChung() {
+        return minhChung;
+    }
+
+    public void setMinhChung(Boolean minhChung) {
+        this.minhChung = minhChung;
+    }
+
+    public DuocNhanThuong(Integer maDS, Integer maHS, String thanhTich, Boolean minhChung, String xepLoai, Double mucThuong, Boolean duocXacNhan) {
         this.maDS = maDS;
         this.maHS = maHS;
         this.thanhTich = thanhTich;
+        this.minhChung = minhChung;
         this.xepLoai = xepLoai;
         this.mucThuong = mucThuong;
         this.duocXacNhan = duocXacNhan;
