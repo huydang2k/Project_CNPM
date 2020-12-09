@@ -5,6 +5,7 @@ import app.model.HocSinh;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class HocSinhRepo extends BaseRepo<HocSinh> {
     @Override
@@ -24,5 +25,19 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
         }else{
             return 0;
         }
+    }
+    public ArrayList<HocSinh> tatCaHocSinh() throws SQLException,ClassNotFoundException{
+        ArrayList<HocSinh> hocSinhArrayList = new ArrayList<>();
+        String sql = "select * from hoc_sinh";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (true){
+            HocSinh hs =  getObject(rs);
+            hocSinhArrayList.add(hs);
+            System.out.println(hs);
+            if (!rs.next()) break;
+        }
+
+        return hocSinhArrayList;
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseRepo<T> {
-    public PreparedStatement prepare(String sql) throws SQLException, ClassNotFoundException{
+    protected PreparedStatement prepare(String sql) throws SQLException{
         try {
             System.out.println(">> "+sql);
             //connection.prepareStatment trả về đối tượng PrepareStatment dùng để thực hiện query String sql
@@ -25,7 +25,7 @@ public abstract class BaseRepo<T> {
     }
     public abstract T getObject(ResultSet rs) throws SQLException;
 
-    public List<T> getList(ResultSet rs) throws SQLException{
+    protected List<T> getList(ResultSet rs) throws SQLException{
         List<T> data = new ArrayList<>();
         while(rs.next()){
             data.add(getObject(rs));
