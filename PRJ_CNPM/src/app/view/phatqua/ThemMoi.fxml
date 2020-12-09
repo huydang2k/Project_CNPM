@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.phatqua.PhatQuaController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <image>
+                                <Image url="@../../../images/ava_cnpm.jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <Button layoutX="12.0" layoutY="169.0" mnemonicParsing="false" onAction="#toHome" prefHeight="50.0" prefWidth="170.0" text="Trang chủ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
+                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+                <Button layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#toPhatThuong" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
+                <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" onAction="#toThongKe" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
+            </children></AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="156.0" layoutX="-13.0" layoutY="-10.0" stroke="BLACK" strokeType="INSIDE" width="1109.0" />
+                  <Label layoutX="278.0" layoutY="42.0" prefHeight="53.0" prefWidth="528.0" text="Thêm mới danh sách Phát quà" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                  </Label>
+                    </children>
+                </AnchorPane>
+            <TextField layoutX="5.0" layoutY="635.0" prefHeight="29.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="110.0" />
+            <TableView layoutX="196.0" layoutY="570.0" prefHeight="68.0" prefWidth="879.0">
+              <columns>
+                <TableColumn prefWidth="105.0" text="STT" />
+                <TableColumn prefWidth="183.0" text="Họ và Tên" />
+                  <TableColumn prefWidth="114.0" text="Hộ Gia đình" />
+                  <TableColumn prefWidth="214.0" text="Phần quà" />
+                  <TableColumn prefWidth="161.0" />
+                  <TableColumn prefWidth="119.0" text="Năm sinh" />
+              </columns>
+            </TableView>
+            <Button layoutX="980.0" layoutY="681.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Tìm kiếm" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="980.0" AnchorPane.rightAnchor="8.0" />
+            <Button layoutX="980.0" layoutY="647.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lưu" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="980.0" />
+            <Button layoutX="878.0" layoutY="647.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Hủy" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="878.0" AnchorPane.rightAnchor="110.0" />
+            <Button layoutX="777.0" layoutY="647.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="In danh sách" />
+            <Accordion layoutX="51.0" layoutY="170.0" />
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>
