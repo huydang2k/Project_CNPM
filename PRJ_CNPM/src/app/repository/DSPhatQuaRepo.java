@@ -2,9 +2,11 @@ package app.repository;
 
 import app.model.DSPhatQua;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
     @Override
@@ -17,8 +19,11 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         dsPhatQua.setTongChiPhi(rs.getDouble("tongChiPhi"));
         return dsPhatQua;
     }
-    public ArrayList<DSPhatQua> tatCaDanhSachPhatQua(){
-        return null;
+    public List<DSPhatQua> tatCaDanhSachPhatQua() throws SQLException{
+        String sql = "SELECT * FROM ds_phat_qua";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        return getList(rs);
     }
     public DSPhatQua danhSachPhatQuaTheoMa(int maDanhSach){
         return null;

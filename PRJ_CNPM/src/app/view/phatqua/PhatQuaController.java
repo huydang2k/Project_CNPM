@@ -7,7 +7,9 @@ import app.view.CommonController;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PhatQuaController implements Initializable {
@@ -15,7 +17,7 @@ public class PhatQuaController implements Initializable {
     DSPhatQuaService dsPhatQuaService;
     CommonController commonController;
 
-    private ArrayList<DSPhatQua> dsPhatQuaArrayList = null;
+    private List<DSPhatQua> dsPhatQuaArrayList = null;
     private DSPhatQua dsPhatQuaDangChon = null;
 
     public void toHome(){
@@ -29,9 +31,14 @@ public class PhatQuaController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources){
         dsPhatQuaService = new DSPhatQuaService();
         commonController = new CommonController();
-        dsPhatQuaArrayList = dsPhatQuaService.tatCaDanhSachPhatQua();
+        try{
+            dsPhatQuaArrayList = dsPhatQuaService.tatCaDanhSachPhatQua();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+
     }
 }

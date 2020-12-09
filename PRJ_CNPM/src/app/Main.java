@@ -1,5 +1,6 @@
 package app;
 
+import app.repository.HocSinhRepo;
 import app.view.CommonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
