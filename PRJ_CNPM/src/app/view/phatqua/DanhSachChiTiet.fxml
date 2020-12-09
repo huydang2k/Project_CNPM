@@ -37,9 +37,8 @@
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
-                <AnchorPane prefHeight="150.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="156.0" layoutX="-13.0" layoutY="-10.0" stroke="BLACK" strokeType="INSIDE" width="1109.0" />
                   <Label layoutX="450.0" layoutY="49.0" prefHeight="53.0" prefWidth="183.0" text="Phát quà" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="36.0" />
@@ -47,58 +46,100 @@
                   </Label>
                     </children>
                 </AnchorPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fafafa" height="523.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="189.0" AnchorPane.bottomAnchor="46.0" />
-            <TableView layoutX="192.0" layoutY="149.0" prefHeight="449.0" prefWidth="879.0" AnchorPane.leftAnchor="192.0">
-              <columns>
-                <TableColumn prefWidth="105.0" text="STT" />
-                <TableColumn prefWidth="183.0" text="Họ và Tên" />
-                  <TableColumn prefWidth="119.0" text="Năm sinh" />
-                  <TableColumn prefWidth="114.0" text="Hộ Gia đình" />
-                  <TableColumn prefWidth="214.0" text="Phần quà" />
-                  <TableColumn prefWidth="161.0" />
-              </columns>
-            </TableView>
-            <Line endX="102.0" layoutX="85.0" layoutY="210.0" startX="-85.0" />
             <TextField layoutX="14.0" layoutY="675.0" prefHeight="29.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="110.0" />
             <Button layoutX="990.0" layoutY="691.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Tìm kiếm" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="980.0" AnchorPane.rightAnchor="8.0" />
-            <Button layoutX="878.0" layoutY="642.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="In danh sách" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="878.0" AnchorPane.rightAnchor="110.0" />
-            <Button layoutX="980.0" layoutY="649.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lưu" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="980.0" AnchorPane.rightAnchor="8.0" />
-            <Button layoutX="5.0" layoutY="641.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" text="Chỉnh sửa" />
-            <Button layoutX="196.0" layoutY="602.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="879.0" text="Thêm mới">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="563.0" layoutY="607.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/add.png" />
-               </image>
-            </ImageView>
-            <Label alignment="CENTER" layoutX="6.0" layoutY="152.0" prefHeight="50.0" prefWidth="177.0" text="Thông tin chung">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="6.0" layoutY="210.0" prefHeight="29.0" prefWidth="177.0" text="Năm:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="6.0" layoutY="239.0" prefHeight="29.0" prefWidth="177.0" text="Dịp:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="6.0" layoutY="268.0" prefHeight="29.0" prefWidth="177.0" text="Trạng thái:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="5.0" layoutY="297.0" prefHeight="29.0" prefWidth="177.0" text="Tổng chi:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
+            <AnchorPane layoutX="-8.0" layoutY="152.0" prefHeight="527.0" prefWidth="1083.0" AnchorPane.bottomAnchor="39.0">
+               <children>
+                  <Pane layoutX="14.0" layoutY="3.0" prefHeight="521.0" prefWidth="183.0" style="-fx-border-width: 1px 1px 1px 1px; -fx-border-color: gray;" visible="false">
+                     <children>
+                        <Label layoutX="6.0" layoutY="97.0" prefHeight="29.0" prefWidth="177.0" text="Dịp:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="493.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" text="Lưu" />
+                        <Label layoutX="6.0" layoutY="68.0" prefHeight="29.0" prefWidth="177.0" text="Năm: ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="14.0" prefHeight="50.0" prefWidth="177.0" text="Thông tin chung">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="126.0" prefHeight="29.0" prefWidth="177.0" text="Trạng thái:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="155.0" prefHeight="29.0" prefWidth="177.0" text="Tổng chi:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="97.0" layoutX="84.0" layoutY="59.0" startX="-84.0" stroke="GREY" />
+                        <TextField layoutX="43.0" layoutY="70.0" prefHeight="25.0" prefWidth="134.0" />
+                        <TextField layoutX="36.0" layoutY="99.0" prefHeight="25.0" prefWidth="140.0" />
+                        <TextField layoutX="74.0" layoutY="128.0" prefHeight="25.0" prefWidth="103.0" />
+                        <TextField layoutX="65.0" layoutY="157.0" prefHeight="25.0" prefWidth="112.0" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="14.0" layoutY="3.0" prefHeight="521.0" prefWidth="183.0" style="-fx-border-width: 1px 1px 1px 1px; -fx-border-color: gray;">
+                     <children>
+                        <Label layoutX="6.0" layoutY="97.0" prefHeight="29.0" prefWidth="177.0" text="Dịp:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="493.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="177.0" text="Chỉnh sửa" />
+                        <Label layoutX="6.0" layoutY="68.0" prefHeight="29.0" prefWidth="177.0" text="Năm: ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="14.0" prefHeight="50.0" prefWidth="177.0" text="Thông tin chung">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="126.0" prefHeight="29.0" prefWidth="177.0" text="Trạng thái:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="155.0" prefHeight="29.0" prefWidth="177.0" text="Tổng chi:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Line endX="97.0" layoutX="84.0" layoutY="59.0" startX="-84.0" stroke="GREY" />
+                     </children>
+                  </Pane>
+                  <Button layoutX="197.0" layoutY="450.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="879.0" text="Thêm mới" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="893.0" layoutY="501.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="In danh sách" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="893.0" AnchorPane.rightAnchor="101.0" />
+                  <Button layoutX="988.0" layoutY="501.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lưu" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="988.0" AnchorPane.rightAnchor="0.0" />
+                  <ImageView fitHeight="30.0" fitWidth="29.0" layoutX="571.0" layoutY="458.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/add.png" />
+                     </image>
+                  </ImageView>
+                  <TableView layoutX="205.0" layoutY="52.0" prefHeight="446.0" prefWidth="879.0" AnchorPane.bottomAnchor="78.0">
+                     <columns>
+                        <TableColumn prefWidth="105.0" text="STT" />
+                        <TableColumn prefWidth="183.0" text="Họ và Tên" />
+                        <TableColumn prefWidth="119.0" text="Năm sinh" />
+                        <TableColumn prefWidth="114.0" text="Hộ Gia đình" />
+                        <TableColumn prefWidth="214.0" text="Phần quà" />
+                        <TableColumn prefWidth="161.0" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
             </children>
         </AnchorPane>
     </items>
