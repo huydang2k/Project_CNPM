@@ -6,7 +6,7 @@ public class NhanKhau {
     private Integer ID;
     private String maNhanKhau;
     private String hoTen;
-    private Date namSing;
+    private Date namSinh;
     private String gioiTinh;
     private String diaChiHienNay;
     private String trinhDoHocVan;
@@ -21,7 +21,7 @@ public class NhanKhau {
         this.ID = ID;
         this.maNhanKhau = maNhanKhau;
         this.hoTen = hoTen;
-        this.namSing = namSing;
+        this.namSinh = namSing;
         this.gioiTinh = gioiTinh;
         this.diaChiHienNay = diaChiHienNay;
         this.trinhDoHocVan = trinhDoHocVan;
@@ -33,7 +33,7 @@ public class NhanKhau {
     public String toString(){
         return "NhanKhau{ ID = " + ID +
                 ",  maNhanKhau = \'"+ maNhanKhau +"\'" +
-                ", namSinh = \'"+ namSing +"\'" +
+                ", namSinh = \'"+ namSinh +"\'" +
                 ", gioiTinh = \'"+ gioiTinh +"\'" +
                 ", diaChiHienNay = \'"+ diaChiHienNay +"\'" +
                 ", trinhDoHocVan = \'"+ trinhDoHocVan +"\'" +
@@ -67,12 +67,12 @@ public class NhanKhau {
         this.hoTen = hoTen;
     }
 
-    public Date getNamSing() {
-        return namSing;
+    public Date getNamSinh() {
+        return namSinh;
     }
 
-    public void setNamSing(Date namSing) {
-        this.namSing = namSing;
+    public void setNamSinh(Date namSinh) {
+        this.namSinh = namSinh;
     }
 
     public String getGioiTinh() {

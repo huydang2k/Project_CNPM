@@ -25,8 +25,8 @@ public abstract class BaseRepo<T> {
     }
     public abstract T getObject(ResultSet rs) throws SQLException;
 
-    protected List<T> getList(ResultSet rs) throws SQLException{
-        List<T> data = new ArrayList<>();
+    protected ArrayList<T> getList(ResultSet rs) throws SQLException{
+        ArrayList<T> data = new ArrayList<>();
         while(rs.next()){
             data.add(getObject(rs));
         }

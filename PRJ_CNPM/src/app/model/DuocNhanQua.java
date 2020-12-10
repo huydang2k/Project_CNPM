@@ -27,6 +27,8 @@ public class DuocNhanQua {
                 "}";
     }
 
+
+
     public Integer getMaDS() {
         return maDS;
     }

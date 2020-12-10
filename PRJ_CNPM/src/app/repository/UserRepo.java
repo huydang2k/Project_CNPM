@@ -33,7 +33,7 @@ public class UserRepo extends BaseRepo<User>{
     }
 
 
-    public User getUser(String username, String password) throws SQLException, ClassNotFoundException {
+    public User findUserByUserNameAndPassWord(String username, String password) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM users WHERE userName = ? AND password = ?";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setString(1, username);

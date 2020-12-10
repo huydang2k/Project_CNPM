@@ -39,6 +39,7 @@ public class CommonController implements Initializable {
     public void toThongKe(){
        // primaryStage.setScene(makeScene("thongke/TKUI.fxml"));
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }

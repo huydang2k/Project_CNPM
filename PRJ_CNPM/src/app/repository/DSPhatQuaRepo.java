@@ -19,7 +19,7 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         dsPhatQua.setTongChiPhi(rs.getDouble("tongChiPhi"));
         return dsPhatQua;
     }
-    public List<DSPhatQua> tatCaDanhSachPhatQua() throws SQLException{
+    public ArrayList<DSPhatQua> findAll() throws SQLException{
         String sql = "SELECT * FROM ds_phat_qua";
         PreparedStatement preparedStatement = prepare(sql);
         ResultSet rs = preparedStatement.executeQuery();
