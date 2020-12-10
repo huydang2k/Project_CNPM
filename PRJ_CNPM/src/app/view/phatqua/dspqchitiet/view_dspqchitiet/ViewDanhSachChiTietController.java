@@ -8,6 +8,7 @@ import app.model.form.FormDSPQChiTiet;
 import app.repository.DuocNhanQuaRepo;
 import app.repository.NhanKhauRepo;
 import app.repository.ThanhVienCuaHoRepo;
+import app.service.DSPQChiTietService;
 import app.view.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -31,11 +32,7 @@ public class ViewDanhSachChiTietController implements Initializable {
 
     CommonController commonController;
 
-    DuocNhanQuaRepo duocNhanQuaRepo;
-
-    NhanKhauRepo nhanKhauRepo;
-
-    ThanhVienCuaHoRepo thanhVienCuaHoRepo;
+    DSPQChiTietService dspqChiTietService;
 
     @FXML
     Label nameDSPQ;
@@ -81,9 +78,7 @@ public class ViewDanhSachChiTietController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
-        duocNhanQuaRepo = new DuocNhanQuaRepo();
-        nhanKhauRepo = new NhanKhauRepo();
-        thanhVienCuaHoRepo = new ThanhVienCuaHoRepo();
+        dspqChiTietService = new DSPQChiTietService();
     }
 
     public void initData(DSPhatQua rowData){
@@ -159,23 +154,8 @@ public class ViewDanhSachChiTietController implements Initializable {
     }
 
     private void loadData(){
-        dspqChiTietObservableList = FXCollections.observableArrayList(new ArrayList<>());
         try {
-            ArrayList<DuocNhanQua> duocNhanQuaArrayList = duocNhanQuaRepo.findByMaDS(dsPhatQua.getMaDS());
-            for(int i = 0; i < duocNhanQuaArrayList.size(); i++){
-                DuocNhanQua duocNhanQua = duocNhanQuaArrayList.get(i);
-                NhanKhau nhanKhau = nhanKhauRepo.findById(duocNhanQua.getIdNhanKhau());
-                ThanhVienCuaHo thanhVienCuaHo = thanhVienCuaHoRepo.findByIdNhanKhau(duocNhanQua.getIdNhanKhau());
-                FormDSPQChiTiet formDSPQChiTiet = new FormDSPQChiTiet();
-                formDSPQChiTiet.setIdDS(dsPhatQua.getMaDS());
-                formDSPQChiTiet.setPhanQua(duocNhanQua.getPhanQua());
-                formDSPQChiTiet.setMucQua(duocNhanQua.getMucQua());
-                formDSPQChiTiet.setIdNhanKhau(duocNhanQua.getIdNhanKhau());
-                formDSPQChiTiet.setIdHoKhau(thanhVienCuaHo.getIdHoKhau());
-                formDSPQChiTiet.setHoTen(nhanKhau.getHoTen());
-                formDSPQChiTiet.setNamSinh(Integer.parseInt(nhanKhau.getNamSinh().toString().substring(0,4)));
-                dspqChiTietObservableList.add(formDSPQChiTiet);
-            }
+            dspqChiTietObservableList = FXCollections.observableArrayList(dspqChiTietService.getFormDSPQChiTietByMaDS(dsPhatQua.getMaDS()));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

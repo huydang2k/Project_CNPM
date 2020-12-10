@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DSPhatQuaService{
+public class PhatQuaService {
 
     private DSPhatQuaRepo dsPhatQuaRepo;
 
-    public DSPhatQuaService() {
+    public PhatQuaService() {
         this.dsPhatQuaRepo = new DSPhatQuaRepo();
     }
 
-    public DSPhatQuaService(DSPhatQuaRepo dsPhatQuaRepo) {
+    public PhatQuaService(DSPhatQuaRepo dsPhatQuaRepo) {
         this.dsPhatQuaRepo = dsPhatQuaRepo;
     }
 

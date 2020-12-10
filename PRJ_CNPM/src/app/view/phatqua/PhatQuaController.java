@@ -1,15 +1,10 @@
 package app.view.phatqua;
 
 import app.model.DSPhatQua;
-import app.model.DSPhatThuong;
-import app.service.DSPhatQuaService;
+import app.service.PhatQuaService;
 import app.view.CommonController;
 import app.view.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,23 +16,17 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import javax.sql.DataSource;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class PhatQuaController implements Initializable {
 
-    DSPhatQuaService dsPhatQuaService;
+    PhatQuaService phatQuaService;
     CommonController commonController;
 
     ObservableList<DSPhatQua> dsPhatQuaObservableList;
@@ -57,7 +46,7 @@ public class PhatQuaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        dsPhatQuaService = new DSPhatQuaService();
+        phatQuaService = new PhatQuaService();
         commonController = new CommonController();
         initTable();
         loadData();
@@ -166,7 +155,7 @@ public class PhatQuaController implements Initializable {
 
     private void loadData(){
         try{
-            dsPhatQuaObservableList = FXCollections.observableArrayList(dsPhatQuaService.getAll());
+            dsPhatQuaObservableList = FXCollections.observableArrayList(phatQuaService.getAll());
             table.setItems(dsPhatQuaObservableList);
         }catch (SQLException ex){
             ex.printStackTrace();
