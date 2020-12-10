@@ -39,7 +39,7 @@
             <children>
                 <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                  <Label layoutX="278.0" layoutY="42.0" prefHeight="53.0" prefWidth="528.0" text="Thêm mới danh sách Phát quà" textAlignment="CENTER">
+                  <Label layoutX="249.0" layoutY="49.0" prefHeight="53.0" prefWidth="586.0" text="Thêm mới danh sách Phát thưởng" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
@@ -58,7 +58,7 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutY="43.0" prefHeight="43.0" prefWidth="1083.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="   Thời gian tạo danh sách:">
+                  <Label layoutY="43.0" prefHeight="43.0" prefWidth="1083.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="   Hạn nộp minh chứng: ">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -68,14 +68,15 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="6.0" layoutY="134.0" prefHeight="354.0" prefWidth="1069.0">
+                  <TableView layoutX="6.0" layoutY="137.0" prefHeight="351.0" prefWidth="1069.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="STT" />
-                      <TableColumn prefWidth="273.0" text="Họ và Tên" />
-                        <TableColumn prefWidth="140.0" text="Năm sinh" />
-                        <TableColumn prefWidth="171.0" text="Hộ Gia đình" />
-                        <TableColumn prefWidth="244.0" text="Phần quà" />
-                        <TableColumn prefWidth="165.0" text="Ghi chú" />
+                      <TableColumn prefWidth="238.0" text="Họ và Tên" />
+                        <TableColumn prefWidth="175.0" text="Năm sinh" />
+                        <TableColumn prefWidth="144.0" text="Hộ Gia đình" />
+                        <TableColumn prefWidth="130.0" text="Mức" />
+                        <TableColumn prefWidth="159.0" text="Nộp minh chứng" />
+                        <TableColumn prefWidth="147.0" text="Ghi chú" />
                     </columns>
                   </TableView>
                </children>
