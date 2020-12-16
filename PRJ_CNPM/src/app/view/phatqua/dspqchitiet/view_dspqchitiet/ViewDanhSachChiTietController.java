@@ -23,6 +23,7 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -71,7 +72,7 @@ public class ViewDanhSachChiTietController implements Initializable {
     TableColumn<FormDSPQChiTiet, String> numberColumn;
 
     @FXML
-    TableColumn<FormDSPQChiTiet, Void> buttonsColumn;
+    TableColumn<FormDSPQChiTiet, String> ghiChuColumn;
 
     ObservableList<FormDSPQChiTiet> dspqChiTietObservableList;
 
@@ -99,6 +100,7 @@ public class ViewDanhSachChiTietController implements Initializable {
         trangThaiDSPQ.setText(trangThaiDSPQ.getText() +" "+trangThai);
         namDSPQ.setText(namDSPQ.getText()+" "+dsPhatQua.getNgayTao().toString().substring(0,4));
         tongChiDSPQ.setText(tongChiDSPQ.getText()+" "+String.valueOf(dsPhatQua.getTongChiPhi()));
+        dipDSPQ.setText(dipDSPQ.getText()+" "+dsPhatQua.getSuKien());
         initTable();
         loadData();
     }
@@ -114,38 +116,21 @@ public class ViewDanhSachChiTietController implements Initializable {
                 return new ReadOnlyObjectWrapper<>(table.getItems().indexOf(param.getValue()) + 1 + " ");
             }
         });
-        numberColumn.setSortable(false);
-        Callback<TableColumn<FormDSPQChiTiet, Void>, TableCell<FormDSPQChiTiet, Void>> cellFactory = new Callback<TableColumn<FormDSPQChiTiet, Void>, TableCell<FormDSPQChiTiet, Void>>() {
+        ghiChuColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<FormDSPQChiTiet, String>, ObservableValue<String>>() {
             @Override
-            public TableCell<FormDSPQChiTiet, Void> call(final TableColumn<FormDSPQChiTiet, Void> param) {
-                final TableCell<FormDSPQChiTiet, Void> cell = new TableCell<FormDSPQChiTiet, Void>() {
-                    private final Button deleteButton = new Button("Xóa");
-
-                    {
-                        deleteButton.setOnAction((ActionEvent event) -> {
-                            FormDSPQChiTiet data = getTableView().getItems().get(getIndex());
-                            dspqChiTietObservableList.remove(data);
-                            table.setItems(dspqChiTietObservableList);
-                        });
-                        deleteButton.setMaxSize(200,200);
-                    }
-
-
-                    @Override
-                    public void updateItem(Void item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                        } else {
-                            setGraphic(deleteButton);
-                        }
-                    }
-                };
-                return cell;
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<FormDSPQChiTiet, String> param) {
+                String content = "";
+                FormDSPQChiTiet formDSPQChiTiet = param.getValue();
+                boolean duocXacNhan = formDSPQChiTiet.isDuocXacNhan();
+                if(duocXacNhan){
+                    content = "Đã trao";
+                }else{
+                    content = "Chưa trao";
+                }
+                return new ReadOnlyObjectWrapper<>(content);
             }
-        };
-        buttonsColumn.setCellFactory(cellFactory);
-        buttonsColumn.setSortable(false);
+        });
+        numberColumn.setSortable(false);
         hoTenColumn.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         namSinhColumn.setCellValueFactory(new PropertyValueFactory<>("namSinh"));
         hoGDColumn.setCellValueFactory(new PropertyValueFactory<>("idHoKhau"));

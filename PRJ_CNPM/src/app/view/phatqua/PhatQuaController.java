@@ -3,6 +3,7 @@ package app.view.phatqua;
 import app.model.DSPhatQua;
 import app.service.PhatQuaService;
 import app.view.CommonController;
+import app.view.phatqua.dspqchitiet.edit_dspqchitiet.EditDanhSachChiTietController;
 import app.view.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -62,7 +63,7 @@ public class PhatQuaController implements Initializable {
                     System.out.println(rowData);
                     Stage stage = (Stage)(((Node) event.getSource()).getScene().getWindow());
                     FXMLLoader loader = new FXMLLoader();
-                    if(rowData.getTrangThai() == 2){
+                    if(rowData.getTrangThai() == 2 || rowData.getTrangThai() == -1){
                         loader.setLocation(getClass().getResource("dspqchitiet\\view_dspqchitiet\\View_DanhSachChiTiet.fxml"));
                         try {
                             Parent root = loader.load();
@@ -77,6 +78,8 @@ public class PhatQuaController implements Initializable {
                         loader.setLocation(getClass().getResource("dspqchitiet\\edit_dspqchitiet\\Edit_DanhSachChiTiet.fxml"));
                         try {
                             Parent root = loader.load();
+                            EditDanhSachChiTietController controller = loader.getController();
+                            controller.initData(rowData);
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
                         } catch (IOException ioException) {

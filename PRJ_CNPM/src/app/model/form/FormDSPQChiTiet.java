@@ -10,8 +10,9 @@ public class FormDSPQChiTiet {
     private int idHoKhau;
     private String phanQua;
     private double mucQua;
+    private boolean duocXacNhan;
 
-    public FormDSPQChiTiet(int idDS, int idNhanKhau, String hoTen, int namSinh, int idHoKhau, String phanQua, double mucQua) {
+    public FormDSPQChiTiet(int idDS, int idNhanKhau, String hoTen, int namSinh, int idHoKhau, String phanQua, double mucQua, boolean duocXacNhan) {
         this.idDS = idDS;
         this.idNhanKhau = idNhanKhau;
         this.hoTen = hoTen;
@@ -19,6 +20,7 @@ public class FormDSPQChiTiet {
         this.idHoKhau = idHoKhau;
         this.phanQua = phanQua;
         this.mucQua = mucQua;
+        this.duocXacNhan = duocXacNhan;
     }
 
     public FormDSPQChiTiet() {
@@ -78,5 +80,13 @@ public class FormDSPQChiTiet {
 
     public void setMucQua(double mucQua) {
         this.mucQua = mucQua;
+    }
+
+    public boolean isDuocXacNhan() {
+        return duocXacNhan;
+    }
+
+    public void setDuocXacNhan(boolean duocXacNhan) {
+        this.duocXacNhan = duocXacNhan;
     }
 }

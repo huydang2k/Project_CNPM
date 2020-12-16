@@ -39,6 +39,7 @@ public class DSPQChiTietService {
             formDSPQChiTiet.setIdHoKhau(thanhVienCuaHo.getIdHoKhau());
             formDSPQChiTiet.setHoTen(nhanKhau.getHoTen());
             formDSPQChiTiet.setNamSinh(Integer.parseInt(nhanKhau.getNamSinh().toString().substring(0, 4)));
+            formDSPQChiTiet.setDuocXacNhan(duocNhanQua.getDuocXacNhan());
             formDSPQChiTietArrayList.add(formDSPQChiTiet);
         }
         return formDSPQChiTietArrayList;
