@@ -26,18 +26,10 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
             return 0;
         }
     }
-    public ArrayList<HocSinh> tatCaHocSinh() throws SQLException,ClassNotFoundException{
-        ArrayList<HocSinh> hocSinhArrayList = new ArrayList<>();
+    public ArrayList<HocSinh> findALl() throws SQLException,ClassNotFoundException{
         String sql = "select * from hoc_sinh";
         PreparedStatement preparedStatement = prepare(sql);
         ResultSet rs = preparedStatement.executeQuery();
-        while (true){
-            HocSinh hs =  getObject(rs);
-            hocSinhArrayList.add(hs);
-            System.out.println(hs);
-            if (!rs.next()) break;
-        }
-
-        return hocSinhArrayList;
+        return getList(rs);
     }
 }

@@ -1,10 +1,12 @@
 package app.repository;
 
+import app.model.HocSinh;
 import app.model.NhanKhau;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class NhanKhauRepo extends BaseRepo<NhanKhau>{
 
@@ -31,5 +33,23 @@ public class NhanKhauRepo extends BaseRepo<NhanKhau>{
         ResultSet rs = preparedStatement.executeQuery();
         rs.first();
         return getObject(rs);
+    }
+    public int soLuongThieuNhi() throws SQLException,ClassNotFoundException{
+        String sql = "select count(nk.ID) as c from nhan_khau as nk where round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        if(rs.next()){
+            return Integer.parseInt(rs.getString("c"));
+        }else{
+            return 0;
+        }
+    }
+    public ArrayList<NhanKhau> findAllChildren() throws SQLException{
+        ArrayList<NhanKhau> nhanKhauArrayList = new ArrayList<>();
+        String sql = "select * from nhan_khau as nk where" +
+                "where round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        return getList(rs);
     }
 }

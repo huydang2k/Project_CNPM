@@ -32,14 +32,5 @@ public class HoKhauRepo extends BaseRepo<HoKhau> {
             return 0;
         }
     }
-    public int soLuongThieuNhi() throws SQLException,ClassNotFoundException{
-        String sql = "select count(nk.ID) as c from nhan_khau as nk where round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
-        PreparedStatement preparedStatement = prepare(sql);
-        ResultSet rs = preparedStatement.executeQuery();
-        if(rs.next()){
-            return Integer.parseInt(rs.getString("c"));
-        }else{
-            return 0;
-        }
-    }
+
 }

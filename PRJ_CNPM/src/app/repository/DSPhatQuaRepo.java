@@ -25,14 +25,38 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         ResultSet rs = preparedStatement.executeQuery();
         return getList(rs);
     }
-    public DSPhatQua danhSachPhatQuaTheoMa(int maDanhSach){
-        return null;
+    public DSPhatQua findById(int maDS) throws SQLException{
+        String sql = "SELECT * FROM ds_phat_qua WHERE maDS = ?";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setInt(1, maDS);
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.first();
+        return getObject(rs);
     }
-    public void themMoiDanhSachPhatQua(DSPhatQua dsPhatQua){
+    public int insert(DSPhatQua dsPhatQua) throws SQLException{
+        String sql = "insert into ds_phat_qua values (null,?,?,1,0)";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setString(1,dsPhatQua.getSuKien());
+        preparedStatement.setDate(2,dsPhatQua.getNgayTao());
+        return preparedStatement.executeUpdate();
     }
-    public void xoaDanhSachPhatQua(int maDanhSach){
-
+    public int update(DSPhatQua dsPhatQua)throws SQLException{
+        String sql = "update ds_phat_qua set suKien = ?, ngayTao = ?, trangThai = ?" +
+                "tongChiPhi = ?" +
+                "where maDs = ?";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setString(1, dsPhatQua.getSuKien());
+        preparedStatement.setDate(2, dsPhatQua.getNgayTao());
+        preparedStatement.setInt(3,dsPhatQua.getTrangThai());
+        preparedStatement.setDouble(4,dsPhatQua.getTongChiPhi());
+        preparedStatement.setInt(5, dsPhatQua.getMaDS());
+        return preparedStatement.executeUpdate();
     }
-
-
+    public int deleteById(int maDS)throws SQLException{
+        String sql = "update ds_phat_qua set trangThai = -1 where" +
+                "maDS = ? ";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setInt(1,maDS);
+        return preparedStatement.executeUpdate();
+    }
 }

@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseRepo<T> {
+    /**
+     *
+     * @param sql
+     * @return
+     * @throws SQLException
+     */
     protected PreparedStatement prepare(String sql) throws SQLException{
         try {
             System.out.println(">> "+sql);

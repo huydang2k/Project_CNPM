@@ -2,6 +2,7 @@ package app.view.home;
 
 import app.service.HoKhauService;
 import app.service.HocSinhService;
+import app.service.NhanKhauService;
 import app.view.CommonController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     HocSinhService hocSinhService;
     HoKhauService hoKhauService;
+    NhanKhauService nhanKhauService;
     CommonController commonController;
     @FXML
     private Label soLuongHocSinhLabel;
@@ -33,6 +35,7 @@ public class HomeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         hocSinhService = new HocSinhService();
         hoKhauService = new HoKhauService();
+        nhanKhauService = new NhanKhauService();
         commonController = new CommonController();
         try{
             soLuongHoKhauLabel.setText(soLuongHoKhauLabel.getText()
@@ -40,7 +43,7 @@ public class HomeController implements Initializable {
                     hoKhauService.soLuongHoKhau());
             soLuongThieuNhiLabel.setText(soLuongThieuNhiLabel.getText()
                     +" "+
-                    hoKhauService.soLuongThieuNhi());
+                    nhanKhauService.soLuongThieuNhi());
             soLuongHocSinhLabel.setText(soLuongHocSinhLabel.getText()
                     +" "+
                     hocSinhService.soLuongHocSinh());

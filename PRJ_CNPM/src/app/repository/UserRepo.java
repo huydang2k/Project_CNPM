@@ -10,20 +10,6 @@ import java.sql.SQLException;
 
 public class UserRepo extends BaseRepo<User>{
 
-//    public PreparedStatement prepare(String sql) throws SQLException, ClassNotFoundException{
-//        try {
-//            System.out.println(">> "+sql);
-//            //connection.prepareStatment trả về đối tượng PrepareStatment dùng để thực hiện query String sql
-//            return MyConnection.connection.prepareStatement(sql,
-//                    ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-//            //ResultSet.TYPE_SCROLL_SENSITIVE: cho phép con trỏ resultSet chạy từ bản ghi đầu đến cuối.
-//            //ResultSet.CONCUR_UPDATABLE: tạo ra một đuối tượng resultSet có thể được cập nhập.
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//            return null;
-//        }
-//    }
-
     public User getObject(ResultSet rs) throws SQLException{
         User user = new User();
         user.setId(rs.getInt("ID"));
