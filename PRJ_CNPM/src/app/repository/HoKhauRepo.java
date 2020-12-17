@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class HoKhauRepo extends BaseRepo<HoKhau> {
     @Override
@@ -22,6 +23,32 @@ public class HoKhauRepo extends BaseRepo<HoKhau> {
         hoKhau.setNguoiThucHien(rs.getInt("nguoiThucHien"));
         return hoKhau;
     }
+
+    @Override
+    protected ArrayList<HoKhau> findAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    protected HoKhau findById(int maDs) throws SQLException {
+        return null;
+    }
+
+    @Override
+    protected int insert(HoKhau hoKhau) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    protected int update(HoKhau hoKhau) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    protected int deleteById(int maDS) throws SQLException {
+        return 0;
+    }
+
     public int soLuongHoKhau() throws SQLException, ClassNotFoundException {
         String sql = "SELECT count(ID) FROM ho_khau";
         PreparedStatement preparedStatement = prepare(sql);

@@ -958,13 +958,12 @@ SELECT|sys.sys_config:null
     <table id="300" parent="12" name="thanh_vien_cua_ho">
       <Collation>utf8_unicode_ci</Collation>
     </table>
-    <table id="301" parent="12" name="users">
-      <Collation>utf8_unicode_ci</Collation>
-    </table>
+    <table id="301" parent="12" name="users"/>
     <column id="302" parent="293" name="maDS">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="303" parent="293" name="suKien">
       <Position>2</Position>
@@ -991,6 +990,7 @@ SELECT|sys.sys_config:null
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="309" parent="294" name="suKien">
       <Position>2</Position>
@@ -1264,13 +1264,11 @@ idHoKhau</ColNames>
       <RefTableName>ho_khau</RefTableName>
       <RefColNames>ID</RefColNames>
     </foreign-key>
-    <column id="370" parent="301" name="ID">
+    <column id="370" parent="301" name="id">
       <Position>1</Position>
       <DataType>int|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="371" parent="301" name="userName">
+    <column id="371" parent="301" name="username">
       <Position>2</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
@@ -1278,10 +1276,5 @@ idHoKhau</ColNames>
       <Position>3</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <key id="373" parent="301" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID</ColNames>
-      <Primary>1</Primary>
-    </key>
   </database-model>
 </dataSource>

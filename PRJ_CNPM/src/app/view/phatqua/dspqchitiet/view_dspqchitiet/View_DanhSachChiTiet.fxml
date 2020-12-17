@@ -28,7 +28,7 @@
                     </children>
                 </AnchorPane>
                 <Button layoutX="12.0" layoutY="169.0" mnemonicParsing="false" onAction="#toHome" prefHeight="50.0" prefWidth="170.0" text="Trang chủ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
-                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" onAction="#toPhatQua" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
                 <Button layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#toPhatThuong" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
                 <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" onAction="#toThongKe" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
             </children></AnchorPane>

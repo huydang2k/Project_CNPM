@@ -19,6 +19,16 @@ public class DuocNhanQuaRepo extends BaseRepo<DuocNhanQua> {
         return duocNhanQua;
     }
 
+    @Override
+    protected ArrayList<DuocNhanQua> findAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    protected DuocNhanQua findById(int maDs) throws SQLException {
+        return null;
+    }
+
     public ArrayList<DuocNhanQua> findByMaDS(int maDS) throws SQLException{
         String sql = "SELECT * FROM duoc_nhan_qua WHERE maDS = ?";
         PreparedStatement preparedStatement = prepare(sql);
@@ -47,6 +57,12 @@ public class DuocNhanQuaRepo extends BaseRepo<DuocNhanQua> {
         preparedStatement.setInt(5,duocNhanQua.getIdNhanKhau());
         return preparedStatement.executeUpdate();
     }
+
+    @Override
+    protected int deleteById(int maDS) throws SQLException {
+        return 0;
+    }
+
     public int deleteBymaDSandIdNhanKhau(int maDs,int idNhanKhau) throws SQLException{
         String sql = "delete from duoc_nhan_qua where maDs = ? and idNhanKhau = ?";
         PreparedStatement preparedStatement = prepare(sql);

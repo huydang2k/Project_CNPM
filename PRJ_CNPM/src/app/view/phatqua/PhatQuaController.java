@@ -1,7 +1,7 @@
 package app.view.phatqua;
 
 import app.model.DSPhatQua;
-import app.service.PhatQuaService;
+import app.service.DSPhatQuaService;
 import app.view.CommonController;
 import app.view.phatqua.dspqchitiet.edit_dspqchitiet.EditDanhSachChiTietController;
 import app.view.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 
 public class PhatQuaController implements Initializable {
 
-    PhatQuaService phatQuaService;
+    DSPhatQuaService DSPhatQuaService;
     CommonController commonController;
 
     ObservableList<DSPhatQua> dsPhatQuaObservableList;
@@ -47,7 +47,7 @@ public class PhatQuaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        phatQuaService = new PhatQuaService();
+        DSPhatQuaService = new DSPhatQuaService();
         commonController = new CommonController();
         initTable();
         loadData();
@@ -158,7 +158,7 @@ public class PhatQuaController implements Initializable {
 
     private void loadData(){
         try{
-            dsPhatQuaObservableList = FXCollections.observableArrayList(phatQuaService.getAll());
+            dsPhatQuaObservableList = FXCollections.observableArrayList(DSPhatQuaService.getAll());
             table.setItems(dsPhatQuaObservableList);
         }catch (SQLException ex){
             ex.printStackTrace();

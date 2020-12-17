@@ -38,4 +38,9 @@ public abstract class BaseRepo<T> {
         }
         return data;
     }
+    protected abstract ArrayList<T> findAll() throws SQLException;
+    protected abstract T findById(int maDs) throws SQLException;
+    protected abstract  int insert(T t) throws SQLException;
+    protected abstract  int update(T t) throws SQLException;
+    protected abstract  int deleteById(int maDS) throws SQLException;
 }

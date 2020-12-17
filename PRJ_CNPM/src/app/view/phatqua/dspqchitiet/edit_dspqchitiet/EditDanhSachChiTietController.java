@@ -267,4 +267,7 @@ public class EditDanhSachChiTietController implements Initializable {
     public void toThongKe(){
         commonController.toThongKe();
     }
+    public void toPhatQua(){
+        commonController.toPhatQua();
+    }
 }

@@ -26,6 +26,11 @@ public class NhanKhauRepo extends BaseRepo<NhanKhau>{
         return nhanKhau;
     }
 
+    @Override
+    protected ArrayList<NhanKhau> findAll() throws SQLException {
+        return null;
+    }
+
     public NhanKhau findById(int id)throws SQLException{
         String sql = "SELECT * FROM nhan_khau WHERE ID = ?";
         PreparedStatement preparedStatement = prepare(sql);
@@ -34,6 +39,22 @@ public class NhanKhauRepo extends BaseRepo<NhanKhau>{
         rs.first();
         return getObject(rs);
     }
+
+    @Override
+    protected int insert(NhanKhau nhanKhau) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    protected int update(NhanKhau nhanKhau) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    protected int deleteById(int maDS) throws SQLException {
+        return 0;
+    }
+
     public int soLuongThieuNhi() throws SQLException,ClassNotFoundException{
         String sql = "select count(nk.ID) as c from nhan_khau as nk where round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
         PreparedStatement preparedStatement = prepare(sql);

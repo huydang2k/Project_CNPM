@@ -39,7 +39,7 @@
             <children>
                 <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                  <Label alignment="CENTER" layoutX="5.0" layoutY="49.0" prefHeight="53.0" prefWidth="1073.0" text="Tên danh sách" textAlignment="CENTER" wrapText="true">
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="49.0" prefHeight="53.0" prefWidth="1073.0" text="Tên danh sách" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>

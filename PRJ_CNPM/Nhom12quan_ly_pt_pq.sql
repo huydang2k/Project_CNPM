@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `quan_ly_pt_pq` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `quan_ly_pt_pq`;
--- MySQL dump 10.13  Distrib 8.0.21, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: quan_ly_pt_pq
 -- ------------------------------------------------------
--- Server version	8.0.21
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,13 +23,13 @@ DROP TABLE IF EXISTS `ds_phat_qua`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ds_phat_qua` (
-  `maDS` int NOT NULL,
+  `maDS` int(11) NOT NULL AUTO_INCREMENT,
   `suKien` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayTao` date DEFAULT NULL,
-  `trangThai` int DEFAULT NULL,
+  `trangThai` int(1) DEFAULT NULL,
   `tongChiPhi` double DEFAULT NULL,
   PRIMARY KEY (`maDS`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,13 +50,13 @@ DROP TABLE IF EXISTS `ds_phat_thuong`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ds_phat_thuong` (
-  `maDS` int NOT NULL,
+  `maDS` int(11) NOT NULL AUTO_INCREMENT,
   `suKien` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayTao` date DEFAULT NULL,
-  `trangThai` int DEFAULT NULL,
+  `trangThai` int(1) DEFAULT NULL,
   `tongChiPhi` double DEFAULT NULL,
   PRIMARY KEY (`maDS`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,8 +77,8 @@ DROP TABLE IF EXISTS `duoc_nhan_qua`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `duoc_nhan_qua` (
-  `maDS` int NOT NULL,
-  `idNhanKhau` int NOT NULL,
+  `maDS` int(11) NOT NULL,
+  `idNhanKhau` int(11) NOT NULL,
   `phanQua` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `mucQua` double DEFAULT NULL,
   `duocXacNhan` bit(1) DEFAULT NULL,
@@ -109,8 +107,8 @@ DROP TABLE IF EXISTS `duoc_nhan_thuong`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `duoc_nhan_thuong` (
-  `maDS` int NOT NULL,
-  `maHS` int NOT NULL,
+  `maDS` int(11) NOT NULL,
+  `maHS` int(11) NOT NULL,
   `thanhTich` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `minhChung` bit(1) DEFAULT NULL,
   `xepLoai` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -141,15 +139,15 @@ DROP TABLE IF EXISTS `ho_khau`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ho_khau` (
-  `ID` int NOT NULL,
+  `ID` int(11) NOT NULL,
   `maHoKhau` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `idChuHo` int DEFAULT NULL,
+  `idChuHo` int(11) DEFAULT NULL,
   `maKhuVuc` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `diaChi` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayLap` date DEFAULT NULL,
   `ngayChuyenDi` date DEFAULT NULL,
   `lyDoChuyen` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `nguoiThucHien` int DEFAULT NULL,
+  `nguoiThucHien` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `idChuHo` (`idChuHo`),
   CONSTRAINT `ho_khau_ibfk_1` FOREIGN KEY (`idChuHo`) REFERENCES `nhan_khau` (`ID`)
@@ -174,8 +172,8 @@ DROP TABLE IF EXISTS `hoc_sinh`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hoc_sinh` (
-  `maHS` int NOT NULL,
-  `idNhanKhau` int NOT NULL,
+  `maHS` int(11) NOT NULL,
+  `idNhanKhau` int(11) NOT NULL,
   `hocVan` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`maHS`),
   KEY `fk_hocsinh_nhankhau` (`idNhanKhau`),
@@ -201,7 +199,7 @@ DROP TABLE IF EXISTS `nhan_khau`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nhan_khau` (
-  `ID` int NOT NULL,
+  `ID` int(11) NOT NULL,
   `maNhanKhau` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `hoTen` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `namSinh` date DEFAULT NULL,
@@ -233,8 +231,8 @@ DROP TABLE IF EXISTS `thanh_vien_cua_ho`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `thanh_vien_cua_ho` (
-  `idNhanKhau` int NOT NULL,
-  `idHoKhau` int NOT NULL,
+  `idNhanKhau` int(11) NOT NULL,
+  `idHoKhau` int(11) NOT NULL,
   `quanHeVoiChuHo` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idNhanKhau`,`idHoKhau`),
   KEY `idHoKhau` (`idHoKhau`),
@@ -261,11 +259,10 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `userName` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `password` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id` int(11) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -277,14 +274,6 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'admin','1');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'quan_ly_pt_pq'
---
-
---
--- Dumping routines for database 'quan_ly_pt_pq'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -295,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-08 10:24:11
+-- Dump completed on 2020-12-17 21:25:50

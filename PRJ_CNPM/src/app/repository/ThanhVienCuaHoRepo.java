@@ -5,6 +5,7 @@ import app.model.ThanhVienCuaHo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class ThanhVienCuaHoRepo  extends BaseRepo<ThanhVienCuaHo> {
     @Override
@@ -14,6 +15,31 @@ public class ThanhVienCuaHoRepo  extends BaseRepo<ThanhVienCuaHo> {
         thanhVienCuaHo.setIdHoKhau(rs.getInt("idHoKhau"));
         thanhVienCuaHo.setQuanHeVoiChuHo(rs.getString("quanHeVoiChuHo"));
         return thanhVienCuaHo;
+    }
+
+    @Override
+    protected ArrayList<ThanhVienCuaHo> findAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    protected ThanhVienCuaHo findById(int maDs) throws SQLException {
+        return null;
+    }
+
+    @Override
+    protected int insert(ThanhVienCuaHo thanhVienCuaHo) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    protected int update(ThanhVienCuaHo thanhVienCuaHo) throws SQLException {
+        return 0;
+    }
+
+    @Override
+    protected int deleteById(int maDS) throws SQLException {
+        return 0;
     }
 
     public ThanhVienCuaHo findByIdNhanKhau(int idNhanKhau) throws SQLException{
