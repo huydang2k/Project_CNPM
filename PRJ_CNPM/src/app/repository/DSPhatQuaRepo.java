@@ -41,8 +41,8 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         return preparedStatement.executeUpdate();
     }
     public int update(DSPhatQua dsPhatQua)throws SQLException{
-        String sql = "update ds_phat_qua set suKien = ?, ngayTao = ?, trangThai = ?" +
-                "tongChiPhi = ?" +
+        String sql = "update ds_phat_qua set suKien = ?, ngayTao = ?, trangThai = ?," +
+                "tongChiPhi = ? " +
                 "where maDs = ?";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setString(1, dsPhatQua.getSuKien());

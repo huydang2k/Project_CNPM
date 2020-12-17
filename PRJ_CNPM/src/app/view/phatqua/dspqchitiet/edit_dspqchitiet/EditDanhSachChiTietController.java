@@ -3,6 +3,7 @@ package app.view.phatqua.dspqchitiet.edit_dspqchitiet;
 import app.model.DSPhatQua;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
+import app.service.DSPhatQuaService;
 import app.view.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -26,6 +27,7 @@ public class EditDanhSachChiTietController implements Initializable {
     private DSPhatQua dsPhatQua;
 
     DSPQChiTietService dspqChiTietService;
+    DSPhatQuaService dsPhatQuaService;
 
     CommonController commonController;
 
@@ -97,6 +99,7 @@ public class EditDanhSachChiTietController implements Initializable {
         daPhatHet = false;
         commonController = new CommonController();
         dspqChiTietService = new DSPQChiTietService();
+        dsPhatQuaService = new DSPhatQuaService();
         trangThaiComboBoxList = FXCollections.observableArrayList("Đang phát", "Đã hoàn thành");
         trangThaiComboBox.setItems(trangThaiComboBoxList);
     }
@@ -240,12 +243,31 @@ public class EditDanhSachChiTietController implements Initializable {
                     alert.setContentText("Bạn chưa phát hết quà, không thể đổi trạng thái thành đã hoàn thành");
                     alert.show();
                 }else{
-                    editOrSaveButton.setText("Chỉnh sửa");
-                    nameDSPQ.setText(dipTextField.getText());
-                    dipDSPQ.setText("Dịp: "+dipTextField.getText());
-                    dipTextField.setVisible(false);
-                    trangThaiComboBox.setVisible(false);
-                    editMode = false;
+                    try{
+                        DSPhatQua tmp = dsPhatQua;
+                        System.out.println(dsPhatQua);
+                        tmp.setSuKien(dipTextField.getText());
+                        tmp.setTrangThai(daPhatHet?2:1);
+                        dsPhatQuaService.update(tmp);
+                        nameDSPQ.setText(dipTextField.getText());
+                        dipDSPQ.setText("Dịp: "+dipTextField.getText());
+                        dsPhatQua = tmp;
+                        editOrSaveButton.setText("Chỉnh sửa");
+                        dipTextField.setVisible(false);
+                        trangThaiComboBox.setVisible(false);
+                        editMode = false;
+                    }
+                    catch (SQLException ex){
+                        ex.printStackTrace();
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Lỗi");
+                        alert.setHeaderText("Lỗi cơ sở dữ liệu");
+                        alert.setContentText("Đã có lỗi xảy ra khi sửa dữ liệu");
+                        alert.show();
+                    }
+                    finally {
+
+                    }
                 }
             }else{
                 editOrSaveButton.setText("Chỉnh sửa");

@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 public class PhatQuaController implements Initializable {
 
+
     DSPhatQuaService DSPhatQuaService;
     CommonController commonController;
 
@@ -165,6 +166,10 @@ public class PhatQuaController implements Initializable {
         }
     }
 
+    //
+    public void confirmDeleteDS(ActionEvent e){
+        //DSP
+    }
     public void toHome(){
         commonController.toHome();
     }

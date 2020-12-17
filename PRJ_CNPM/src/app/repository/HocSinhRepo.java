@@ -23,7 +23,7 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
     }
 
     @Override
-    protected HocSinh findById(int maDs) throws SQLException {
+    public HocSinh findById(int id) throws SQLException {
         return null;
     }
 

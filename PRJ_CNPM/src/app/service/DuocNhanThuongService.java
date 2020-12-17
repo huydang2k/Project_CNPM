@@ -20,7 +20,7 @@ public class DuocNhanThuongService {
     public DuocNhanThuongService(DuocNhanThuongRepo duocNhanThuongRepo) {
         this.duocNhanThuongRepo = duocNhanThuongRepo;
     }
-    public void insertDuocNhanThuongs(int maDS, ArrayList<FormDSPTChiTiet> formDSPTChiTiets) throws SQLException {
+    public void insertDuocNhanThuongList(int maDS, ArrayList<FormDSPTChiTiet> formDSPTChiTiets) throws SQLException {
         for(FormDSPTChiTiet i : formDSPTChiTiets){
             DuocNhanThuong duocNhanThuong = new DuocNhanThuong(maDS,i.getIdHocSinh(),
                     i.getThanhTich()
@@ -28,6 +28,16 @@ public class DuocNhanThuongService {
                     i.getMucThuong(),i.isDuocXacNhan());
             duocNhanThuongRepo.insert(duocNhanThuong);
         }
+    }
+    public void insertDuocNhanThuong(int maDS, FormDSPTChiTiet formDSPTChiTiet) throws SQLException {
+
+        DuocNhanThuong duocNhanThuong = new DuocNhanThuong(maDS,formDSPTChiTiet.getIdHocSinh(),
+                formDSPTChiTiet.getThanhTich()
+                ,formDSPTChiTiet.isMinhChung(),formDSPTChiTiet.getXepLoai(),
+                formDSPTChiTiet.getMucThuong(),
+                formDSPTChiTiet.isDuocXacNhan());
+        duocNhanThuongRepo.insert(duocNhanThuong);
+
     }
 
 }

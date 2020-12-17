@@ -32,6 +32,9 @@ public class DSPhatQuaService{
         lastInsertedDS = new DSPhatQua(null,suKien,date,1,0.0);
         dsPhatQuaRepo.insert(lastInsertedDS);
     }
+    public void update(DSPhatQua dsPhatQua) throws SQLException{
+        dsPhatQuaRepo.update(dsPhatQua);
+    }
     public DSPhatQua getLastInserted(){
         return lastInsertedDS;
     }
