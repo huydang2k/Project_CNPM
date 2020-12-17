@@ -1,6 +1,7 @@
 package app;
 
 import app.repository.HocSinhRepo;
+import app.service.ThongKePhatQuaService;
 import app.view.CommonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
