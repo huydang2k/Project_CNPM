@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="f1b40c1e-0130-4def-a510-e05c956717d8">
+    <data-source source="LOCAL" name="quan_ly_pt_pq@localhost" uuid="f1b40c1e-0130-4def-a510-e05c956717d8">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/quan_ly_pt_pq</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="quan_ly_pt_pq@localhost [2]" uuid="31af35c4-f932-4098-829e-6e035179b955">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/quan_ly_pt_pq</jdbc-url>
     </data-source>
   </component>
 </project>

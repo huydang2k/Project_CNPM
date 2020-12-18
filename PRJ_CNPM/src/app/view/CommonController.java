@@ -27,6 +27,9 @@ public class CommonController implements Initializable {
             ex.printStackTrace();
         }
     }
+    public void toThemMoiDsPhatQua(){
+        switchScene(makeScene("phatqua/ThemMoi.fxml"));
+    }
     public void toHome(){
         switchScene(makeScene("home/HomeUI.fxml"));
     }

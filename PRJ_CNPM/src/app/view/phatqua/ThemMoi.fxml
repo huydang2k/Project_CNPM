@@ -17,7 +17,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.phatqua.PhatQuaController">
+<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0"
+           fx:controller="app.view.phatqua.ThemMoiPQController"
+           xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
@@ -63,21 +65,24 @@
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label layoutX="-1.0" layoutY="86.0" prefHeight="43.0" prefWidth="1083.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="   Mô tả:">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TableView layoutX="6.0" layoutY="134.0" prefHeight="354.0" prefWidth="1069.0">
+                  <TableView layoutX="6.0" layoutY="90.0" prefHeight="398.0" prefWidth="1069.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="STT" />
                       <TableColumn prefWidth="273.0" text="Họ và Tên" />
-                        <TableColumn prefWidth="140.0" text="Năm sinh" />
-                        <TableColumn prefWidth="171.0" text="Hộ Gia đình" />
-                        <TableColumn prefWidth="244.0" text="Phần quà" />
-                        <TableColumn prefWidth="165.0" text="Ghi chú" />
+                        <TableColumn prefWidth="128.0" text="Năm sinh" />
+                        <TableColumn prefWidth="143.0" text="Hộ Gia đình" />
+                        <TableColumn prefWidth="192.0" text="Phần quà" />
+                        <TableColumn prefWidth="178.0" text="Mức quà" />
+                        <TableColumn prefWidth="87.0" text="Ghi chú" />
                     </columns>
                   </TableView>
+                  <Button layoutX="9.0" layoutY="495.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="761.0" text="Thêm mới" />
+                  <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="338.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../CNPM/Project_CNPM/PRJ_CNPM/src/images/add.png" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="146.0" layoutY="7.0" prefHeight="27.0" prefWidth="933.0" />
                </children>
             </Pane>
             </children>

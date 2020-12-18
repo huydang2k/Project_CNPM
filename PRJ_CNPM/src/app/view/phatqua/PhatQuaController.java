@@ -37,7 +37,8 @@ public class PhatQuaController implements Initializable {
     //table
     @FXML
     TableView<DSPhatQua> table;
-
+    @FXML
+    Button themMoiBtn;
     @FXML
     TableColumn<DSPhatQua, String> dsPhatQuaColumn;
 
@@ -186,6 +187,9 @@ public class PhatQuaController implements Initializable {
     //
     public void confirmDeleteDS(ActionEvent e){
         //DSP
+    }
+    public void toThemMoiDsPhatQua(){
+        commonController.toThemMoiDsPhatQua();
     }
     public void toHome(){
         commonController.toHome();
