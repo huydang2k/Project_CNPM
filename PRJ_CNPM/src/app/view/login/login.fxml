@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.login.LoginController">
+<AnchorPane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#loginEnter" prefHeight="310.0" prefWidth="600.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.login.LoginController">
     <children>
         <ImageView fitHeight="310.0" fitWidth="200.0" pickOnBounds="true">
          <image>
@@ -32,7 +32,7 @@
          </font></Label>
         <TextField fx:id="usernameTextField" layoutX="372.0" layoutY="105.0" prefHeight="25.0" prefWidth="166.0" promptText="Username" />
         <PasswordField fx:id="passwordField" layoutX="372.0" layoutY="155.0" prefHeight="25.0" prefWidth="166.0" promptText="Password" />
-        <Button layoutX="285.0" layoutY="221.0" mnemonicParsing="false" onAction="#loginClick" prefHeight="38.0" prefWidth="257.0" style="-fx-background-color: #79b5b1;" text="Login" textFill="#f5f5f5">
+        <Button fx:id="loginBtn" layoutX="285.0" layoutY="221.0" mnemonicParsing="false" onAction="#loginClick" prefHeight="38.0" prefWidth="257.0" style="-fx-background-color: #79b5b1;" text="Login" textFill="#f5f5f5">
             <font>
                 <Font size="17.0" />
             </font>

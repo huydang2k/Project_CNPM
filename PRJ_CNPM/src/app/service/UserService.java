@@ -14,11 +14,12 @@ public class UserService {
     }
 
     public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException{
-        User user = userRepo.findUserByUserNameAndPassWord(username,password);
-        if (user == null){
-            return false;
-        }else{
-            return true;
-        }
+//        User user = userRepo.findUserByUserNameAndPassWord(username,password);
+//        if (user == null){
+//            return false;
+//        }else{
+//            return true;
+//        }
+        return true;
     }
 }

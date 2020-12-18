@@ -3,14 +3,20 @@ package app.view.login;
 import app.service.UserService;
 import app.view.CommonController;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
+
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -22,10 +28,12 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField usernameTextField;
-
+    @FXML
+    private AnchorPane loginPane;
     @FXML
     private PasswordField passwordField;
-
+    @FXML
+    private Button loginBtn;
     public void loginClick(ActionEvent e){
         String username = usernameTextField.getText();
         String password = passwordField.getText();
@@ -51,10 +59,16 @@ public class LoginController implements Initializable {
         }
 
     }
-
+    public void loginEnter(KeyEvent e){
+        if(e.getCode()== KeyCode.ENTER){
+            loginBtn.fire();
+            e.consume();
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         userService = new UserService();
         commonController = new CommonController();
+
     }
 }
