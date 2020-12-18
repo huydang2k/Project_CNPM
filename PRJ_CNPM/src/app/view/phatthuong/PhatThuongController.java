@@ -26,9 +26,13 @@ public class PhatThuongController implements Initializable {
     public void toThongKe(){
         commonController.toThongKe();
     }
+    public void toThemMoiDsPhatThuong(){
+        commonController.toThemMoiDsPhatThuong();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
         dsPhatThuongService = new DSPhatThuongService();
     }
+
 }

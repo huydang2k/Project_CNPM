@@ -30,6 +30,9 @@ public class CommonController implements Initializable {
     public void toThemMoiDsPhatQua(){
         switchScene(makeScene("phatqua/ThemMoi.fxml"));
     }
+    public void toThemMoiDsPhatThuong(){
+        switchScene(makeScene("phatthuong/ThemMoi.fxml"));
+    }
     public void toHome(){
         switchScene(makeScene("home/HomeUI.fxml"));
     }

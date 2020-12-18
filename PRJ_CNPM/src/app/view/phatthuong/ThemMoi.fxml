@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.phatqua.PhatQuaController">
+<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.phatqua.ThemMoiPQController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
@@ -31,7 +31,7 @@
                     </children>
                 </AnchorPane>
                 <Button layoutX="12.0" layoutY="169.0" mnemonicParsing="false" onAction="#toHome" prefHeight="50.0" prefWidth="170.0" text="Trang chủ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
-                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" onAction="#toPhatQua" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
                 <Button layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#toPhatThuong" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
                 <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" onAction="#toThongKe" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
             </children></AnchorPane>
@@ -39,48 +39,51 @@
             <children>
                 <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                  <Label layoutX="249.0" layoutY="49.0" prefHeight="53.0" prefWidth="586.0" text="Thêm mới danh sách Phát thưởng" textAlignment="CENTER">
+                  <Label layoutX="212.0" layoutY="43.0" prefHeight="53.0" prefWidth="584.0" text="Thêm mới danh sách Phát thưởng" textAlignment="CENTER" wrapText="true">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
                     </children>
                 </AnchorPane>
-            <TextField layoutX="5.0" layoutY="635.0" prefHeight="29.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="110.0" />
-            <Pane layoutY="150.0" prefHeight="569.0" prefWidth="1083.0">
-               <children>
-                  <Button layoutX="981.0" layoutY="530.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Tìm kiếm" />
-                  <Button layoutX="777.0" layoutY="494.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Hủy" />
-                  <Button layoutX="879.0" layoutY="494.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="In danh sách" />
-                  <Button layoutX="981.0" layoutY="494.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lưu" />
-                  <Label prefHeight="43.0" prefWidth="1083.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="   Tên Danh sách: ">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutY="43.0" prefHeight="43.0" prefWidth="1083.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="   Hạn nộp minh chứng: ">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="-1.0" layoutY="86.0" prefHeight="43.0" prefWidth="1083.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="   Mô tả:">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TableView layoutX="6.0" layoutY="137.0" prefHeight="351.0" prefWidth="1069.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="STT" />
-                      <TableColumn prefWidth="238.0" text="Họ và Tên" />
-                        <TableColumn prefWidth="175.0" text="Năm sinh" />
-                        <TableColumn prefWidth="144.0" text="Hộ Gia đình" />
-                        <TableColumn prefWidth="130.0" text="Mức" />
-                        <TableColumn prefWidth="159.0" text="Nộp minh chứng" />
-                        <TableColumn prefWidth="147.0" text="Ghi chú" />
-                    </columns>
-                  </TableView>
-               </children>
-            </Pane>
+            <TextField layoutX="5.0" layoutY="635.0" prefHeight="25.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="115.0" />
+            <TableView layoutY="292.0" prefHeight="341.0" prefWidth="1063.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="292.0">
+              <columns>
+                <TableColumn maxWidth="500.0" prefWidth="61.0" text="STT" />
+                <TableColumn prefWidth="100.0" text="Họ và Tên" />
+                  <TableColumn maxWidth="1500.0" prefWidth="100.0" text="Năm sinh" />
+                  <TableColumn maxWidth="2000.0" prefWidth="113.0" text="Hộ Gia đình" />
+                  <TableColumn prefWidth="169.0" text="Thành tích" />
+                  <TableColumn maxWidth="1600.0" prefWidth="99.0" text="Minh chứng" />
+                  <TableColumn maxWidth="1200.0" prefWidth="183.0" text="Xếp loại" />
+                  <TableColumn maxWidth="3000.0" prefWidth="141.0" text="Mức thưởng" />
+                  <TableColumn maxWidth="2000.0" prefWidth="84.0" text="Ghi chú" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Button layoutX="988.0" layoutY="681.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+            <Button layoutX="14.0" layoutY="641.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="761.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="325.0" />
+            <Label layoutX="14.0" layoutY="159.0" prefHeight="40.0" prefWidth="120.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="Tên Danh sách: " AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="160.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Button layoutX="988.0" layoutY="641.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="In danh sách" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="10.0" />
+            <Button layoutX="798.0" layoutY="641.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Hủy" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="220.0" />
+            <Button layoutX="893.0" layoutY="641.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Lưu" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="115.0" />
+            <TextField layoutX="144.0" layoutY="168.0" prefHeight="25.0" prefWidth="933.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="165.0" />
+            <Label layoutX="14.0" layoutY="202.0" prefHeight="40.0" prefWidth="220.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="Thời gian tạo danh sách:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="200.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="240.0" prefHeight="40.0" prefWidth="220.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: grey;" text="Thời han nộp minh chứng:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="240.0">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </items>
