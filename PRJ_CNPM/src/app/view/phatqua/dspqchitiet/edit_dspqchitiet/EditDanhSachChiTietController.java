@@ -1,6 +1,7 @@
 package app.view.phatqua.dspqchitiet.edit_dspqchitiet;
 
 import app.model.DSPhatQua;
+import app.model.NhanKhau;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
 import app.service.DSPhatQuaService;
@@ -405,6 +406,15 @@ public class EditDanhSachChiTietController implements Initializable {
         }
     }
 
+    private boolean checkExist(int idNhanKhau){
+        for(int i = 0; i < dspqChiTietObservableList.size(); i++){
+            if(idNhanKhau == dspqChiTietObservableList.get(i).getIdNhanKhau()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void themMoi(ActionEvent e){
         Dialog<ButtonType> themMoiDiaglog = new Dialog<>();
         themMoiDiaglog.setTitle("Thêm mới");
@@ -413,6 +423,115 @@ public class EditDanhSachChiTietController implements Initializable {
         ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
         ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
         themMoiDiaglog.getDialogPane().getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
+
+        TextField idNhanKhauTextField = new TextField();
+        idNhanKhauTextField.setPromptText("Mã nhân khẩu");
+        idNhanKhauTextField.textProperty().addListener(((observable, oldValue, newValue) -> {
+            try{
+                if(!newValue.isEmpty()){
+                    Integer.parseInt(newValue);
+                }
+            }catch (NumberFormatException ex){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Mã nhân khẩu không hợp lệ");
+                alert.setTitle("LỖI");
+                alert.setHeaderText("Đã có lỗi xảy ra!!!");
+                alert.show();
+                idNhanKhauTextField.setText("");
+            }
+        }));
+
+        TextField phanQuaTextField = new TextField();
+        phanQuaTextField.setPromptText("Phần quà");
+
+        TextField mucQuaTextField = new TextField();
+        mucQuaTextField.setPromptText("Mức quà");
+        mucQuaTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            try{
+                if(!newValue.isEmpty()){
+                    Double.parseDouble(newValue);
+                }
+            }catch (NumberFormatException ex){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Mức quà phải là số");
+                alert.setTitle("LỖI");
+                alert.setHeaderText("Đã có lỗi xảy ra!!!");
+                alert.show();
+                mucQuaTextField.setText("");
+            }
+        });
+
+        Button detailNhanKhauButton = new Button("Chi tiết");
+        detailNhanKhauButton.setOnAction((ActionEvent event)->{
+            try{
+                int idNhanKhau = Integer.parseInt(idNhanKhauTextField.getText());
+                boolean exist = checkExist(idNhanKhau);
+                NhanKhau nhanKhau = dspqChiTietService.getNhanKhau(idNhanKhau);
+                String content = "Mã nhân khẩu: "+idNhanKhau+"\n"+
+                        "Họ tên: "+nhanKhau.getHoTen()+"\n"+
+                        "Năm sinh: "+nhanKhau.getNamSinh()+"\n"+
+                        "Giới tính: "+nhanKhau.getGioiTinh()+"\n";
+                if(exist){
+                    content += "Nhân khẩu này đã tồn tại trong danh sách!!!\n";
+                }
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông tin");
+                alert.setHeaderText("Thông tin nhân khẩu");
+                alert.setContentText(content);
+                alert.show();
+            }catch (SQLException ex){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Mã nhân khẩu không hợp lệ");
+                alert.setTitle("LỖI");
+                alert.setHeaderText("Đã có lỗi xảy ra!!!");
+                alert.show();
+            }
+        });
+
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(20,150,10,10));
+
+        gridPane.add(new Label("Mã nhân khẩu "),0,0);
+        gridPane.add(idNhanKhauTextField, 1,0);
+        gridPane.add(detailNhanKhauButton, 2,0);
+        gridPane.add(new Label("Phần quà "),0,1);
+        gridPane.add(phanQuaTextField,1,1);
+        gridPane.add(new Label("Mức quà "),0,2);
+        gridPane.add(mucQuaTextField, 1,2);
+
+        themMoiDiaglog.getDialogPane().setContent(gridPane);
+        Optional<ButtonType> result = themMoiDiaglog.showAndWait();
+        if(result.get() == xacNhanButtonType){
+            int idNhanKhau = Integer.parseInt(idNhanKhauTextField.getText());
+            if(checkExist(idNhanKhau)){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Lỗi");
+                alert.setHeaderText("Đã có lỗi xảy ra");
+                alert.setContentText("Nhân khẩu này đã tồn tại trong danh sách, không thể thêm mới");
+                alert.show();
+            }else{
+                String phanQua = phanQuaTextField.getText();
+                double mucQua = 0;
+                if(!mucQuaTextField.getText().isEmpty()){
+                    mucQua = Double.parseDouble(mucQuaTextField.getText());
+                }
+                try{
+                    int maDS = dsPhatQua.getMaDS();
+                    FormDSPQChiTiet formDSPQChiTiet = dspqChiTietService.addDuocNhanQua(maDS, idNhanKhau, phanQua, mucQua);
+                    dspqChiTietObservableList.add(formDSPQChiTiet);
+                    updateTongChi();
+                }catch (SQLException ex){
+                    ex.printStackTrace();
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Lỗi");
+                    alert.setHeaderText("Đã có lỗi xảy ra");
+                    alert.setContentText("Có lỗi khi thêm mới");
+                    alert.show();
+                }
+            }
+        }
     }
 
     public void toHome(){

@@ -42,8 +42,8 @@ public class DuocNhanQuaRepo extends BaseRepo<DuocNhanQua> {
         preparedStatement.setInt(1,duocNhanQua.getMaDS());
         preparedStatement.setInt(2,duocNhanQua.getIdNhanKhau());
         preparedStatement.setString(3,duocNhanQua.getPhanQua());
-        preparedStatement.setDouble(1,duocNhanQua.getMucQua());
-        preparedStatement.setBoolean(2,duocNhanQua.getDuocXacNhan());
+        preparedStatement.setDouble(4,duocNhanQua.getMucQua());
+        preparedStatement.setBoolean(5,duocNhanQua.getDuocXacNhan());
         return preparedStatement.executeUpdate();
     }
     public int update(DuocNhanQua duocNhanQua) throws SQLException{

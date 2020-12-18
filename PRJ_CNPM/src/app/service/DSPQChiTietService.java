@@ -45,6 +45,30 @@ public class DSPQChiTietService {
         return formDSPQChiTietArrayList;
     }
 
+    public FormDSPQChiTiet addDuocNhanQua(int maDS, int idNhanKhau, String phanQua, double mucQua) throws SQLException {
+        DuocNhanQua duocNhanQua = new DuocNhanQua();
+        duocNhanQua.setMaDS(maDS);
+        duocNhanQua.setIdNhanKhau(idNhanKhau);
+        duocNhanQua.setPhanQua(phanQua);
+        duocNhanQua.setMucQua(mucQua);
+        duocNhanQua.setDuocXacNhan(false);
+        duocNhanQuaRepo.insert(duocNhanQua);
+        FormDSPQChiTiet formDSPQChiTiet = new FormDSPQChiTiet();
+        NhanKhau nhanKhau = nhanKhauRepo.findById(duocNhanQua.getIdNhanKhau());
+        ThanhVienCuaHo thanhVienCuaHo = thanhVienCuaHoRepo.findByIdNhanKhau(duocNhanQua.getIdNhanKhau());
+
+        formDSPQChiTiet.setIdDS(maDS);
+        formDSPQChiTiet.setPhanQua(duocNhanQua.getPhanQua());
+        formDSPQChiTiet.setMucQua(duocNhanQua.getMucQua());
+        formDSPQChiTiet.setIdNhanKhau(duocNhanQua.getIdNhanKhau());
+        formDSPQChiTiet.setIdHoKhau(thanhVienCuaHo.getIdHoKhau());
+        formDSPQChiTiet.setHoTen(nhanKhau.getHoTen());
+        formDSPQChiTiet.setNamSinh(Integer.parseInt(nhanKhau.getNamSinh().toString().substring(0, 4)));
+        formDSPQChiTiet.setDuocXacNhan(duocNhanQua.getDuocXacNhan());
+
+        return formDSPQChiTiet;
+    }
+
     public void deleteDuocNhanQua(FormDSPQChiTiet formDSPQChiTiet) throws SQLException {
         int maDS = formDSPQChiTiet.getIdDS();
         int idNhanKhau = formDSPQChiTiet.getIdNhanKhau();
@@ -59,5 +83,9 @@ public class DSPQChiTietService {
         duocNhanQua.setMucQua(formDSPQChiTiet.getMucQua());
         duocNhanQua.setDuocXacNhan(formDSPQChiTiet.isDuocXacNhan());
         duocNhanQuaRepo.update(duocNhanQua);
+    }
+
+    public NhanKhau getNhanKhau(int idNhanKhau)throws SQLException{
+        return nhanKhauRepo.findById(idNhanKhau);
     }
 }

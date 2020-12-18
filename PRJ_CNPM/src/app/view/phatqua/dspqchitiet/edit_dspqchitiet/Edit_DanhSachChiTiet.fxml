@@ -79,7 +79,7 @@
                   <ComboBox fx:id="trangThaiComboBox" layoutX="10.0" layoutY="250.0" prefHeight="30.0" prefWidth="180.0" visible="false" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="879.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0">
+            <Button mnemonicParsing="false" onAction="#themMoi" prefHeight="30.0" prefWidth="879.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="18.0" />
                </font>
