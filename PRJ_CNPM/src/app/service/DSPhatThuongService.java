@@ -32,6 +32,9 @@ public class DSPhatThuongService  {
         lastInsertedDS = new DSPhatThuong(null,suKien,date,0,0.0);
         dsPhatThuongRepo.insert(lastInsertedDS);
     }
+    public void deleteById(int id) throws SQLException{
+        dsPhatThuongRepo.deleteById(id);
+    }
     public DSPhatThuong getLastInserted(){
         return lastInsertedDS;
     }

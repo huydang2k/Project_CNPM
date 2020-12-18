@@ -35,6 +35,9 @@ public class DSPhatQuaService{
     public void update(DSPhatQua dsPhatQua) throws SQLException{
         dsPhatQuaRepo.update(dsPhatQua);
     }
+    public void deleteByI(int id) throws SQLException{
+        dsPhatQuaRepo.deleteById(id);
+    }
     public DSPhatQua getLastInserted(){
         return lastInsertedDS;
     }
