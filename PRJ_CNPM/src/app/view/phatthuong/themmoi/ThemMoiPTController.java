@@ -1,6 +1,4 @@
-package app.view.thongke;
-
-
+package app.view.phatthuong.themmoi;
 
 import app.view.CommonController;
 import javafx.fxml.Initializable;
@@ -8,22 +6,19 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ThongKeController implements Initializable {
+public class ThemMoiPTController implements Initializable {
     CommonController commonController;
-    public void toHome(){
-        commonController.toHome();
-    }
     public void toPhatQua(){
         commonController.toPhatQua();
+    }
+    public void toHome(){
+        commonController.toHome();
     }
     public void toPhatThuong(){
         commonController.toPhatThuong();
     }
-    public void toThongKePQ(){
-        commonController.toThongKePQ();
-    }
-    public void toThongKePT(){
-        commonController.toThongKePT();
+    public void toThongKe(){
+        commonController.toThongKe();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

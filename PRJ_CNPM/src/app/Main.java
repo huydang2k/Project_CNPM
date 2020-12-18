@@ -16,7 +16,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ThongKePhatThuongService thongKePhatThuongService = new ThongKePhatThuongService();
         try {
             CommonController.primaryStage = primaryStage;
             MyConnection myConnection = new MyConnection();
@@ -27,7 +26,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
-            System.out.println(thongKePhatThuongService.findByMaDS(1));
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }

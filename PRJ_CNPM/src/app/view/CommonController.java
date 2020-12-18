@@ -27,11 +27,11 @@ public class CommonController implements Initializable {
             ex.printStackTrace();
         }
     }
-    public void toThemMoiDsPhatQua(){
+    public void toThemMoiDsPhatQua() {
         switchScene(makeScene("phatqua/themmoi/ThemMoi.fxml"));
     }
     public void toThemMoiDsPhatThuong(){
-        switchScene(makeScene("phatthuong/ThemMoi.fxml"));
+        switchScene(makeScene("phatthuong/themmoi/ThemMoi.fxml"));
     }
     public void toHome(){
         switchScene(makeScene("home/HomeUI.fxml"));
@@ -45,7 +45,12 @@ public class CommonController implements Initializable {
     public void toThongKe(){
        primaryStage.setScene(makeScene("thongke/ThongKe.fxml"));
     }
-
+    public void toThongKePQ(){
+        primaryStage.setScene(makeScene("thongke/thongkepq/ThongKePhatQua.fxml"));
+    }
+    public void toThongKePT(){
+        primaryStage.setScene(makeScene("thongke/thongkept/ThongKePhatThuong.fxml"));
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }

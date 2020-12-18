@@ -55,7 +55,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="themMoiBtn" onAction="#toThemMoiDsPhatQua" layoutX="10.0" layoutY="634.0" mnemonicParsing="false"  prefHeight="30.0" prefWidth="1083.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+            <Button fx:id="themMoiBtn" layoutX="10.0" layoutY="634.0" mnemonicParsing="false" onAction="#toThemMoiDsPhatQua" prefHeight="30.0" prefWidth="1083.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -67,7 +67,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TextField layoutX="10.0" layoutY="679.0" prefHeight="29.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="150.0" />
+            <TextField layoutX="10.0" layoutY="679.0" prefHeight="25.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="150.0" />
             <Button layoutX="591.0" layoutY="685.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
             </children>
         </AnchorPane>
