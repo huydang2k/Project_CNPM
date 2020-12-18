@@ -20,13 +20,13 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         return dsPhatQua;
     }
     public ArrayList<DSPhatQua> findAll() throws SQLException{
-        String sql = "SELECT * FROM ds_phat_qua";
+        String sql = "SELECT * FROM ds_phat_qua where trangThai != -1";
         PreparedStatement preparedStatement = prepare(sql);
         ResultSet rs = preparedStatement.executeQuery();
         return getList(rs);
     }
     public DSPhatQua findById(int maDS) throws SQLException{
-        String sql = "SELECT * FROM ds_phat_qua WHERE maDS = ?";
+        String sql = "SELECT * FROM ds_phat_qua WHERE maDS = ? and trangThai != -1";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setInt(1, maDS);
         ResultSet rs = preparedStatement.executeQuery();

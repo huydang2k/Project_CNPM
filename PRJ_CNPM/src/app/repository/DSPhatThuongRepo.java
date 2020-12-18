@@ -21,14 +21,14 @@ public class DSPhatThuongRepo extends BaseRepo<DSPhatThuong> {
         return dsPhatThuong;
     }
     public ArrayList<DSPhatThuong> findAll()throws SQLException{
-        String sql = "SELECT * FROM ds_phat_thuong";
+        String sql = "SELECT * FROM ds_phat_thuong where trangThai != -1";
         PreparedStatement preparedStatement = prepare(sql);
         ResultSet rs = preparedStatement.executeQuery();
         return getList(rs);
 
     }
     public DSPhatThuong findById(int maDS) throws SQLException{
-        String sql = "SELECT * FROM ds_phat_thuong WHERE maDS = ?";
+        String sql = "SELECT * FROM ds_phat_thuong WHERE maDS = ? and trangThai != -1";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setInt(1, maDS);
         ResultSet rs = preparedStatement.executeQuery();
