@@ -1,4 +1,4 @@
-package app.view.phatqua;
+package app.view.phatqua.themmoi;
 
 import app.view.CommonController;
 import javafx.fxml.Initializable;
