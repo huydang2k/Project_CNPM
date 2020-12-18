@@ -20,6 +20,7 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EditDanhSachChiTietController implements Initializable {
@@ -164,22 +165,35 @@ public class EditDanhSachChiTietController implements Initializable {
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
                             FormDSPQChiTiet data = getTableView().getItems().get(getIndex());
-                            dspqChiTietObservableList.remove(data);
-                            table.setItems(dspqChiTietObservableList);
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Xóa danh sách");
+                            alert.setHeaderText("Xác nhận xóa");
+                            alert.setContentText("Bạn có chắc xóa "+data.getHoTen()+" khỏi danh sách không?");
+                            ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
+                            ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            alert.getButtonTypes().clear();
+                            alert.getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if(result.get() == xacNhanButtonType) {
+                                dspqChiTietObservableList.remove(data);
+                                table.setItems(dspqChiTietObservableList);
+                            }
                         });
-                        deleteButton.setMaxSize(200,200);
+                        deleteButton.setMaxSize(200,100);
+                        deleteButton.setPrefSize(200,20);
                     }
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
 
                         });
-                        editButton.setMaxSize(200,200);
+                        editButton.setMaxSize(200,100);
+                        editButton.setPrefSize(200,20);
                     }
 
                     HBox buttonsBox = new HBox(editButton, deleteButton);
                     {
-                        buttonsBox.setMaxSize(1000,400);
+                        buttonsBox.setMaxSize(1000,100);
                     }
 
 

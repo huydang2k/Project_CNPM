@@ -23,6 +23,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PhatQuaController implements Initializable {
@@ -130,8 +131,24 @@ public class PhatQuaController implements Initializable {
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
                             DSPhatQua data = getTableView().getItems().get(getIndex());
-                            dsPhatQuaObservableList.remove(data);
-                            table.setItems(dsPhatQuaObservableList);
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Xóa danh sách");
+                            alert.setHeaderText("Xác nhận xóa");
+                            alert.setContentText("Bạn có chắc xóa danh sách "+data.getSuKien()+" không?");
+                            ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
+                            ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            alert.getButtonTypes().clear();
+                            alert.getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
+                            Optional<ButtonType> result = alert.showAndWait();
+                            if(result.get() == xacNhanButtonType) {
+                                try {
+                                    DSPhatQuaService.deleteByMaDS(data.getMaDS());
+                                    loadData();
+                                    table.setItems(dsPhatQuaObservableList);
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                }
+                            }
                         });
                         deleteButton.setMaxSize(200,200);
                     }
