@@ -1,6 +1,6 @@
 package app.model.form;
 
-public class FormThongKePhatQua {
+public class FormThongKe {
     private String hoTenChuHo;
     private int hoGiaDinh;
     private int soPhanQua;
@@ -8,7 +8,7 @@ public class FormThongKePhatQua {
 
     @Override
     public String toString() {
-        return "FormThongKePhatQua{" +
+        return "FormThongKe{" +
                 "hoTenChuHo='" + hoTenChuHo + '\'' +
                 ", hoGiaDinh=" + hoGiaDinh +
                 ", soPhanQua=" + soPhanQua +
@@ -48,13 +48,13 @@ public class FormThongKePhatQua {
         this.soTien = soTien;
     }
 
-    public FormThongKePhatQua(String hoTenChuHo, int hoGiaDinh, int soPhanQua, Double soTien) {
+    public FormThongKe(String hoTenChuHo, int hoGiaDinh, int soPhanQua, Double soTien) {
         this.hoTenChuHo = hoTenChuHo;
         this.hoGiaDinh = hoGiaDinh;
         this.soPhanQua = soPhanQua;
         this.soTien = soTien;
     }
 
-    public FormThongKePhatQua() {
+    public FormThongKe() {
     }
 }

@@ -7,8 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class ThongKePhatQuaRepo extends BaseRepo<FormThongKe>{
-
+public class ThongKePhatThuongRepo extends BaseRepo<FormThongKe>{
     @Override
     public FormThongKe getObject(ResultSet rs) throws SQLException {
         FormThongKe formThongKe = new FormThongKe();
@@ -19,9 +18,14 @@ public class ThongKePhatQuaRepo extends BaseRepo<FormThongKe>{
         return formThongKe;
     }
     public ArrayList<FormThongKe> findByMaDs(int maDS) throws SQLException {
-            String sql = "SELECT nk2.hoTen as hoTenChuHo,hk.ID as hoGiaDinh ,count(dnq.maDS) as soPhanQua,sum(dnq.mucQua) as soTien FROM ((((duoc_nhan_qua as dnq  join nhan_khau as nk on dnq.idNhanKhau = nk.ID)\n" +
-                    "  join thanh_vien_cua_ho as tvch on nk.ID = tvch.idNhanKhau)\n" +
-                    " join ho_khau as hk on tvch.idHoKhau = hk.ID)  join nhan_khau as nk2 on hk.idChuHo = nk2.ID) where dnq.maDS = ? group by nk2.hoTen,hk.ID";
+        String sql = "SELECT nk2.hoTen as hoTenChuHo,hk.ID as hoGiaDinh ,count(dnt.maDS) as soPhanQua,sum(dnt.mucThuong) as soTien \n" +
+                "FROM (((((duoc_nhan_thuong as dnt  \n" +
+                "join hoc_sinh as hs on hs.maHS = dnt.maHS)\n" +
+                "join nhan_khau as nk on hs.idNhanKhau = nk.ID)\n" +
+                "join thanh_vien_cua_ho as tvch on nk.ID = tvch.idNhanKhau)\n" +
+                "join ho_khau as hk on tvch.idHoKhau = hk.ID)  join nhan_khau as nk2 on hk.idChuHo = nk2.ID) \n" +
+                "where dnt.maDS = ? group by nk2.hoTen,hk.ID\n" +
+                "\n";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setInt(1,maDS);
         ResultSet rs = preparedStatement.executeQuery();
@@ -36,9 +40,6 @@ public class ThongKePhatQuaRepo extends BaseRepo<FormThongKe>{
     protected FormThongKe findById(int maDs) throws SQLException {
         return null;
     }
-
-
-
 
     @Override
     protected int insert(FormThongKe formThongKe) throws SQLException {

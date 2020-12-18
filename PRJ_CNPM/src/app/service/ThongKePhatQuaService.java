@@ -1,6 +1,6 @@
 package app.service;
 
-import app.model.form.FormThongKePhatQua;
+import app.model.form.FormThongKe;
 import app.repository.ThongKePhatQuaRepo;
 
 import java.sql.SQLException;
@@ -17,7 +17,7 @@ public class ThongKePhatQuaService {
         thongKePhatQuaRepo = new ThongKePhatQuaRepo();
     }
 
-    public ArrayList<FormThongKePhatQua> findByMaDs(int maDS) throws SQLException{
+    public ArrayList<FormThongKe> findByMaDs(int maDS) throws SQLException{
         return thongKePhatQuaRepo.findByMaDs(maDS);
     }
 }
