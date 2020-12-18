@@ -28,7 +28,7 @@ public class CommonController implements Initializable {
         }
     }
     public void toThemMoiDsPhatQua(){
-        switchScene(makeScene("phatqua/ThemMoi.fxml"));
+        switchScene(makeScene("phatqua/themmoi/ThemMoi.fxml"));
     }
     public void toThemMoiDsPhatThuong(){
         switchScene(makeScene("phatthuong/ThemMoi.fxml"));
