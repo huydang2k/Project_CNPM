@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.phatqua.PhatQuaController">
+<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.thongke.ThongKeController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
@@ -26,48 +26,34 @@
                     <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <image>
-                                <Image url="@../../../../../../../fake/Project_CNPM/PRJ_CNPM/src/images/ava_cnpm.jpg" />
+                                <Image url="@../../../images/ava_cnpm.jpg" />
                             </image>
                         </ImageView>
                     </children>
                 </AnchorPane>
                 <Button layoutX="12.0" layoutY="169.0" mnemonicParsing="false" onAction="#toHome" prefHeight="50.0" prefWidth="170.0" text="Trang chủ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
-                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" onAction="#toPhatQua" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
                 <Button layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#toPhatThuong" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
-                <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" onAction="#toThongKe" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
+                <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
-                <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <children>
-                  <Label layoutX="450.0" layoutY="49.0" prefHeight="53.0" prefWidth="183.0" text="Thống kê" textAlignment="CENTER">
+            <TextField layoutX="10.0" layoutY="679.0" prefHeight="25.0" prefWidth="956.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="122.0" />
+            <Button layoutX="591.0" layoutY="685.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="990.0" AnchorPane.rightAnchor="5.0" />
+            <TableView layoutY="86.0" prefHeight="582.0" prefWidth="1082.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="100.0">
+              <columns>
+                <TableColumn prefWidth="1081.0" style="-fx-height: 100px;" text="tk" visible="false" />
+              </columns>
+            </TableView>
+            <AnchorPane prefHeight="40.0" prefWidth="1084.0" AnchorPane.bottomAnchor="636.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="458.0" layoutY="23.0" prefHeight="53.0" prefWidth="186.0" text="THỐNG KÊ" AnchorPane.topAnchor="26.0">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                    </children>
-                </AnchorPane>
-            <TextField layoutX="10.0" layoutY="679.0" prefHeight="29.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="110.0" />
-            <Button layoutX="591.0" layoutY="685.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Tìm kiếm" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="980.0" AnchorPane.rightAnchor="8.0" />
-            <Button layoutY="150.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="1083.0" style="-fx-border-radius: 1px; -fx-border-color: gray;" text="   1. Thống kê hoạt động phát quà">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets right="805.0" />
-               </padding>
-            </Button>
-            <Button layoutY="211.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="1083.0" style="-fx-border-color: gray; -fx-border-radius: 1px;" text="   2. Thống kê hoạt động phát thưởng">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets right="780.0" />
-               </padding>
-            </Button>
+               </children>
+            </AnchorPane>
             </children>
         </AnchorPane>
     </items>
