@@ -79,7 +79,7 @@
                   <ComboBox fx:id="trangThaiComboBox" layoutX="10.0" layoutY="250.0" prefHeight="30.0" prefWidth="180.0" visible="false" />
                </children>
             </Pane>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="879.0" text="Thêm mới" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0">
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="879.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -91,7 +91,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <TableView fx:id="table" layoutX="29.0" layoutY="198.0" prefHeight="446.0" prefWidth="879.0" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
+            <TableView fx:id="table" layoutX="29.0" layoutY="198.0" prefHeight="446.0" prefWidth="879.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
                <columns>
                   <TableColumn fx:id="numberColumn" maxWidth="500.0" prefWidth="105.0" text="STT" />
                   <TableColumn fx:id="hoTenColumn" maxWidth="4000.0" prefWidth="183.0" text="Họ và Tên" />
@@ -106,11 +106,6 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button layoutX="404.0" layoutY="635.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="180.0" text="Lưu" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
             <Button fx:id="editOrSaveButton" alignment="CENTER" contentDisplay="CENTER" layoutX="-12.0" layoutY="677.0" mnemonicParsing="false" onAction="#editOrSaveClick" prefHeight="30.0" prefWidth="180.0" text="Chỉnh sửa" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="20.0" />
             </children>
         </AnchorPane>

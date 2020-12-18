@@ -50,11 +50,6 @@ public class NhanKhauRepo extends BaseRepo<NhanKhau>{
         return 0;
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
-
     public int soLuongThieuNhi() throws SQLException,ClassNotFoundException{
         String sql = "select count(nk.ID) as c from nhan_khau as nk where round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
         PreparedStatement preparedStatement = prepare(sql);

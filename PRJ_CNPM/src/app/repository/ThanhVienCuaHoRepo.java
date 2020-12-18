@@ -37,11 +37,6 @@ public class ThanhVienCuaHoRepo  extends BaseRepo<ThanhVienCuaHo> {
         return 0;
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
-
     public ThanhVienCuaHo findByIdNhanKhau(int idNhanKhau) throws SQLException{
         String sql = "SELECT * FROM thanh_vien_cua_ho WHERE idNhanKhau = ?";
         PreparedStatement preparedStatement = prepare(sql);

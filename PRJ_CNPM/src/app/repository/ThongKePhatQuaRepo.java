@@ -50,8 +50,4 @@ public class ThongKePhatQuaRepo extends BaseRepo<FormThongKe>{
         return 0;
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
 }

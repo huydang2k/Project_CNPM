@@ -39,12 +39,6 @@ public class UserRepo extends BaseRepo<User>{
         return 0;
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
-
-
     public User findUserByUserNameAndPassWord(String username, String password) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM users WHERE userName = ? AND password = ?";
         PreparedStatement preparedStatement = prepare(sql);

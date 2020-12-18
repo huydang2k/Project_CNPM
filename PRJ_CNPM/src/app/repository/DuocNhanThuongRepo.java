@@ -69,10 +69,6 @@ public class DuocNhanThuongRepo extends BaseRepo<DuocNhanThuong> {
         return preparedStatement.executeUpdate();
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
 
     public int deleteBymaDSandIdNhanKhau(int maDs,int maHS) throws SQLException{
         String sql = "delete from duoc_nhan_thuong where maDs = ? and maHS = ?";

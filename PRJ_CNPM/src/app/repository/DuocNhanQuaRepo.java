@@ -58,12 +58,8 @@ public class DuocNhanQuaRepo extends BaseRepo<DuocNhanQua> {
         return preparedStatement.executeUpdate();
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
 
-    public int deleteBymaDSandIdNhanKhau(int maDs,int idNhanKhau) throws SQLException{
+    public int deleteByMaDSAndIdNhanKhau(int maDs,int idNhanKhau) throws SQLException{
         String sql = "delete from duoc_nhan_qua where maDs = ? and idNhanKhau = ?";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setInt(1, maDs);

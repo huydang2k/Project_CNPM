@@ -44,11 +44,6 @@ public class HoKhauRepo extends BaseRepo<HoKhau> {
         return 0;
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
-
     public int soLuongHoKhau() throws SQLException, ClassNotFoundException {
         String sql = "SELECT count(ID) FROM ho_khau";
         PreparedStatement preparedStatement = prepare(sql);

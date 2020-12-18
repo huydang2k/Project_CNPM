@@ -45,4 +45,19 @@ public class DSPQChiTietService {
         return formDSPQChiTietArrayList;
     }
 
+    public void deleteDuocNhanQua(FormDSPQChiTiet formDSPQChiTiet) throws SQLException {
+        int maDS = formDSPQChiTiet.getIdDS();
+        int idNhanKhau = formDSPQChiTiet.getIdNhanKhau();
+        duocNhanQuaRepo.deleteByMaDSAndIdNhanKhau(maDS, idNhanKhau);
+    }
+
+    public void updateDuocNhanQua(FormDSPQChiTiet formDSPQChiTiet) throws SQLException {
+        DuocNhanQua duocNhanQua = new DuocNhanQua();
+        duocNhanQua.setIdNhanKhau(formDSPQChiTiet.getIdNhanKhau());
+        duocNhanQua.setMaDS(formDSPQChiTiet.getIdDS());
+        duocNhanQua.setPhanQua(formDSPQChiTiet.getPhanQua());
+        duocNhanQua.setMucQua(formDSPQChiTiet.getMucQua());
+        duocNhanQua.setDuocXacNhan(formDSPQChiTiet.isDuocXacNhan());
+        duocNhanQuaRepo.update(duocNhanQua);
+    }
 }

@@ -11,10 +11,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
@@ -28,6 +29,7 @@ public class EditDanhSachChiTietController implements Initializable {
     private DSPhatQua dsPhatQua;
 
     DSPQChiTietService dspqChiTietService;
+
     DSPhatQuaService dsPhatQuaService;
 
     CommonController commonController;
@@ -35,6 +37,10 @@ public class EditDanhSachChiTietController implements Initializable {
     private boolean editMode;
 
     private boolean daPhatHet;
+
+    double tongChi;
+
+    String dip;
 
     @FXML
     Label nameDSPQ;
@@ -87,8 +93,6 @@ public class EditDanhSachChiTietController implements Initializable {
     @FXML
     ObservableList<String> trangThaiComboBoxList;
 
-    String trangThai;
-
     ObservableList<FormDSPQChiTiet> dspqChiTietObservableList;
 
     @FXML
@@ -107,8 +111,10 @@ public class EditDanhSachChiTietController implements Initializable {
 
     public void initData(DSPhatQua rowData){
         this.dsPhatQua = rowData;
-        nameDSPQ.setText(dsPhatQua.getSuKien());
-        trangThai = "";
+        tongChi = dsPhatQua.getTongChiPhi();
+        dip = dsPhatQua.getSuKien();
+        nameDSPQ.setText(dip);
+        String trangThai = "";
         switch (dsPhatQua.getTrangThai()){
             case -1:
                 trangThai = "Đã xóa";
@@ -123,9 +129,9 @@ public class EditDanhSachChiTietController implements Initializable {
         trangThaiComboBox.setValue(trangThai);
         trangThaiDSPQ.setText("Trạng thái: "+trangThai);
         ngayTaoDSPQ.setText("Ngày tạo: "+dsPhatQua.getNgayTao().toString());
-        tongChiDSPQ.setText("Tổng chi: "+String.valueOf(dsPhatQua.getTongChiPhi()));
-        dipTextField.setText(dsPhatQua.getSuKien());
-        dipDSPQ.setText("Dịp: "+dsPhatQua.getSuKien());
+        tongChiDSPQ.setText("Tổng chi: "+tongChi);
+        dipTextField.setText(dip);
+        dipDSPQ.setText("Dịp: "+dip);
         initTable();
         loadData();
     }
@@ -166,7 +172,7 @@ public class EditDanhSachChiTietController implements Initializable {
                         deleteButton.setOnAction((ActionEvent event) -> {
                             FormDSPQChiTiet data = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                            alert.setTitle("Xóa danh sách");
+                            alert.setTitle("Xóa bản ghi");
                             alert.setHeaderText("Xác nhận xóa");
                             alert.setContentText("Bạn có chắc xóa "+data.getHoTen()+" khỏi danh sách không?");
                             ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
@@ -175,8 +181,19 @@ public class EditDanhSachChiTietController implements Initializable {
                             alert.getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
                             Optional<ButtonType> result = alert.showAndWait();
                             if(result.get() == xacNhanButtonType) {
-                                dspqChiTietObservableList.remove(data);
-                                table.setItems(dspqChiTietObservableList);
+                                try {
+                                    dspqChiTietService.deleteDuocNhanQua(data);
+                                    dspqChiTietObservableList.remove(data);
+                                    table.setItems(dspqChiTietObservableList);
+                                    updateTongChi();
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                    Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                                    alert1.setTitle("Lỗi");
+                                    alert1.setHeaderText("Có lỗi xảy ra khi xóa bản ghi");
+                                    alert1.setContentText("Không thể xóa bản ghi");
+                                    alert1.show();
+                                }
                             }
                         });
                         deleteButton.setMaxSize(200,100);
@@ -185,7 +202,86 @@ public class EditDanhSachChiTietController implements Initializable {
 
                     {
                         editButton.setOnAction((ActionEvent event) -> {
+                            FormDSPQChiTiet data = getTableView().getItems().get(getIndex());
+                            Dialog<ButtonType> editDialog = new Dialog<>();
+                            editDialog.setTitle("Sửa bản ghi");
+                            editDialog.setHeaderText("Sửa thông tin của "+data.getHoTen());
 
+                            ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
+                            ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
+                            editDialog.getDialogPane().getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
+
+                            GridPane gridPane = new GridPane();
+                            gridPane.setHgap(10);
+                            gridPane.setVgap(10);
+                            gridPane.setPadding(new Insets(20,150,10,10));
+
+                            TextField phanQuaTextField = new TextField();
+                            phanQuaTextField.setPromptText("Phần quà");
+                            phanQuaTextField.setText(data.getPhanQua());
+
+                            TextField mucQuaTextField = new TextField();
+                            mucQuaTextField.setPromptText("Mức quà");
+                            mucQuaTextField.setText(String.valueOf(data.getMucQua()));
+                            mucQuaTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+                                try{
+                                    if(!newValue.isEmpty()){
+                                        Double.parseDouble(newValue);
+                                    }
+                                }catch (NumberFormatException ex){
+                                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                                    alert.setContentText("Mức quà phải là số");
+                                    alert.setTitle("LỖI");
+                                    alert.setHeaderText("Đã có lỗi xảy ra!!!");
+                                    alert.show();
+                                    mucQuaTextField.setText("");
+                                }
+                            });
+
+                            ComboBox ghiChuComboBox = new ComboBox();
+                            ObservableList<String> ghiChuComboBoxList = FXCollections.observableArrayList("Đã trao", "Chưa trao");
+                            ghiChuComboBox.setItems(ghiChuComboBoxList);
+                            if(data.isDuocXacNhan()){
+                                ghiChuComboBox.setValue("Đã trao");
+                            }else{
+                                ghiChuComboBox.setValue("Chưa trao");
+                            }
+
+                            gridPane.add(new Label("Phần quà "),0,0);
+                            gridPane.add(phanQuaTextField, 1,0);
+                            gridPane.add(new Label("Mức quà "),0,1);
+                            gridPane.add(mucQuaTextField, 1,1);
+                            gridPane.add(new Label("Ghi chú "), 0, 2);
+                            gridPane.add(ghiChuComboBox, 1,2);
+
+                            editDialog.getDialogPane().setContent(gridPane);
+                            Optional<ButtonType> result = editDialog.showAndWait();
+                            if(result.get() == xacNhanButtonType){
+                                data.setPhanQua(phanQuaTextField.getText());
+                                if(mucQuaTextField.getText().isEmpty()){
+                                    data.setMucQua(0);
+                                }else{
+                                    data.setMucQua(Double.parseDouble(mucQuaTextField.getText()));
+                                }
+                                if(ghiChuComboBox.getValue().toString().equalsIgnoreCase("Đã trao")){
+                                    data.setDuocXacNhan(true);
+                                }else{
+                                    data.setDuocXacNhan(false);
+                                }
+                                try {
+                                    dspqChiTietService.updateDuocNhanQua(data);
+                                    dspqChiTietObservableList.set(getIndex(),data);
+                                    updateTongChi();
+                                } catch (SQLException throwables) {
+                                    throwables.printStackTrace();
+                                    Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                                    alert1.setTitle("Lỗi");
+                                    alert1.setHeaderText("Có lỗi xảy ra khi sửa bản ghi");
+                                    alert1.setContentText("Không thể sửa bản ghi");
+                                    alert1.show();
+                                }
+
+                            }
                         });
                         editButton.setMaxSize(200,100);
                         editButton.setPrefSize(200,20);
@@ -227,8 +323,37 @@ public class EditDanhSachChiTietController implements Initializable {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        checkDaPhatHet();
         table.setItems(dspqChiTietObservableList);
+    }
+
+    private void tinhTongChi(){
+        tongChi = 0;
+        for(int i = 0; i < dspqChiTietObservableList.size(); i++){
+            tongChi += dspqChiTietObservableList.get(i).getMucQua();
+        }
+    }
+
+    private void updateTongChi(){
+        tinhTongChi();
+        tongChiDSPQ.setText("Tổng chi: "+String.valueOf(tongChi));
+        updateDSPQ();
+    }
+
+    private void updateDSPQ(){
+        dsPhatQua.setTongChiPhi(tongChi);
+        dsPhatQua.setSuKien(dip);
+        int trangThai;
+        if(trangThaiComboBox.getValue().equalsIgnoreCase("Đã hoàn thành")){
+            trangThai = 2;
+        }else{
+            trangThai = 1;
+        }
+        dsPhatQua.setTrangThai(trangThai);
+        try {
+            dsPhatQuaService.update(dsPhatQua);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     private void checkDaPhatHet(){
@@ -243,6 +368,7 @@ public class EditDanhSachChiTietController implements Initializable {
     }
 
     public void editOrSaveClick(ActionEvent e){
+        checkDaPhatHet();
         if(editMode == false){
             editOrSaveButton.setText("Lưu");
             editMode = true;
@@ -257,41 +383,36 @@ public class EditDanhSachChiTietController implements Initializable {
                     alert.setContentText("Bạn chưa phát hết quà, không thể đổi trạng thái thành đã hoàn thành");
                     alert.show();
                 }else{
-                    try{
-                        DSPhatQua tmp = dsPhatQua;
-                        System.out.println(dsPhatQua);
-                        tmp.setSuKien(dipTextField.getText());
-                        tmp.setTrangThai(daPhatHet?2:1);
-                        dsPhatQuaService.update(tmp);
-                        nameDSPQ.setText(dipTextField.getText());
-                        dipDSPQ.setText("Dịp: "+dipTextField.getText());
-                        dsPhatQua = tmp;
-                        editOrSaveButton.setText("Chỉnh sửa");
-                        dipTextField.setVisible(false);
-                        trangThaiComboBox.setVisible(false);
-                        editMode = false;
-                    }
-                    catch (SQLException ex){
-                        ex.printStackTrace();
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setTitle("Lỗi");
-                        alert.setHeaderText("Lỗi cơ sở dữ liệu");
-                        alert.setContentText("Đã có lỗi xảy ra khi sửa dữ liệu");
-                        alert.show();
-                    }
-                    finally {
-
-                    }
+                    editOrSaveButton.setText("Chỉnh sửa");
+                    dip = dipTextField.getText();
+                    nameDSPQ.setText(dip);
+                    dipDSPQ.setText("Dịp: "+dip);
+                    dipTextField.setVisible(false);
+                    trangThaiComboBox.setVisible(false);
+                    editMode = false;
+                    updateDSPQ();
                 }
             }else{
                 editOrSaveButton.setText("Chỉnh sửa");
-                nameDSPQ.setText(dipTextField.getText());
-                dipDSPQ.setText("Dịp: "+dipTextField.getText());
+                dip = dipTextField.getText();
+                nameDSPQ.setText(dip);
+                dipDSPQ.setText("Dịp: "+dip);
                 dipTextField.setVisible(false);
                 trangThaiComboBox.setVisible(false);
                 editMode = false;
+                updateDSPQ();
             }
         }
+    }
+
+    public void themMoi(ActionEvent e){
+        Dialog<ButtonType> themMoiDiaglog = new Dialog<>();
+        themMoiDiaglog.setTitle("Thêm mới");
+        themMoiDiaglog.setHeaderText("Thêm bản ghi mới");
+
+        ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
+        ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
+        themMoiDiaglog.getDialogPane().getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
     }
 
     public void toHome(){

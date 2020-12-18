@@ -42,5 +42,5 @@ public abstract class BaseRepo<T> {
     protected abstract T findById(int maDs) throws SQLException;
     protected abstract  int insert(T t) throws SQLException;
     protected abstract  int update(T t) throws SQLException;
-    protected abstract  int deleteById(int maDS) throws SQLException;
+
 }

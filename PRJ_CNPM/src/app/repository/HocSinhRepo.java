@@ -37,10 +37,6 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
         return 0;
     }
 
-    @Override
-    protected int deleteById(int maDS) throws SQLException {
-        return 0;
-    }
 
     public int soLuongHocSinh()throws SQLException,ClassNotFoundException{
         String sql = "select count(maHS) as c from hoc_sinh";
