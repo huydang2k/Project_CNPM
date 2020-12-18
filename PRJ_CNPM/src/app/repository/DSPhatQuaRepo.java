@@ -53,7 +53,7 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         return preparedStatement.executeUpdate();
     }
     public int deleteById(int maDS)throws SQLException{
-        String sql = "update ds_phat_qua set trangThai = -1 where" +
+        String sql = "update ds_phat_qua set trangThai = -1 where " +
                 "maDS = ? ";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setInt(1,maDS);
