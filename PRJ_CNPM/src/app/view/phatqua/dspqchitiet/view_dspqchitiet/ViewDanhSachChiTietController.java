@@ -1,20 +1,13 @@
 package app.view.phatqua.dspqchitiet.view_dspqchitiet;
 
 import app.model.DSPhatQua;
-import app.model.DuocNhanQua;
-import app.model.NhanKhau;
-import app.model.ThanhVienCuaHo;
 import app.model.form.FormDSPQChiTiet;
-import app.repository.DuocNhanQuaRepo;
-import app.repository.NhanKhauRepo;
-import app.repository.ThanhVienCuaHoRepo;
 import app.service.DSPQChiTietService;
 import app.view.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -23,8 +16,6 @@ import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.Normalizer;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ViewDanhSachChiTietController implements Initializable {

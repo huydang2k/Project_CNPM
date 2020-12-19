@@ -26,6 +26,9 @@ public class DSPhatQuaService{
     public ArrayList<DSPhatQua> getAll() throws SQLException {
         return dsPhatQuaRepo.findAll();
     }
+    public ArrayList<DSPhatQua> getDSHoanThanh() throws SQLException {
+        return dsPhatQuaRepo.findDSHoanThanh();
+    }
     public void insertDSPhatQUa(String suKien) throws SQLException{
         Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
         System.out.println(date);

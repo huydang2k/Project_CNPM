@@ -25,6 +25,12 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         ResultSet rs = preparedStatement.executeQuery();
         return getList(rs);
     }
+    public ArrayList<DSPhatQua> findDSHoanThanh() throws SQLException{
+        String sql = "SELECT * FROM ds_phat_qua where trangThai = 2";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        return getList(rs);
+    }
     public DSPhatQua findById(int maDS) throws SQLException{
         String sql = "SELECT * FROM ds_phat_qua WHERE maDS = ? and trangThai != -1";
         PreparedStatement preparedStatement = prepare(sql);

@@ -2,6 +2,7 @@ package app.service;
 
 
 
+import app.model.DSPhatQua;
 import app.model.DSPhatThuong;
 import app.repository.DSPhatThuongRepo;
 
@@ -25,6 +26,9 @@ public class DSPhatThuongService  {
 
     public ArrayList<DSPhatThuong> getAll() throws SQLException {
         return dsPhatThuongRepo.findAll();
+    }
+    public ArrayList<DSPhatThuong> getDSHoanThanh() throws SQLException {
+        return dsPhatThuongRepo.findDSHoanThanh();
     }
     public void insertDSPhatThuong(String suKien) throws SQLException{
         Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());

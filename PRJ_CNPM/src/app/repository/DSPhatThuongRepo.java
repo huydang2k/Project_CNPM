@@ -27,6 +27,13 @@ public class DSPhatThuongRepo extends BaseRepo<DSPhatThuong> {
         return getList(rs);
 
     }
+    public ArrayList<DSPhatThuong> findDSHoanThanh()throws SQLException{
+        String sql = "SELECT * FROM ds_phat_thuong where trangThai = 2";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        return getList(rs);
+
+    }
     public DSPhatThuong findById(int maDS) throws SQLException{
         String sql = "SELECT * FROM ds_phat_thuong WHERE maDS = ? and trangThai != -1";
         PreparedStatement preparedStatement = prepare(sql);

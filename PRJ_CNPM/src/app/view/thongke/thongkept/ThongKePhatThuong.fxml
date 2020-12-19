@@ -32,7 +32,7 @@
                     </children>
                 </AnchorPane>
                 <Button layoutX="12.0" layoutY="169.0" mnemonicParsing="false" onAction="#toHome" prefHeight="50.0" prefWidth="170.0" text="Trang chủ" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="160.0" />
-                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false"  onAction="#toPhatQua" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
+                <Button layoutX="13.0" layoutY="204.0" mnemonicParsing="false" onAction="#toPhatQua" prefHeight="50.0" prefWidth="170.0" text="Phát quà" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="220.0" />
                 <Button layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#toPhatThuong" prefHeight="50.0" prefWidth="170.0" text="Phát thưởng" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="280.0" />
                 <Button layoutX="20.0" layoutY="338.0" mnemonicParsing="false" onAction="#toThongKe" prefHeight="50.0" prefWidth="170.0" text="Thống kê" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="340.0" />
             </children></AnchorPane>
@@ -49,12 +49,13 @@
                 </AnchorPane>
             <TextField layoutX="10.0" layoutY="679.0" prefHeight="30.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="120.0" />
             <Button layoutX="591.0" layoutY="685.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-            <TableView layoutX="138.0" layoutY="150.0" prefHeight="523.0" prefWidth="935.0" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
+            <TableView fx:id="table" layoutX="138.0" layoutY="150.0" prefHeight="523.0" prefWidth="935.0" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
               <columns>
-                <TableColumn prefWidth="934.0" text="tkds" visible="false" />
+                  <TableColumn fx:id="numberColumn" prefWidth="75.0" text="STT" />
+                <TableColumn fx:id="dsPhatThuong" prefWidth="850.0" text="Các hoạt động" />
               </columns>
             </TableView>
-            <AnchorPane layoutY="153.0" prefHeight="520.0" prefWidth="136.0" style="-fx-border-width: 1px; -fx-border-color: black;" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="150.0">
+            <AnchorPane layoutX="8.0" layoutY="153.0" prefHeight="518.0" prefWidth="128.0" style="-fx-border-width: 1px; -fx-border-color: black;" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="150.0">
                <children>
                   <Label layoutX="3.0" layoutY="154.0" prefHeight="126.0" prefWidth="126.0" text="THỐNG KÊ&#10;PHÁT THƯỞNG" AnchorPane.topAnchor="153.0">
                      <font>

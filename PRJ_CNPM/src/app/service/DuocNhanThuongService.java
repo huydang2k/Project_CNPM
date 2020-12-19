@@ -1,10 +1,8 @@
 package app.service;
 
-import app.model.DuocNhanQua;
 import app.model.DuocNhanThuong;
 import app.model.form.FormDSPQChiTiet;
 import app.model.form.FormDSPTChiTiet;
-import app.repository.DuocNhanQuaRepo;
 import app.repository.DuocNhanThuongRepo;
 
 import java.sql.SQLException;
