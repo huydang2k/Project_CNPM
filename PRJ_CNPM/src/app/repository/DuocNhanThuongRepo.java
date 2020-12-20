@@ -15,6 +15,7 @@ public class DuocNhanThuongRepo extends BaseRepo<DuocNhanThuong> {
         duocNhanThuong.setMaDS(rs.getInt("maDS"));
         duocNhanThuong.setMaHS(rs.getInt("maHS"));
         duocNhanThuong.setThanhTich(rs.getString("thanhTich"));
+        duocNhanThuong.setMinhChung(rs.getBoolean("minhChung"));
         duocNhanThuong.setXepLoai(rs.getString("xepLoai"));
         duocNhanThuong.setMucThuong(rs.getDouble("mucThuong"));
         duocNhanThuong.setDuocXacNhan(rs.getBoolean("duocXacNhan"));
@@ -38,6 +39,13 @@ public class DuocNhanThuongRepo extends BaseRepo<DuocNhanThuong> {
         ResultSet rs = preparedStatement.executeQuery();
         return getList(rs);
     }
+    public ArrayList<DuocNhanThuong> findByMaDSDangPhat(int maDS) throws SQLException{
+        String sql = "SELECT * FROM duoc_nhan_thuong WHERE maDS = ? and minhChung = 1";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setInt(1, maDS);
+        ResultSet rs = preparedStatement.executeQuery();
+        return getList(rs);
+    }
     public int insert(DuocNhanThuong duocNhanThuong) throws SQLException{
         String sql = "insert into duoc_nhan_thuong values (?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = prepare(sql);
@@ -51,13 +59,13 @@ public class DuocNhanThuongRepo extends BaseRepo<DuocNhanThuong> {
         return preparedStatement.executeUpdate();
     }
     public int update(DuocNhanThuong duocNhanThuong) throws SQLException{
-        String sql = "update duoc_nhan_thuong set phanQua = ?," +
+        String sql = "update duoc_nhan_thuong set " +
                 "thanhTich = ?, " +
                 "minhChung = ?," +
                 "xepLoai = ?," +
                 "mucThuong = ?,"+
-                "duocXacNhan = ?" +
-                "where maDs = ? and maHS = ?";
+                "duocXacNhan = ? " +
+                "where maDS = ? and maHS = ?";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setString(1,duocNhanThuong.getThanhTich());
         preparedStatement.setBoolean(2,duocNhanThuong.getMinhChung());
@@ -70,7 +78,7 @@ public class DuocNhanThuongRepo extends BaseRepo<DuocNhanThuong> {
     }
 
 
-    public int deleteBymaDSandIdNhanKhau(int maDs,int maHS) throws SQLException{
+    public int deleteBymaDSandIdHS(int maDs,int maHS) throws SQLException{
         String sql = "delete from duoc_nhan_thuong where maDs = ? and maHS = ?";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setInt(1, maDs);

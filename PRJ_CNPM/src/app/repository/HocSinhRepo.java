@@ -12,7 +12,7 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
     public HocSinh getObject(ResultSet rs) throws SQLException {
         HocSinh hocSinh = new HocSinh();
         hocSinh.setMaHS(rs.getInt("maHS"));
-        hocSinh.setIdNhanKhau(rs.getInt(rs.getInt("idNhanKhau")));
+        hocSinh.setIdNhanKhau(rs.getInt("idNhanKhau"));
         hocSinh.setHocVan(rs.getString("hocVan"));
         return hocSinh;
     }
@@ -23,8 +23,13 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
     }
 
     @Override
-    public HocSinh findById(int id) throws SQLException {
-        return null;
+    public HocSinh findById(int maHS) throws SQLException {
+        String sql = "select * from hoc_sinh where maHS = ? ";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setInt(1,maHS);
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.first();
+        return getObject(rs);
     }
 
     @Override

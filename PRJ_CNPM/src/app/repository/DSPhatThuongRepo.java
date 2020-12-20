@@ -4,6 +4,7 @@ package app.repository;
 import app.model.DSPhatQua;
 import app.model.DSPhatThuong;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +20,14 @@ public class DSPhatThuongRepo extends BaseRepo<DSPhatThuong> {
         dsPhatThuong.setTrangThai(rs.getInt("trangThai"));
         dsPhatThuong.setTongChiPhi(rs.getDouble("tongChiPhi"));
         return dsPhatThuong;
+    }
+    public Date getHanNopMc(int maDS)throws SQLException{
+        String sql = "SELECT date_add(d.ngayTao, INTERVAL 15 DAY) as hnmc FROM ds_phat_thuong as d WHERE maDS = ? and trangThai != -1\n";
+        PreparedStatement preparedStatement = prepare(sql);
+        preparedStatement.setInt(1, maDS);
+        ResultSet rs = preparedStatement.executeQuery();
+        rs.first();
+        return rs.getDate("hnmc");
     }
     public ArrayList<DSPhatThuong> findAll()throws SQLException{
         String sql = "SELECT * FROM ds_phat_thuong where trangThai != -1";
@@ -43,9 +52,9 @@ public class DSPhatThuongRepo extends BaseRepo<DSPhatThuong> {
         return getObject(rs);
     }
     public int update(DSPhatThuong dsPhatThuong)throws SQLException{
-        String sql = "update ds_phat_thuong set suKien = ?, ngayTao = ?, trangThai = ?" +
-                "tongChiPhi = ?" +
-                "where maDs = ?";
+        String sql = "update ds_phat_thuong set suKien = ?, ngayTao = ?, trangThai = ?, " +
+                "tongChiPhi = ? " +
+                "where maDS = ?";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setString(1, dsPhatThuong.getSuKien());
         preparedStatement.setDate(2, dsPhatThuong.getNgayTao());

@@ -66,7 +66,7 @@ public class PhatQuaController implements Initializable {
                     System.out.println(rowData);
                     Stage stage = (Stage)(((Node) event.getSource()).getScene().getWindow());
                     FXMLLoader loader = new FXMLLoader();
-                    if(rowData.getTrangThai() == 2 || rowData.getTrangThai() == -1){
+                    if(rowData.getTrangThai() == 2 ){
                         loader.setLocation(getClass().getResource("dspqchitiet\\view_dspqchitiet\\View_DanhSachChiTiet.fxml"));
                         try {
                             Parent root = loader.load();
@@ -185,9 +185,7 @@ public class PhatQuaController implements Initializable {
     }
 
     //
-    public void confirmDeleteDS(ActionEvent e){
-        //DSP
-    }
+
     public void toThemMoiDsPhatQua(){
         commonController.toThemMoiDsPhatQua();
     }

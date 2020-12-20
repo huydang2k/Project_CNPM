@@ -55,7 +55,7 @@
             <Button layoutX="445.0" layoutY="636.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="In danh sách" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
             <Pane prefHeight="521.0" prefWidth="200.0" style="-fx-border-width: 1px 1px 1px 1px; -fx-border-color: gray;" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="150.0">
                <children>
-                  <Label fx:id="tongChiDSPQ" layoutX="10.0" layoutY="290.0" prefHeight="30.0" prefWidth="180.0" text="Tổng chi:">
+                  <Label fx:id="tongChiDSPQ" layoutX="10.0" layoutY="319.0" prefHeight="30.0" prefWidth="180.0" text="Tổng chi:">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -76,13 +76,13 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="trangThaiDSPQ" layoutX="10.0" layoutY="220.0" prefHeight="30.0" prefWidth="180.0" text="Trạng thái:">
+                  <Label fx:id="trangThaiDSPQ" alignment="TOP_LEFT" layoutX="10.0" layoutY="220.0" prefHeight="53.0" prefWidth="180.0" text="Trạng thái: " wrapText="true">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <TextField fx:id="dipTextField" layoutX="10.0" layoutY="180.0" prefHeight="30.0" prefWidth="180.0" visible="false" />
-                  <ComboBox fx:id="trangThaiComboBox" layoutX="10.0" layoutY="250.0" prefHeight="30.0" prefWidth="180.0" visible="false" />
+                  <ComboBox fx:id="trangThaiComboBox" layoutX="10.0" layoutY="279.0" prefHeight="30.0" prefWidth="180.0" visible="false" />
                </children>
             </Pane>
             <Button mnemonicParsing="false" onAction="#themMoi" prefHeight="30.0" prefWidth="879.0" text="Thêm mới" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="10.0">

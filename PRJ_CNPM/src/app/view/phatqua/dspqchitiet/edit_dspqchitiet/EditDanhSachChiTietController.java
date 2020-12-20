@@ -392,6 +392,7 @@ public class EditDanhSachChiTietController implements Initializable {
                     trangThaiComboBox.setVisible(false);
                     editMode = false;
                     updateDSPQ();
+                    trangThaiDSPQ.setText("Trạng thái: "+ trangThaiComboBox.getValue());
                 }
             }else{
                 editOrSaveButton.setText("Chỉnh sửa");
@@ -402,6 +403,7 @@ public class EditDanhSachChiTietController implements Initializable {
                 trangThaiComboBox.setVisible(false);
                 editMode = false;
                 updateDSPQ();
+                trangThaiDSPQ.setText("Trạng thái: "+ trangThaiComboBox.getValue());
             }
         }
     }

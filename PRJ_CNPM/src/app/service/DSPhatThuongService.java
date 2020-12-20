@@ -23,7 +23,9 @@ public class DSPhatThuongService  {
 
         this.dsPhatThuongRepo = dsPhatThuongRepo;
     }
-
+    public Date getHanNopMc(int maDS)throws SQLException{
+        return dsPhatThuongRepo.getHanNopMc(maDS);
+    }
     public ArrayList<DSPhatThuong> getAll() throws SQLException {
         return dsPhatThuongRepo.findAll();
     }
@@ -36,7 +38,10 @@ public class DSPhatThuongService  {
         lastInsertedDS = new DSPhatThuong(null,suKien,date,0,0.0);
         dsPhatThuongRepo.insert(lastInsertedDS);
     }
-    public void deleteById(int id) throws SQLException{
+    public void update(DSPhatThuong dsPhatThuong) throws SQLException{
+        dsPhatThuongRepo.update(dsPhatThuong);
+    }
+    public void deleteByMaDS(int id) throws SQLException{
         dsPhatThuongRepo.deleteById(id);
     }
     public DSPhatThuong getLastInserted(){

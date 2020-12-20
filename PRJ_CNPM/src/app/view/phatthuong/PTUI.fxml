@@ -48,7 +48,7 @@
             <TableView fx:id="table" layoutX="67.0" layoutY="286.0" prefHeight="477.0" prefWidth="1063.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
               <columns>
                 <TableColumn fx:id="numberColumn" maxWidth="500.0" prefWidth="77.0" text="STT" />
-                <TableColumn fx:id="dsPhatQuaColumn" prefWidth="717.0" text="Danh sách phát thưởng" />
+                <TableColumn fx:id="dsPhatThuongColumn" prefWidth="717.0" text="Danh sách phát thưởng" />
                   <TableColumn fx:id="buttonsColumn" maxWidth="1000.0" prefWidth="308.33331298828125" />
               </columns>
                <columnResizePolicy>
