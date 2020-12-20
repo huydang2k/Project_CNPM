@@ -45,7 +45,7 @@
                   </Label>
                     </children>
                 </AnchorPane>
-            <TextField layoutX="5.0" layoutY="635.0" prefHeight="25.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="115.0" />
+            <TextField layoutX="5.0" layoutY="635.0" prefHeight="25.0" prefWidth="832.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="225.0" />
             <TableView layoutY="244.0" prefHeight="384.0" prefWidth="1069.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="240.0">
               <columns>
                 <TableColumn maxWidth="500.0" prefWidth="61.0" text="STT" />
@@ -95,6 +95,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
+            <ComboBox layoutX="828.0" layoutY="683.0" prefHeight="30.0" prefWidth="95.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="115.0" />
             </children>
         </AnchorPane>
     </items>

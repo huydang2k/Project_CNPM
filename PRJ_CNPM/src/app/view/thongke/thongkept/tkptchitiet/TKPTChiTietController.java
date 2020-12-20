@@ -49,7 +49,7 @@ public class TKPTChiTietController implements Initializable {
 
     public void initData(DSPhatThuong rowData){
         this.dsPhatThuong = rowData;
-        nameLabel.setText("Thống kê hoạt động phát thưởng "+ dsPhatThuong.getSuKien());
+        nameLabel.setText("Thống kê hoạt động phát thưởng\n"+ dsPhatThuong.getSuKien());
         initTable();
         loadData();
     }

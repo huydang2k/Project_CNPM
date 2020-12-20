@@ -57,7 +57,7 @@ public class TKPQChiTietController implements Initializable {
 
     public void initData(DSPhatQua rowData){
         this.dsPhatQua = rowData;
-        nameLabel.setText("Thống kê hoạt động phát quà "+dsPhatQua.getSuKien());
+        nameLabel.setText("Thống kê hoạt động phát quà\n"+dsPhatQua.getSuKien());
         initTable();
         loadData();
     }

@@ -18,11 +18,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.15" maxHeight="-Infinity"
-           maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-           prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="app.view.thongke.thongkept.tkptchitiet.TKPTChiTietController">
+<SplitPane dividerPositions="0.15" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.view.thongke.thongkept.tkptchitiet.TKPTChiTietController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
@@ -44,14 +40,14 @@
             <children>
                 <AnchorPane prefHeight="150.0" prefWidth="200.0" style="-fx-border-width: 0px 0px 1px 0px; -fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                  <Label fx:id="nameLabel" layoutX="239.0" layoutY="50.0" prefHeight="53.0" prefWidth="520.0" text="Thống kê" textAlignment="CENTER" wrapText="true">
+                  <Label fx:id="nameLabel" layoutX="239.0" layoutY="4.0" prefHeight="140.0" prefWidth="570.0" text="Thống kê hoạt động phát thưởng" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="4.0">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
                     </children>
                 </AnchorPane>
-            <TextField layoutX="10.0" layoutY="679.0" prefHeight="30.0" prefWidth="968.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="120.0" />
+            <TextField layoutX="10.0" layoutY="679.0" prefHeight="30.0" prefWidth="840.0" promptText="Nhập nội dung tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="230.0" />
             <Button layoutX="591.0" layoutY="685.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Tìm kiếm" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
             <TableView fx:id="table" layoutX="138.0" layoutY="150.0" prefHeight="523.0" prefWidth="935.0" style="-fx-border-color: gray;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="146.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="150.0">
               <columns>
@@ -67,13 +63,14 @@
             </TableView>
             <AnchorPane layoutX="7.0" layoutY="153.0" prefHeight="518.0" prefWidth="129.0" style="-fx-border-width: 1px; -fx-border-color: black;" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="150.0">
                <children>
-                  <Label layoutX="21.0" layoutY="197.0" prefHeight="126.0" prefWidth="95.0" text="THỐNG KÊ&#10;PHÁT QUÀ" AnchorPane.topAnchor="150.0">
+                  <Label layoutX="3.0" layoutY="153.0" prefHeight="126.0" prefWidth="129.0" text="THỐNG KÊ&#10;PHÁT THƯỞNG" AnchorPane.topAnchor="152.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children>
             </AnchorPane>
+            <ComboBox layoutX="823.0" layoutY="681.0" prefHeight="30.0" prefWidth="100.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" />
             </children>
         </AnchorPane>
     </items>
