@@ -1,9 +1,8 @@
-package app.view.login;
+package app.controller.login;
 
 import app.service.UserService;
-import app.view.CommonController;
+import app.controller.CommonController;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;

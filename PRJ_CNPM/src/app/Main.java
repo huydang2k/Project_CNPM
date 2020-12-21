@@ -1,14 +1,10 @@
 package app;
 
-import app.repository.HocSinhRepo;
-import app.service.ThongKePhatQuaService;
-import app.service.ThongKePhatThuongService;
-import app.view.CommonController;
+import app.controller.CommonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.SplitPane;
 import javafx.stage.Stage;
 import app.common.MyConnection;
 

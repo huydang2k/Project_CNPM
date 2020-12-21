@@ -1,11 +1,9 @@
-package app.view.thongke.thongkept.tkptchitiet;
+package app.controller.thongke.thongkept.tkptchitiet;
 
-import app.model.DSPhatQua;
 import app.model.DSPhatThuong;
 import app.model.form.FormThongKe;
-import app.service.ThongKePhatQuaService;
 import app.service.ThongKePhatThuongService;
-import app.view.CommonController;
+import app.controller.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;

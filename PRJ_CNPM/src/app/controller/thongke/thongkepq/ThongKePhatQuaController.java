@@ -1,11 +1,9 @@
-package app.view.thongke.thongkept;
+package app.controller.thongke.thongkepq;
 
 import app.model.DSPhatQua;
-import app.model.DSPhatThuong;
-import app.service.DSPhatThuongService;
-import app.view.CommonController;
-import app.view.thongke.thongkepq.tkpqchitiet.TKPQChiTietController;
-import app.view.thongke.thongkept.tkptchitiet.TKPTChiTietController;
+import app.service.DSPhatQuaService;
+import app.controller.CommonController;
+import app.controller.thongke.thongkepq.tkpqchitiet.TKPQChiTietController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,9 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -27,21 +23,22 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class ThongKePhatThuongController implements Initializable {
+public class ThongKePhatQuaController implements Initializable {
     CommonController commonController;
-    DSPhatThuongService dsPhatThuongService ;
-    ObservableList<DSPhatThuong> dsPhatThuongObservableList;
+    DSPhatQuaService dsPhatQuaService;
+    ObservableList<DSPhatQua> dsPhatQuaObservableList;
     @FXML
-    TableView<DSPhatThuong> table;
+    TableView<DSPhatQua> table;
     @FXML
-    TableColumn<DSPhatThuong, String> dsPhatThuong;
+    TableColumn<DSPhatQua, String> dsPhatQuaColumn;
 
     @FXML
-    TableColumn<DSPhatThuong, String> numberColumn;
+    TableColumn<DSPhatQua, String> numberColumn;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
-        dsPhatThuongService = new DSPhatThuongService();
+        dsPhatQuaService = new DSPhatQuaService();
         initTable();
         loadData();
     }
@@ -49,16 +46,18 @@ public class ThongKePhatThuongController implements Initializable {
     private void initTable(){
         initColumns();
         table.setRowFactory( RowFactory -> {
-            TableRow<DSPhatThuong> row = new TableRow<>();
+            TableRow<DSPhatQua> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ){
-                    DSPhatThuong rowData = row.getItem();
+                    DSPhatQua rowData = row.getItem();
                     Stage stage = (Stage)(((Node) event.getSource()).getScene().getWindow());
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(getClass().getResource("tkptchitiet\\TKPTChiTiet.fxml"));
+                    loader.setLocation(getClass().getResource("..\\..\\..\\view\\thongke\\thongkepq\\tkpqchitiet\\TKPQChiTiet.fxml"));
                     try {
                         Parent root = loader.load();
-                        TKPTChiTietController controller = loader.getController();
+                        TKPQChiTietController controller = loader.getController();
+                        System.out.println("init");
+                        System.out.println(rowData);
                         controller.initData(rowData);
                         Scene scene = new Scene(root);
                         stage.setScene(scene);
@@ -66,39 +65,42 @@ public class ThongKePhatThuongController implements Initializable {
                         ioException.printStackTrace();
                     }
                 }
-            });
+               });
             return row ;
         });
     }
 
     private void initColumns(){
-        numberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatThuong, String>, ObservableValue<String>>() {
+        numberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatQua, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatThuong, String> param) {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatQua, String> param) {
                 return new ReadOnlyObjectWrapper<>(table.getItems().indexOf(param.getValue()) + 1 + " ");
             }
         });
-        dsPhatThuong.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatThuong, String>, ObservableValue<String>>() {
+        dsPhatQuaColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatQua, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatThuong, String> param) {
-                DSPhatThuong dsPhatThuong = param.getValue();
-                String content = "Thống kê hoạt động phát thưởng " + dsPhatThuong.getSuKien();
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatQua, String> param) {
+                DSPhatQua dsPhatQua = param.getValue();
+                String content = "Thống kê hoạt động phát quà " + dsPhatQua.getSuKien();
                 return new ReadOnlyObjectWrapper<>(content);
             }
         });
 
         numberColumn.setSortable(false);
-        dsPhatThuong.setSortable(false);
+        dsPhatQuaColumn.setSortable(false);
     }
 
     private void loadData(){
         try{
-            dsPhatThuongObservableList = FXCollections.observableArrayList(dsPhatThuongService.getDSHoanThanh());
-            table.setItems(dsPhatThuongObservableList);
+            dsPhatQuaObservableList = FXCollections.observableArrayList(dsPhatQuaService.getDSHoanThanh());
+            table.setItems(dsPhatQuaObservableList);
         }catch (SQLException ex){
             ex.printStackTrace();
         }
     }
+
+
+
     public void toHome(){
         commonController.toHome();
     }

@@ -1,10 +1,10 @@
-package app.view.phatqua;
+package app.controller.phatthuong;
 
-import app.model.DSPhatQua;
-import app.service.DSPhatQuaService;
-import app.view.CommonController;
-import app.view.phatqua.dspqchitiet.edit_dspqchitiet.EditDanhSachChiTietController;
-import app.view.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
+import app.model.DSPhatThuong;
+import app.service.DSPhatThuongService;
+import app.controller.CommonController;
+import app.controller.phatthuong.dsptchitiet.edit_dsptchitiet.EditDanhSachPTChiTietController;
+import app.controller.phatthuong.dsptchitiet.view_dsptchitiet.ViewDanhSachPTChiTietController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,51 +26,39 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class PhatQuaController implements Initializable {
-
-
-    DSPhatQuaService DSPhatQuaService;
+public class PhatThuongController implements Initializable {
+    DSPhatThuongService dsPhatThuongService;
     CommonController commonController;
+    ObservableList<DSPhatThuong> dsPhatThuongObservableList;
 
-    ObservableList<DSPhatQua> dsPhatQuaObservableList;
-
-    //table
     @FXML
-    TableView<DSPhatQua> table;
+    TableView<DSPhatThuong> table;
     @FXML
     Button themMoiBtn;
     @FXML
-    TableColumn<DSPhatQua, String> dsPhatQuaColumn;
+    TableColumn<DSPhatThuong, String> dsPhatThuongColumn;
 
     @FXML
-    TableColumn<DSPhatQua, String> numberColumn;
+    TableColumn<DSPhatThuong, String> numberColumn;
 
     @FXML
-    TableColumn<DSPhatQua, Void> buttonsColumn;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        DSPhatQuaService = new DSPhatQuaService();
-        commonController = new CommonController();
-        initTable();
-        loadData();
-    }
+    TableColumn<DSPhatThuong, Void> buttonsColumn;
 
     private void initTable(){
         initColumns();
         table.setRowFactory( RowFactory -> {
-            TableRow<DSPhatQua> row = new TableRow<>();
+            TableRow<DSPhatThuong> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    DSPhatQua rowData = row.getItem();
+                    DSPhatThuong rowData = row.getItem();
                     System.out.println(rowData);
                     Stage stage = (Stage)(((Node) event.getSource()).getScene().getWindow());
                     FXMLLoader loader = new FXMLLoader();
-                    if(rowData.getTrangThai() == 2 ){
-                        loader.setLocation(getClass().getResource("dspqchitiet\\view_dspqchitiet\\View_DanhSachChiTiet.fxml"));
+                    if(rowData.getTrangThai() == 2){
+                        loader.setLocation(getClass().getResource("..\\..\\view\\phatthuong\\dsptchitiet\\view_dsptchitiet\\View_DanhSachChiTiet.fxml"));
                         try {
                             Parent root = loader.load();
-                            ViewDanhSachChiTietController controller = loader.getController();
+                            ViewDanhSachPTChiTietController controller = loader.getController();
                             controller.initData(rowData);
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
@@ -78,10 +66,10 @@ public class PhatQuaController implements Initializable {
                             ioException.printStackTrace();
                         }
                     }else{
-                        loader.setLocation(getClass().getResource("dspqchitiet\\edit_dspqchitiet\\Edit_DanhSachChiTiet.fxml"));
+                        loader.setLocation(getClass().getResource("..\\..\\view\\phatthuong\\dsptchitiet\\edit_dsptchitiet\\Edit_DanhSachChiTiet.fxml"));
                         try {
                             Parent root = loader.load();
-                            EditDanhSachChiTietController controller = loader.getController();
+                            EditDanhSachPTChiTietController controller = loader.getController();
                             controller.initData(rowData);
                             Scene scene = new Scene(root);
                             stage.setScene(scene);
@@ -96,20 +84,23 @@ public class PhatQuaController implements Initializable {
     }
 
     private void initColumns(){
-        numberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatQua, String>, ObservableValue<String>>() {
+        numberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatThuong, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatQua, String> param) {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatThuong, String> param) {
                 return new ReadOnlyObjectWrapper<>(table.getItems().indexOf(param.getValue()) + 1 + " ");
             }
         });
-        dsPhatQuaColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatQua, String>, ObservableValue<String>>() {
+        dsPhatThuongColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<DSPhatThuong, String>, ObservableValue<String>>() {
             @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatQua, String> param) {
-                DSPhatQua dsPhatQua = param.getValue();
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<DSPhatThuong, String> param) {
+                DSPhatThuong dsPhatThuong = param.getValue();
                 String trangThai = "";
-                switch (dsPhatQua.getTrangThai()){
+                switch (dsPhatThuong.getTrangThai()){
                     case -1:
                         trangThai = "Đã xóa";
+                        break;
+                    case 0:
+                        trangThai = "Đợi nộp minh chứng";
                         break;
                     case 1:
                         trangThai = "Đang phát";
@@ -118,20 +109,20 @@ public class PhatQuaController implements Initializable {
                         trangThai = "Đã hoàn thành";
                         break;
                 }
-                String content = dsPhatQua.getSuKien() + "\n" + "Trạng thái: " + trangThai + "\n" + "Ngày tạo: " + dsPhatQua.getNgayTao();
+                String content = dsPhatThuong.getSuKien() + "\n" + "Trạng thái: " + trangThai + "\n" + "Ngày tạo: " + dsPhatThuong.getNgayTao();
                 return new ReadOnlyObjectWrapper<>(content);
             }
         });
 
-        Callback<TableColumn<DSPhatQua, Void>, TableCell<DSPhatQua, Void>> cellFactory = new Callback<TableColumn<DSPhatQua, Void>, TableCell<DSPhatQua, Void>>() {
+        Callback<TableColumn<DSPhatThuong, Void>, TableCell<DSPhatThuong, Void>> cellFactory = new Callback<TableColumn<DSPhatThuong, Void>, TableCell<DSPhatThuong, Void>>() {
             @Override
-            public TableCell<DSPhatQua, Void> call(final TableColumn<DSPhatQua, Void> param) {
-                final TableCell<DSPhatQua, Void> cell = new TableCell<DSPhatQua, Void>() {
+            public TableCell<DSPhatThuong, Void> call(final TableColumn<DSPhatThuong, Void> param) {
+                final TableCell<DSPhatThuong, Void> cell = new TableCell<DSPhatThuong, Void>() {
                     private final Button deleteButton = new Button("Xóa");
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
-                            DSPhatQua data = getTableView().getItems().get(getIndex());
+                            DSPhatThuong data = getTableView().getItems().get(getIndex());
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setTitle("Xóa danh sách");
                             alert.setHeaderText("Xác nhận xóa");
@@ -143,9 +134,9 @@ public class PhatQuaController implements Initializable {
                             Optional<ButtonType> result = alert.showAndWait();
                             if(result.get() == xacNhanButtonType) {
                                 try {
-                                    DSPhatQuaService.deleteByMaDS(data.getMaDS());
+                                    dsPhatThuongService.deleteByMaDS(data.getMaDS());
                                     loadData();
-                                    table.setItems(dsPhatQuaObservableList);
+                                    table.setItems(dsPhatThuongObservableList);
                                 } catch (SQLException throwables) {
                                     throwables.printStackTrace();
                                 }
@@ -172,30 +163,37 @@ public class PhatQuaController implements Initializable {
         buttonsColumn.setCellFactory(cellFactory);
         buttonsColumn.setSortable(false);
         numberColumn.setSortable(false);
-        dsPhatQuaColumn.setSortable(false);
+        dsPhatThuongColumn.setSortable(false);
     }
 
     private void loadData(){
         try{
-            dsPhatQuaObservableList = FXCollections.observableArrayList(DSPhatQuaService.getAll());
-            table.setItems(dsPhatQuaObservableList);
+            dsPhatThuongObservableList = FXCollections.observableArrayList(dsPhatThuongService.getAll());
+            table.setItems(dsPhatThuongObservableList);
         }catch (SQLException ex){
             ex.printStackTrace();
         }
     }
 
-    //
 
-    public void toThemMoiDsPhatQua(){
-        commonController.toThemMoiDsPhatQua();
-    }
     public void toHome(){
         commonController.toHome();
     }
-    public void toPhatThuong(){
-        commonController.toPhatThuong();
+    public void toPhatQua(){
+        commonController.toPhatQua();
     }
     public void toThongKe(){
         commonController.toThongKe();
     }
+    public void toThemMoiDsPhatThuong(){
+        commonController.toThemMoiDsPhatThuong();
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        commonController = new CommonController();
+        dsPhatThuongService = new DSPhatThuongService();
+        initTable();
+        loadData();
+    }
+
 }

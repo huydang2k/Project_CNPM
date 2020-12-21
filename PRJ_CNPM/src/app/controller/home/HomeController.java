@@ -1,9 +1,9 @@
-package app.view.home;
+package app.controller.home;
 
 import app.service.HoKhauService;
 import app.service.HocSinhService;
 import app.service.NhanKhauService;
-import app.view.CommonController;
+import app.controller.CommonController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

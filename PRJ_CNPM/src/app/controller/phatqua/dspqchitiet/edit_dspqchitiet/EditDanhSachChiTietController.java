@@ -1,11 +1,11 @@
-package app.view.phatqua.dspqchitiet.edit_dspqchitiet;
+package app.controller.phatqua.dspqchitiet.edit_dspqchitiet;
 
 import app.model.DSPhatQua;
 import app.model.NhanKhau;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
 import app.service.DSPhatQuaService;
-import app.view.CommonController;
+import app.controller.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

@@ -1,4 +1,4 @@
-package app.view;
+package app.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,28 +28,28 @@ public class CommonController implements Initializable {
         }
     }
     public void toThemMoiDsPhatQua() {
-        switchScene(makeScene("phatqua/themmoi/ThemMoi.fxml"));
+        switchScene(makeScene("../view/phatqua/themmoi/ThemMoi.fxml"));
     }
     public void toThemMoiDsPhatThuong(){
-        switchScene(makeScene("phatthuong/themmoi/ThemMoi.fxml"));
+        switchScene(makeScene("../view/phatthuong/themmoi/ThemMoi.fxml"));
     }
     public void toHome(){
-        switchScene(makeScene("home/HomeUI.fxml"));
+        switchScene(makeScene("../view/home/HomeUI.fxml"));
     }
     public void toPhatQua(){
-        switchScene(makeScene("phatqua/PQUI.fxml"));
+        switchScene(makeScene("../view/phatqua/PQUI.fxml"));
     }
     public void toPhatThuong(){
-        switchScene(makeScene("phatthuong/PTUI.fxml"));
+        switchScene(makeScene("../view/phatthuong/PTUI.fxml"));
     }
     public void toThongKe(){
-       primaryStage.setScene(makeScene("thongke/ThongKe.fxml"));
+       primaryStage.setScene(makeScene("../view/thongke/ThongKe.fxml"));
     }
     public void toThongKePQ(){
-        primaryStage.setScene(makeScene("thongke/thongkepq/ThongKePhatQua.fxml"));
+        primaryStage.setScene(makeScene("../view/thongke/thongkepq/ThongKePhatQua.fxml"));
     }
     public void toThongKePT(){
-        primaryStage.setScene(makeScene("thongke/thongkept/ThongKePhatThuong.fxml"));
+        primaryStage.setScene(makeScene("../view/thongke/thongkept/ThongKePhatThuong.fxml"));
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

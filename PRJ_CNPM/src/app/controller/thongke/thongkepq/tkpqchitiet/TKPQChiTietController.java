@@ -1,32 +1,23 @@
-package app.view.thongke.thongkepq.tkpqchitiet;
+package app.controller.thongke.thongkepq.tkpqchitiet;
 
 import app.model.DSPhatQua;
 
-import app.model.form.FormDSPQChiTiet;
 import app.model.form.FormThongKe;
 import app.service.ThongKePhatQuaService;
-import app.view.CommonController;
-import app.view.phatqua.dspqchitiet.edit_dspqchitiet.EditDanhSachChiTietController;
-import app.view.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
+import app.controller.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;

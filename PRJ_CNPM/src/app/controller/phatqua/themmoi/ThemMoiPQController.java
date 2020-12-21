@@ -1,7 +1,7 @@
-package app.view.phatqua.themmoi;
+package app.controller.phatqua.themmoi;
 
 import app.model.form.FormDSPQChiTiet;
-import app.view.CommonController;
+import app.controller.CommonController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
