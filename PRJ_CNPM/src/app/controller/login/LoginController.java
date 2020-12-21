@@ -1,7 +1,7 @@
 package app.controller.login;
 
-import app.service.UserService;
 import app.controller.CommonController;
+import app.service.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +15,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Screen;
-
 
 import java.net.URL;
 import java.sql.SQLException;

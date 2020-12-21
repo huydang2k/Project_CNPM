@@ -1,9 +1,10 @@
 package app.service;
 
 
-
-import app.model.*;
-import app.model.form.FormDSPQChiTiet;
+import app.model.DuocNhanThuong;
+import app.model.HocSinh;
+import app.model.NhanKhau;
+import app.model.ThanhVienCuaHo;
 import app.model.form.FormDSPTChiTiet;
 import app.repository.DuocNhanThuongRepo;
 import app.repository.HocSinhRepo;

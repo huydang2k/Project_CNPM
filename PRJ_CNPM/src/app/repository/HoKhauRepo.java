@@ -2,7 +2,6 @@ package app.repository;
 
 import app.model.HoKhau;
 
-import java.io.FileNotFoundException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

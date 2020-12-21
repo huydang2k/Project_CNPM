@@ -1,9 +1,9 @@
 package app.controller.thongke.thongkepq;
 
-import app.model.DSPhatQua;
-import app.service.DSPhatQuaService;
 import app.controller.CommonController;
 import app.controller.thongke.thongkepq.tkpqchitiet.TKPQChiTietController;
+import app.model.DSPhatQua;
+import app.service.DSPhatQuaService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -14,7 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 

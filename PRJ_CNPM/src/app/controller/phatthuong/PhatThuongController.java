@@ -1,10 +1,10 @@
 package app.controller.phatthuong;
 
-import app.model.DSPhatThuong;
-import app.service.DSPhatThuongService;
 import app.controller.CommonController;
 import app.controller.phatthuong.dsptchitiet.edit_dsptchitiet.EditDanhSachPTChiTietController;
 import app.controller.phatthuong.dsptchitiet.view_dsptchitiet.ViewDanhSachPTChiTietController;
+import app.model.DSPhatThuong;
+import app.service.DSPhatThuongService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

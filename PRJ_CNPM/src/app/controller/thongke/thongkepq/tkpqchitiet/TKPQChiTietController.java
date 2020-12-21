@@ -1,10 +1,9 @@
 package app.controller.thongke.thongkepq.tkpqchitiet;
 
+import app.controller.CommonController;
 import app.model.DSPhatQua;
-
 import app.model.form.FormThongKe;
 import app.service.ThongKePhatQuaService;
-import app.controller.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

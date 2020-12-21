@@ -1,10 +1,10 @@
 package app.controller.phatqua;
 
-import app.model.DSPhatQua;
-import app.service.DSPhatQuaService;
 import app.controller.CommonController;
 import app.controller.phatqua.dspqchitiet.edit_dspqchitiet.EditDanhSachChiTietController;
 import app.controller.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
+import app.model.DSPhatQua;
+import app.service.DSPhatQuaService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

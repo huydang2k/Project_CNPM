@@ -1,13 +1,11 @@
 package app.repository;
 
 import app.common.MyConnection;
-import app.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class BaseRepo<T> {
     /**

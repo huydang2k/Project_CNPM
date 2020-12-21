@@ -1,6 +1,5 @@
 package app.repository;
 
-import app.model.DuocNhanQua;
 import app.model.DuocNhanThuong;
 
 import java.sql.PreparedStatement;

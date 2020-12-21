@@ -1,16 +1,18 @@
 package app.controller.phatqua.dspqchitiet.view_dspqchitiet;
 
+import app.controller.CommonController;
 import app.model.DSPhatQua;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
-import app.controller.CommonController;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 

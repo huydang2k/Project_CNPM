@@ -1,6 +1,5 @@
 package app.service;
 
-import app.model.User;
 import app.repository.UserRepo;
 
 import java.sql.SQLException;

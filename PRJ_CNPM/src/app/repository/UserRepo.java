@@ -1,8 +1,7 @@
 package app.repository;
 
-import app.common.MyConnection;
+
 import app.model.User;
-import app.model.form.LoginForm;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

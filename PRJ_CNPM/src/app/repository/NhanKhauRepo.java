@@ -1,6 +1,5 @@
 package app.repository;
 
-import app.model.HocSinh;
 import app.model.NhanKhau;
 
 import java.sql.PreparedStatement;

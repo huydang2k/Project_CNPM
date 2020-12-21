@@ -1,8 +1,6 @@
 package app.service;
 
 
-
-import app.model.DSPhatQua;
 import app.model.DSPhatThuong;
 import app.repository.DSPhatThuongRepo;
 

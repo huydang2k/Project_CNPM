@@ -1,7 +1,6 @@
 package app.repository;
 
 
-import app.model.DSPhatQua;
 import app.model.DSPhatThuong;
 
 import java.sql.Date;
