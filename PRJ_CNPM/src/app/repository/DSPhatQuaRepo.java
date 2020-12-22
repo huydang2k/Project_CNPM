@@ -40,11 +40,21 @@ public class DSPhatQuaRepo extends BaseRepo<DSPhatQua> {
         return getObject(rs);
     }
     public int insert(DSPhatQua dsPhatQua) throws SQLException{
-        String sql = "insert into ds_phat_qua values (null,?,?,1,0)";
+        String sql = "insert into ds_phat_qua values (null,?,?,1,?)";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setString(1,dsPhatQua.getSuKien());
         preparedStatement.setDate(2,dsPhatQua.getNgayTao());
-        return preparedStatement.executeUpdate();
+        preparedStatement.setDouble(3, dsPhatQua.getTongChiPhi());
+        preparedStatement.executeUpdate();
+        sql = "SELECT LAST_INSERT_ID() as id";
+        preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        if(rs.next()){
+            return rs.getInt("id");
+        }else{
+            return 0;
+        }
+
     }
     public int update(DSPhatQua dsPhatQua)throws SQLException{
         String sql = "update ds_phat_qua set suKien = ?, ngayTao = ?, trangThai = ?," +

@@ -59,10 +59,10 @@ public class NhanKhauRepo extends BaseRepo<NhanKhau>{
             return 0;
         }
     }
+
     public ArrayList<NhanKhau> findAllChildren() throws SQLException{
-        ArrayList<NhanKhau> nhanKhauArrayList = new ArrayList<>();
-        String sql = "select * from nhan_khau as nk where" +
-                "where round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
+        String sql = "select * from nhan_khau as nk where " +
+                " round(DATEDIFF(CURRENT_DATE,nk.namsinh )/365) < 18";
         PreparedStatement preparedStatement = prepare(sql);
         ResultSet rs = preparedStatement.executeQuery();
         return getList(rs);

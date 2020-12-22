@@ -99,6 +99,11 @@ public class EditDanhSachChiTietController implements Initializable {
     @FXML
     Button editOrSaveButton;
 
+    @FXML
+    Button themMoiButton;
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         editMode = false;
@@ -112,6 +117,8 @@ public class EditDanhSachChiTietController implements Initializable {
 
     public void initData(DSPhatQua rowData){
         this.dsPhatQua = rowData;
+        initTable();
+        loadData();
         tongChi = dsPhatQua.getTongChiPhi();
         dip = dsPhatQua.getSuKien();
         nameDSPQ.setText(dip);
@@ -133,8 +140,6 @@ public class EditDanhSachChiTietController implements Initializable {
         tongChiDSPQ.setText("Tổng chi: "+tongChi);
         dipTextField.setText(dip);
         dipDSPQ.setText("Dịp: "+dip);
-        initTable();
-        loadData();
     }
 
     private void initTable(){
@@ -162,7 +167,7 @@ public class EditDanhSachChiTietController implements Initializable {
                 return new ReadOnlyObjectWrapper<>(content);
             }
         });
-        Callback<TableColumn<FormDSPQChiTiet, Void>, TableCell<FormDSPQChiTiet, Void>> cellFactory = new Callback<TableColumn<FormDSPQChiTiet, Void>, TableCell<FormDSPQChiTiet, Void>>() {
+        Callback<TableColumn<FormDSPQChiTiet, Void>, TableCell<FormDSPQChiTiet, Void>> buttonsColumnCellFactory = new Callback<TableColumn<FormDSPQChiTiet, Void>, TableCell<FormDSPQChiTiet, Void>>() {
             @Override
             public TableCell<FormDSPQChiTiet, Void> call(final TableColumn<FormDSPQChiTiet, Void> param) {
                 final TableCell<FormDSPQChiTiet, Void> cell = new TableCell<FormDSPQChiTiet, Void>() {
@@ -308,7 +313,7 @@ public class EditDanhSachChiTietController implements Initializable {
             }
         };
 
-        buttonsColumn.setCellFactory(cellFactory);
+        buttonsColumn.setCellFactory(buttonsColumnCellFactory);
         buttonsColumn.setSortable(false);
         numberColumn.setSortable(false);
         hoTenColumn.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
@@ -352,6 +357,15 @@ public class EditDanhSachChiTietController implements Initializable {
         dsPhatQua.setTrangThai(trangThai);
         try {
             dsPhatQuaService.update(dsPhatQua);
+            if(dsPhatQua.getTrangThai() == 2){
+                buttonsColumn.setVisible(false);
+                themMoiButton.setVisible(false);
+
+            }else if(dsPhatQua.getTrangThai() == 1){
+                buttonsColumn.setVisible(true);
+                themMoiButton.setVisible(true);
+                loadData();
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
