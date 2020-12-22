@@ -1,6 +1,7 @@
 package app;
 
 import app.common.MyConnection;
+import app.common.PrintPDF;
 import app.controller.CommonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,10 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
+            PrintPDF printPDF = new PrintPDF();
+//        //type = true: danh sách phát quà
+//        //type = false: danh sách phát thưởng
+            printPDF.printDS(2, true);
 
         } catch (Exception ex) {
             ex.printStackTrace();

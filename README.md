@@ -15,4 +15,8 @@ Chỉnh sửa các thông số trong common.DatabaseConfig:
      String USERNAME = "root";  //username  khi cài đặt MySql
      
      String PASSWORD = "root";  // password  khi cài đặt MySql
+
+
+
+# Thêm thư viện itext trong directory Lib của Project để thực hiện chức năng in file
      
