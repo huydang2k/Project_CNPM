@@ -1,4 +1,4 @@
-package app.common;
+package app.service;
 
 import app.model.DSPhatQua;
 import app.model.DSPhatThuong;
@@ -24,7 +24,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class PrintPDF {
+public class PrintPDFService {
     public static DSPQChiTietService dspqChiTietService;
     public static DSPhatQuaService dsPhatQuaService;
     public static DSPTChiTietService dsptChiTietService;
@@ -32,7 +32,7 @@ public class PrintPDF {
     public static DSPhatQuaRepo dsPhatQuaRepo;
     public static DSPhatThuongRepo dsPhatThuongRepo;
 
-    public PrintPDF()
+    public PrintPDFService()
     {
         dspqChiTietService = new DSPQChiTietService();
         dsptChiTietService = new DSPTChiTietService();
@@ -71,8 +71,8 @@ public class PrintPDF {
                 /**
                  * Tạo file PDF
                  */
-                DSPhatQua dsPhatQua = dsPhatQuaRepo.findById(1);
-                ArrayList<FormDSPQChiTiet> dspqChiTiet = new DSPQChiTietService().getFormDSPQChiTietByMaDS(1);
+                DSPhatQua dsPhatQua = dsPhatQuaRepo.findById(maDS);
+                ArrayList<FormDSPQChiTiet> dspqChiTiet = new DSPQChiTietService().getFormDSPQChiTietByMaDS(maDS);
                 //Title
                 Paragraph title = new Paragraph("Danh sách Phát quà " + dsPhatQua.getSuKien(),font);
                 title.setAlignment(Element.ALIGN_CENTER);
