@@ -6,6 +6,8 @@ import app.model.NhanKhau;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
 import app.service.DSPhatQuaService;
+import app.view.button.DeleteButton;
+import app.view.button.EditButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -173,8 +175,8 @@ public class EditDanhSachChiTietController implements Initializable {
             @Override
             public TableCell<FormDSPQChiTiet, Void> call(final TableColumn<FormDSPQChiTiet, Void> param) {
                 final TableCell<FormDSPQChiTiet, Void> cell = new TableCell<FormDSPQChiTiet, Void>() {
-                    private final Button deleteButton = new Button("Xóa");
-                    private final Button editButton = new Button("Chỉnh sửa");
+                    private final DeleteButton deleteButton = new DeleteButton();
+                    private final EditButton editButton = new EditButton();
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {

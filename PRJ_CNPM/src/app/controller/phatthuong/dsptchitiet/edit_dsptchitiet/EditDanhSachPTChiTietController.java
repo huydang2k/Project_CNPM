@@ -6,6 +6,8 @@ import app.model.NhanKhau;
 import app.model.form.FormDSPTChiTiet;
 import app.service.DSPTChiTietService;
 import app.service.DSPhatThuongService;
+import app.view.button.DeleteButton;
+import app.view.button.EditButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -181,8 +183,8 @@ public class EditDanhSachPTChiTietController implements Initializable {
             @Override
             public TableCell<FormDSPTChiTiet, Void> call(final TableColumn<FormDSPTChiTiet, Void> param) {
                 final TableCell<FormDSPTChiTiet, Void> cell = new TableCell<FormDSPTChiTiet, Void>() {
-                    private final Button deleteButton = new Button("Xóa");
-                    private final Button editButton = new Button("Chỉnh sửa");
+                    private final DeleteButton deleteButton = new DeleteButton();
+                    private final EditButton editButton = new EditButton();
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
@@ -212,8 +214,8 @@ public class EditDanhSachPTChiTietController implements Initializable {
                                 }
                             }
                         });
-                        deleteButton.setMaxSize(200,100);
-                        deleteButton.setPrefSize(200,20);
+//                        deleteButton.setMaxSize(200,100);
+//                        deleteButton.setPrefSize(200,20);
                     }
 
                     {
@@ -325,8 +327,8 @@ public class EditDanhSachPTChiTietController implements Initializable {
 
                             }
                         });
-                        editButton.setMaxSize(200,100);
-                        editButton.setPrefSize(200,20);
+//                        editButton.setMaxSize(200,100);
+//                        editButton.setPrefSize(200,20);
                     }
 
                     HBox buttonsBox = new HBox(editButton, deleteButton);

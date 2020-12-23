@@ -14,12 +14,15 @@
     -fx-pref-width: 62px;
     -fx-pref-height: 57px;
 }
+.table-cell{
+    -fx-alignment: center;
+}
 .tablecolumn-center{
     -fx-alignment: center;
 }
-.root{
-    -fx-background-color: pink;
-}
+/*.root{*/
+/*    -fx-background-color: pink;*/
+/*}*/
 .split-pane .anchor-pane .button{
     -fx-background-image: url("../../images/delete_btn.png");
     -fx-background-size: 100% 100%;

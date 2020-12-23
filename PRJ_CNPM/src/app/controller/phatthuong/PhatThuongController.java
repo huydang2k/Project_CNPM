@@ -5,6 +5,7 @@ import app.controller.phatthuong.dsptchitiet.edit_dsptchitiet.EditDanhSachPTChiT
 import app.controller.phatthuong.dsptchitiet.view_dsptchitiet.ViewDanhSachPTChiTietController;
 import app.model.DSPhatThuong;
 import app.service.DSPhatThuongService;
+import app.view.button.DeleteButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -119,7 +120,7 @@ public class PhatThuongController implements Initializable {
             @Override
             public TableCell<DSPhatThuong, Void> call(final TableColumn<DSPhatThuong, Void> param) {
                 final TableCell<DSPhatThuong, Void> cell = new TableCell<DSPhatThuong, Void>() {
-                    private final Button deleteButton = new Button("Xóa");
+                    private final DeleteButton deleteButton = new DeleteButton();
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
@@ -143,7 +144,7 @@ public class PhatThuongController implements Initializable {
                                 }
                             }
                         });
-                        deleteButton.setMaxSize(200,200);
+//                        deleteButton.setMaxSize(200,200);
                     }
 
 
@@ -165,6 +166,7 @@ public class PhatThuongController implements Initializable {
         buttonsColumn.setSortable(false);
         numberColumn.setSortable(false);
         dsPhatThuongColumn.setSortable(false);
+        dsPhatThuongColumn.setStyle("-fx-alignment: center-left;");
     }
 
     private void loadData(){

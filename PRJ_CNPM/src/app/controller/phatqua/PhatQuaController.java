@@ -5,6 +5,7 @@ import app.controller.phatqua.dspqchitiet.edit_dspqchitiet.EditDanhSachChiTietCo
 import app.controller.phatqua.dspqchitiet.view_dspqchitiet.ViewDanhSachChiTietController;
 import app.model.DSPhatQua;
 import app.service.DSPhatQuaService;
+import app.view.button.DeleteButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -129,7 +130,7 @@ public class PhatQuaController implements Initializable {
             @Override
             public TableCell<DSPhatQua, Void> call(final TableColumn<DSPhatQua, Void> param) {
                 final TableCell<DSPhatQua, Void> cell = new TableCell<DSPhatQua, Void>() {
-                    private final Button deleteButton = new Button("Xóa");
+                    private final DeleteButton deleteButton = new DeleteButton();
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
@@ -153,7 +154,7 @@ public class PhatQuaController implements Initializable {
                                 }
                             }
                         });
-                        deleteButton.setMaxSize(200,200);
+//                        deleteButton.setMaxSize(200,200);
                     }
 
 
@@ -175,6 +176,7 @@ public class PhatQuaController implements Initializable {
         buttonsColumn.setSortable(false);
         numberColumn.setSortable(false);
         dsPhatQuaColumn.setSortable(false);
+        dsPhatQuaColumn.setStyle("-fx-alignment: center-left;");
     }
 
     private void loadData(){
