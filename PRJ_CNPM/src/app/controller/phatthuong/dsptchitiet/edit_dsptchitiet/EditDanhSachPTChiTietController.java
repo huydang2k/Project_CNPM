@@ -94,6 +94,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
     Button editOrSaveButton;
     @FXML
     TableColumn<FormDSPTChiTiet, Void> buttonsColumn;
+
     PrintPDFService printPDFService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -278,7 +279,10 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             ComboBox xepLoaiCmbBox = new ComboBox();
                             ObservableList<String> xepLoaiCmbList = FXCollections.observableArrayList("A", "B","C");
                             xepLoaiCmbBox.setItems(xepLoaiCmbList);
-                            xepLoaiCmbBox.setValue(data.getXepLoai());
+                            xepLoaiCmbBox.setValue("Chọn xếp loại cho học sinh");
+                            if(data.getXepLoai() != null){
+                                xepLoaiCmbBox.setValue(data.getXepLoai());
+                            }
 
                             TextField mucThuongTextField = new TextField();
                             mucThuongTextField.setPromptText("Mức thưởng");
@@ -313,7 +317,13 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             Optional<ButtonType> result = editDialog.showAndWait();
                             if(result.get() == xacNhanButtonType){
                                 data.setThanhTich(thanhTichTextFiled.getText());
-                                data.setXepLoai(xepLoaiCmbBox.getValue().toString());
+                                String xepLoai = xepLoaiCmbBox.getValue().toString();
+                                if(xepLoai.length() > 2){
+                                    data.setXepLoai(null);
+                                }else{
+                                    data.setXepLoai(xepLoai);
+                                }
+
                                 if(mucThuongTextField.getText().isEmpty()){
                                     data.setMucThuong(0);
                                 }else{
@@ -533,7 +543,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
         ComboBox xepLoaiCmbBox = new ComboBox();
         ObservableList<String> xepLoaiCmbList = FXCollections.observableArrayList("A", "B","C");
         xepLoaiCmbBox.setItems(xepLoaiCmbList);
-        xepLoaiCmbBox.setValue("A");
+        xepLoaiCmbBox.setValue("Chọn xếp loại cho học sinh");
 
         TextField mucThuongTextField = new TextField();
         mucThuongTextField.setPromptText("Mức thưởng");
@@ -613,6 +623,9 @@ public class EditDanhSachPTChiTietController implements Initializable {
                 String thanhTich = thanhTichTextField.getText();
                 boolean minhChung = minhChungCmbBox.getValue().toString().equalsIgnoreCase("Đã nộp");
                 String xepLoai = xepLoaiCmbBox.getValue().toString();
+                if(xepLoai.length() > 2){
+                    xepLoai = null;
+                }
                 double mucThuong = 0;
                 if(!mucThuongTextField.getText().isEmpty()){
                     mucThuong = Double.parseDouble(mucThuongTextField.getText());
