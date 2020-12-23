@@ -53,23 +53,27 @@ public class PrintPDFService {
         return xn ? "V" : "O";
     }
 
-    public void printDS(int maDS, boolean type, String fileName) throws IOException, DocumentException {
+    public void printDS(int maDS, boolean type) throws IOException, DocumentException {
         Document doc = new Document();
         File fontFile = new File("font/vuArial.ttf");
         BaseFont bf = BaseFont.createFont(fontFile.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font font = new Font(bf,15);
-        PdfWriter.getInstance(doc, new FileOutputStream("pdf/test.pdf"));
+
+        //PdfWriter.getInstance(doc, new FileOutputStream("pdf/test.pdf"));
 
         if(type) //phát quà
         {
             try {
+                DSPhatQua dsPhatQua = dsPhatQuaRepo.findById(maDS);
+                String fileName = "DSPQ"+dsPhatQua.getMaDS();
+                PdfWriter.getInstance(doc, new FileOutputStream("pdf/"+fileName+".pdf"));
                 doc.open();
                 /**
                  * Tạo file PDF
                  */
-                DSPhatQua dsPhatQua = dsPhatQuaRepo.findById(maDS);
+
                 ArrayList<FormDSPQChiTiet> dspqChiTiet = new DSPQChiTietService().getFormDSPQChiTietByMaDS(maDS);
-             //   PdfWriter.getInstance(doc, new FileOutputStream("pdf/"+dsPhatQua.getSuKien()+".pdf"));
+
                 //Title
                 Paragraph title = new Paragraph("Danh sách Phát quà " + dsPhatQua.getSuKien(),font);
                 title.setAlignment(Element.ALIGN_CENTER);
@@ -88,16 +92,16 @@ public class PrintPDFService {
 
                 //Hiển thị bảng thông tin
 
-                PdfPTable tableDS = new PdfPTable(8);
-                PdfPCell c1 = new PdfPCell(new Phrase("Mã DS"));
-                PdfPCell c2 = new PdfPCell(new Phrase("Mã Nhân khẩu"));
+                PdfPTable tableDS = new PdfPTable(7);
+               // PdfPCell c1 = new PdfPCell(new Phrase("Mã DS",font));
+                PdfPCell c2 = new PdfPCell(new Phrase("Mã Nhân khẩu",font));
                 PdfPCell c3 = new PdfPCell(new Phrase("Họ tên",font));
-                PdfPCell c4 = new PdfPCell(new Phrase("Năm sinh"));
-                PdfPCell c5 = new PdfPCell(new Phrase("ID Hộ khẩu"));
-                PdfPCell c6 = new PdfPCell(new Phrase("Phần qua"));
-                PdfPCell c7 = new PdfPCell(new Phrase("Mức qua"));
-                PdfPCell c8 = new PdfPCell(new Phrase("Được xác nhận"));
-                tableDS.addCell(c1);
+                PdfPCell c4 = new PdfPCell(new Phrase("Năm sinh",font));
+                PdfPCell c5 = new PdfPCell(new Phrase("ID Hộ khẩu",font));
+                PdfPCell c6 = new PdfPCell(new Phrase("Phần qua",font));
+                PdfPCell c7 = new PdfPCell(new Phrase("Mức qua",font));
+                PdfPCell c8 = new PdfPCell(new Phrase("Được xác nhận",font));
+              //  tableDS.addCell(c1);
                 tableDS.addCell(c2);
                 tableDS.addCell(c3);
                 tableDS.addCell(c4);
@@ -107,13 +111,13 @@ public class PrintPDFService {
                 tableDS.addCell(c8);
                 for (FormDSPQChiTiet sample: dspqChiTiet)
                 {
-                    tableDS.addCell(new Phrase(String.valueOf(sample.getIdDS()),font));
+                   // tableDS.addCell(new Phrase(String.valueOf(sample.getIdDS()),font));
                     tableDS.addCell(new Phrase(String.valueOf(sample.getIdNhanKhau()),font));
                     tableDS.addCell(new Phrase(sample.getHoTen(),font));
                     tableDS.addCell(new Phrase(String.valueOf(sample.getNamSinh()),font));
                     tableDS.addCell(new Phrase(String.valueOf(sample.getIdHoKhau()),font));
                     tableDS.addCell(new Phrase(sample.getPhanQua(),font));
-                    tableDS.addCell(new Phrase(String.valueOf(sample.getMucQua())));
+                    tableDS.addCell(new Phrase(String.valueOf(sample.getMucQua()),font));
                     tableDS.addCell(new Phrase(xacNhanToString(sample.isDuocXacNhan()),font));
                 }
 
@@ -129,8 +133,9 @@ public class PrintPDFService {
             {
                 DSPhatThuong dsPhatThuong = dsPhatThuongRepo.findById(maDS);
                 ArrayList<FormDSPTChiTiet> dsptChiTiet = dsptChiTietService.getFormDSPTChiTietByMaDS(maDS);
+                String fileName = "DSPQ"+dsPhatThuong.getMaDS();
+                PdfWriter.getInstance(doc, new FileOutputStream("pdf/"+fileName+".pdf"));
                 doc.open();
-
                 Paragraph title = new Paragraph("Danh sách Phát thưởng "+ dsPhatThuong.getSuKien(), font);
                 title.setAlignment(Element.ALIGN_CENTER);
                 title.setFont(new Font(Font.FontFamily.TIMES_ROMAN, 30, Font.BOLD, BaseColor.BLACK));
@@ -144,19 +149,19 @@ public class PrintPDFService {
                 doc.add(description);
                 doc.add(new Phrase("\n"));
 
-                PdfPTable tableDS = new PdfPTable(11);
-                PdfPCell c1 = new PdfPCell(new Phrase("Mã DS"));
-                PdfPCell c2 = new PdfPCell(new Phrase("Mã HS"));
-                PdfPCell c3 = new PdfPCell(new Phrase("Mã Nhân khẩu"));
+                PdfPTable tableDS = new PdfPTable(10);
+               //PdfPCell c1 = new PdfPCell(new Phrase("Mã DS",font));
+                PdfPCell c2 = new PdfPCell(new Phrase("Mã HS",font));
+                PdfPCell c3 = new PdfPCell(new Phrase("Mã Nhân khẩu",font));
                 PdfPCell c4 = new PdfPCell(new Phrase("Họ tên",font));
-                PdfPCell c5 = new PdfPCell(new Phrase("Năm sinh"));
-                PdfPCell c6 = new PdfPCell(new Phrase("ID Hộ khẩu"));
-                PdfPCell c7 = new PdfPCell(new Phrase("Thành tích"));
-                PdfPCell c8 = new PdfPCell(new Phrase("Minh chứng"));
-                PdfPCell c9 = new PdfPCell(new Phrase("Xếp loại"));
-                PdfPCell c10 = new PdfPCell(new Phrase("Mức thưởng"));
-                PdfPCell c11 = new PdfPCell(new Phrase("Được xác nhận"));
-                tableDS.addCell(c1);
+                PdfPCell c5 = new PdfPCell(new Phrase("Năm sinh",font));
+                PdfPCell c6 = new PdfPCell(new Phrase("ID Hộ khẩu",font));
+                PdfPCell c7 = new PdfPCell(new Phrase("Thành tích",font));
+                PdfPCell c8 = new PdfPCell(new Phrase("Minh chứng",font));
+                PdfPCell c9 = new PdfPCell(new Phrase("Xếp loại",font));
+                PdfPCell c10 = new PdfPCell(new Phrase("Mức thưởng",font));
+                PdfPCell c11 = new PdfPCell(new Phrase("Được xác nhận",font));
+                //tableDS.addCell(c1);
                 tableDS.addCell(c2);
                 tableDS.addCell(c3);
                 tableDS.addCell(c4);
@@ -170,7 +175,7 @@ public class PrintPDFService {
 
                 for(FormDSPTChiTiet sample: dsptChiTiet)
                 {
-                    tableDS.addCell(new Phrase(String.valueOf(sample.getIdDS()),font));
+                   // tableDS.addCell(new Phrase(String.valueOf(sample.getIdDS()),font));
                     tableDS.addCell(new Phrase(String.valueOf(sample.getIdHocSinh()),font));
                     tableDS.addCell(new Phrase(String.valueOf(sample.getIdNhanKhau()),font));
                     tableDS.addCell(new Phrase(sample.getHoTen(),font));

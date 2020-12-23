@@ -26,7 +26,7 @@ public class Main extends Application {
             PrintPDFService printPDF = new PrintPDFService();
 //        //type = true: danh sách phát quà
 //        //type = false: danh sách phát thưởng
-            printPDF.printDS(1, true,"test1");
+            printPDF.printDS(1, false);
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -6,6 +6,7 @@ import app.model.NhanKhau;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
 import app.service.DSPhatQuaService;
+import app.service.PrintPDFService;
 import app.view.button.DeleteButton;
 import app.view.button.EditButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -36,6 +37,8 @@ public class EditDanhSachChiTietController implements Initializable {
     DSPhatQuaService dsPhatQuaService;
 
     CommonController commonController;
+
+    PrintPDFService printPDFService;
 
     private boolean editMode;
 
@@ -117,8 +120,19 @@ public class EditDanhSachChiTietController implements Initializable {
         dsPhatQuaService = new DSPhatQuaService();
         trangThaiComboBoxList = FXCollections.observableArrayList("Đang phát", "Đã hoàn thành");
         trangThaiComboBox.setItems(trangThaiComboBoxList);
+        printPDFService = new PrintPDFService();
     }
-
+    void printpdf(){
+        try{
+        printPDFService.printDS(dsPhatQua.getMaDS(),true);}
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Đã có lỗi xảy ra");
+            alert.setContentText("Không thể in danh sách. Vui lòng thử lại sau");
+            alert.show();
+        }
+    }
     public void initData(DSPhatQua rowData){
         this.dsPhatQua = rowData;
         initTable();
