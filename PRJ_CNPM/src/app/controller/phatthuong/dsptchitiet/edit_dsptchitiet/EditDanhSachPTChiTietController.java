@@ -40,6 +40,8 @@ public class EditDanhSachPTChiTietController implements Initializable {
 
     private String dip;
     @FXML
+    SplitPane R;
+    @FXML
     TextField dipTextField;
 
     @FXML
@@ -92,6 +94,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
+        commonController.csslize(R);
         dsptChiTietService = new DSPTChiTietService();
         trangThaiComboBoxList = FXCollections.observableArrayList("Đợi nộp minh chứng","Đang phát", "Đã hoàn thành");
         trangThaiComboBox.setItems(trangThaiComboBoxList);

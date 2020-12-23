@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
@@ -30,6 +31,8 @@ public class ThongKePhatThuongController implements Initializable {
     DSPhatThuongService dsPhatThuongService ;
     ObservableList<DSPhatThuong> dsPhatThuongObservableList;
     @FXML
+    SplitPane R;
+    @FXML
     TableView<DSPhatThuong> table;
     @FXML
     TableColumn<DSPhatThuong, String> dsPhatThuong;
@@ -39,6 +42,7 @@ public class ThongKePhatThuongController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
+        commonController.csslize(R);
         dsPhatThuongService = new DSPhatThuongService();
         initTable();
         loadData();

@@ -30,7 +30,8 @@ public class PhatThuongController implements Initializable {
     DSPhatThuongService dsPhatThuongService;
     CommonController commonController;
     ObservableList<DSPhatThuong> dsPhatThuongObservableList;
-
+    @FXML
+    SplitPane R;
     @FXML
     TableView<DSPhatThuong> table;
     @FXML
@@ -191,6 +192,7 @@ public class PhatThuongController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
+        commonController.csslize(R);
         dsPhatThuongService = new DSPhatThuongService();
         initTable();
         loadData();

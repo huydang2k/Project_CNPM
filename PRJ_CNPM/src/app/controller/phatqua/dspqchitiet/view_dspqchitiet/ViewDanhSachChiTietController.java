@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,7 +28,8 @@ public class ViewDanhSachChiTietController implements Initializable {
     CommonController commonController;
 
     DSPQChiTietService dspqChiTietService;
-
+    @FXML
+    SplitPane R;
     @FXML
     Label nameDSPQ;
 
@@ -72,6 +74,7 @@ public class ViewDanhSachChiTietController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
+        commonController.csslize(R);
         dspqChiTietService = new DSPQChiTietService();
     }
 

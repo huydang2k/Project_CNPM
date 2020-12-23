@@ -42,7 +42,8 @@ public class ThemMoiPQController implements Initializable {
     DSPhatQuaService dsPhatQuaService;
 
     double tongChi;
-
+    @FXML
+    SplitPane R;
     @FXML
     TextField tenDSPQTextField;
 
@@ -86,6 +87,7 @@ public class ThemMoiPQController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
+        commonController.csslize(R);
         dsPhatQuaService = new DSPhatQuaService();
         dspqChiTietService = new DSPQChiTietService();
 

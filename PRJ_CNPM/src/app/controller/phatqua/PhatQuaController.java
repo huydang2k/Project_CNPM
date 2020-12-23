@@ -33,7 +33,8 @@ public class PhatQuaController implements Initializable {
     CommonController commonController;
 
     ObservableList<DSPhatQua> dsPhatQuaObservableList;
-
+    @FXML
+    SplitPane R;
     //table
     @FXML
     TableView<DSPhatQua> table;
@@ -52,6 +53,7 @@ public class PhatQuaController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         DSPhatQuaService = new DSPhatQuaService();
         commonController = new CommonController();
+        commonController.csslize(R);
         initTable();
         loadData();
     }

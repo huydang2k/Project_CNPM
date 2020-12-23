@@ -2,6 +2,7 @@ package app.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -26,6 +27,9 @@ public class CommonController implements Initializable {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+    }
+    public void csslize(Parent scene){
+        scene.getStylesheets().add(getClass().getResource("../view/common_style.css").toExternalForm());
     }
     public void toThemMoiDsPhatQua() {
         switchScene(makeScene("../view/phatqua/themmoi/ThemMoi.fxml"));

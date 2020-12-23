@@ -42,7 +42,8 @@ public class EditDanhSachChiTietController implements Initializable {
     double tongChi;
 
     String dip;
-
+    @FXML
+    SplitPane R;
     @FXML
     Label nameDSPQ;
 
@@ -109,6 +110,7 @@ public class EditDanhSachChiTietController implements Initializable {
         editMode = false;
         daPhatHet = false;
         commonController = new CommonController();
+        commonController.csslize(R);
         dspqChiTietService = new DSPQChiTietService();
         dsPhatQuaService = new DSPhatQuaService();
         trangThaiComboBoxList = FXCollections.observableArrayList("Đang phát", "Đã hoàn thành");
