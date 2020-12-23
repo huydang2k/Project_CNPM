@@ -95,6 +95,9 @@ public class EditDanhSachPTChiTietController implements Initializable {
     @FXML
     TableColumn<FormDSPTChiTiet, Void> buttonsColumn;
 
+    @FXML
+    Button themMoiButton;
+
     PrintPDFService printPDFService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -316,43 +319,57 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             editDialog.getDialogPane().setContent(gridPane);
                             Optional<ButtonType> result = editDialog.showAndWait();
                             if(result.get() == xacNhanButtonType){
-                                data.setThanhTich(thanhTichTextFiled.getText());
-                                String xepLoai = xepLoaiCmbBox.getValue().toString();
-                                if(xepLoai.length() > 2){
-                                    data.setXepLoai(null);
-                                }else{
-                                    data.setXepLoai(xepLoai);
-                                }
-
-                                if(mucThuongTextField.getText().isEmpty()){
-                                    data.setMucThuong(0);
-                                }else{
-                                    data.setMucThuong(Double.parseDouble(mucThuongTextField.getText()));
-                                }
+                                boolean duocXacNhan;
                                 if(ghiChuComboBox.getValue().toString().equalsIgnoreCase("Đã trao")){
-                                    data.setDuocXacNhan(true);
+                                    duocXacNhan = true;
                                 }else{
-                                    data.setDuocXacNhan(false);
+                                    duocXacNhan = false;
                                 }
-                                if(minhChungCmbBox.getValue().toString().equalsIgnoreCase("Đã nộp")){
-                                    data.setMinhChung(true);
-                                }else{
-                                    data.setMinhChung(false);
-                                }
-                                try {
 
-                                    dsptChiTietService.updateDuocNhanThuong(data);
-                                    formDSPTChiTietObservableList.set(getIndex(),data);
-                                    updateTongChi();
-                                } catch (SQLException throwables) {
-                                    throwables.printStackTrace();
+                                boolean minhChung;
+                                if(minhChungCmbBox.getValue().toString().equalsIgnoreCase("Đã nộp")){
+                                    minhChung = true;
+                                }else{
+                                    minhChung = false;
+                                }
+
+                                if(duocXacNhan && !minhChung){
                                     Alert alert1 = new Alert(Alert.AlertType.ERROR);
                                     alert1.setTitle("Lỗi");
                                     alert1.setHeaderText("Có lỗi xảy ra khi sửa bản ghi");
-                                    alert1.setContentText("Không thể sửa bản ghi");
+                                    alert1.setContentText("Không thể trao thưởng cho học sinh chưa nộp minh chứng");
                                     alert1.show();
-                                }
+                                }else{
+                                    data.setThanhTich(thanhTichTextFiled.getText());
+                                    String xepLoai = xepLoaiCmbBox.getValue().toString();
+                                    if(xepLoai.length() > 2){
+                                        data.setXepLoai(null);
+                                    }else{
+                                        data.setXepLoai(xepLoai);
+                                    }
+                                    data.setDuocXacNhan(duocXacNhan);
+                                    data.setMinhChung(minhChung);
 
+                                    if(mucThuongTextField.getText().isEmpty()){
+                                        data.setMucThuong(0);
+                                    }else{
+                                        data.setMucThuong(Double.parseDouble(mucThuongTextField.getText()));
+                                    }
+
+                                    try {
+
+                                        dsptChiTietService.updateDuocNhanThuong(data);
+                                        formDSPTChiTietObservableList.set(getIndex(),data);
+                                        updateTongChi();
+                                    } catch (SQLException throwables) {
+                                        throwables.printStackTrace();
+                                        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                                        alert1.setTitle("Lỗi");
+                                        alert1.setHeaderText("Có lỗi xảy ra khi sửa bản ghi");
+                                        alert1.setContentText("Không thể sửa bản ghi");
+                                        alert1.show();
+                                    }
+                                }
                             }
                         });
 //                        editButton.setMaxSize(200,100);
@@ -438,6 +455,14 @@ public class EditDanhSachPTChiTietController implements Initializable {
         dsPhatThuong.setTrangThai(trangThai);
         try {
             dsPhatThuongService.update(dsPhatThuong);
+            if(dsPhatThuong.getTrangThai() == 2){
+                buttonsColumn.setVisible(false);
+                themMoiButton.setVisible(false);
+            }else{
+                buttonsColumn.setVisible(true);
+                themMoiButton.setVisible(true);
+                loadData();
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
