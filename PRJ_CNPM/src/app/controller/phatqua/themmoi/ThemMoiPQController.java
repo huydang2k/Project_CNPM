@@ -6,6 +6,9 @@ import app.model.NhanKhau;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
 import app.service.DSPhatQuaService;
+import app.view.button.DeleteButton;
+import app.view.button.EditButton;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -131,8 +134,8 @@ public class ThemMoiPQController implements Initializable {
             @Override
             public TableCell<FormDSPQChiTiet, Void> call(final TableColumn<FormDSPQChiTiet, Void> param) {
                 final TableCell<FormDSPQChiTiet, Void> cell = new TableCell<FormDSPQChiTiet, Void>() {
-                    private final javafx.scene.control.Button deleteButton = new javafx.scene.control.Button("Xóa");
-                    private final javafx.scene.control.Button editButton = new javafx.scene.control.Button("Chỉnh sửa");
+                    private final DeleteButton deleteButton = new DeleteButton();
+                    private final EditButton editButton = new EditButton();
 
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
@@ -150,8 +153,8 @@ public class ThemMoiPQController implements Initializable {
                                 dspqChiTietObservableList.remove(data);
                             }
                         });
-                        deleteButton.setMaxSize(200,100);
-                        deleteButton.setPrefSize(200,20);
+//                        deleteButton.setMaxSize(200,100);
+//                        deleteButton.setPrefSize(200,20);
                     }
 
                     {
@@ -226,8 +229,8 @@ public class ThemMoiPQController implements Initializable {
 
                             }
                         });
-                        editButton.setMaxSize(200,100);
-                        editButton.setPrefSize(200,20);
+//                        editButton.setMaxSize(200,100);
+//                        editButton.setPrefSize(200,20);
                     }
 
                     HBox buttonsBox = new HBox(editButton, deleteButton);
