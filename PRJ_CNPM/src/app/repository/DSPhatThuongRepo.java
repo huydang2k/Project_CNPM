@@ -70,10 +70,19 @@ public class DSPhatThuongRepo extends BaseRepo<DSPhatThuong> {
         return preparedStatement.executeUpdate();
     }
     public int insert(DSPhatThuong dsPhatThuong) throws SQLException{
-        String sql = "insert into ds_phat_thuong values (null,?,?,0,0)";
+        String sql = "insert into ds_phat_thuong values (null,?,?,0,?)";
         PreparedStatement preparedStatement = prepare(sql);
         preparedStatement.setString(1,dsPhatThuong.getSuKien());
         preparedStatement.setDate(2,dsPhatThuong.getNgayTao());
-        return preparedStatement.executeUpdate();
+        preparedStatement.setDouble(3, dsPhatThuong.getTongChiPhi());
+        preparedStatement.executeUpdate();
+        sql = "SELECT LAST_INSERT_ID() as id";
+        preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        if(rs.next()){
+            return rs.getInt("id");
+        }else{
+            return 0;
+        }
     }
 }

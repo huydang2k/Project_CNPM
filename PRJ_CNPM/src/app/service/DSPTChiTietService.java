@@ -1,18 +1,13 @@
 package app.service;
 
 
-import app.model.DuocNhanThuong;
-import app.model.HocSinh;
-import app.model.NhanKhau;
-import app.model.ThanhVienCuaHo;
+import app.model.*;
 import app.model.form.FormDSPTChiTiet;
-import app.repository.DuocNhanThuongRepo;
-import app.repository.HocSinhRepo;
-import app.repository.NhanKhauRepo;
-import app.repository.ThanhVienCuaHoRepo;
+import app.repository.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DSPTChiTietService {
     DuocNhanThuongRepo duocNhanThuongRepo;
@@ -22,11 +17,14 @@ public class DSPTChiTietService {
     ThanhVienCuaHoRepo thanhVienCuaHoRepo;
     HocSinhRepo hocSinhRepo;
 
+    DSPhatThuongRepo dsPhatThuongRepo;
+
     public DSPTChiTietService() {
         this.duocNhanThuongRepo = new DuocNhanThuongRepo();
         this.nhanKhauRepo = new NhanKhauRepo();
         this.thanhVienCuaHoRepo = new ThanhVienCuaHoRepo();
         this.hocSinhRepo = new HocSinhRepo();
+        this.dsPhatThuongRepo = new DSPhatThuongRepo();
     }
     public ArrayList<FormDSPTChiTiet> getFormPTChiTietDangPhat(int maDS) throws SQLException {
         ArrayList<FormDSPTChiTiet> formDSPTChiTietArrayList = new ArrayList<>();
@@ -137,5 +135,59 @@ public class DSPTChiTietService {
     public NhanKhau getNhanKhauByMaHS(int idHS)throws SQLException{
         return new NhanKhauRepo().findById((new HocSinhRepo().findById(idHS).getIdNhanKhau()));
 
+    }
+
+    public ArrayList<FormDSPTChiTiet> getAllHocSinh() throws SQLException, ClassNotFoundException {
+        ArrayList<FormDSPTChiTiet> formDSPTChiTietArrayList = new ArrayList<>();
+        ArrayList<HocSinh> hocSinhArrayList = hocSinhRepo.findALl();
+        for(int i = 0; i < hocSinhArrayList.size(); i++){
+            FormDSPTChiTiet formDSPTChiTiet = new FormDSPTChiTiet();
+            HocSinh hocSinh = hocSinhArrayList.get(i);
+            ThanhVienCuaHo thanhVienCuaHo = thanhVienCuaHoRepo.findByIdNhanKhau(hocSinh.getIdNhanKhau());
+            NhanKhau nhanKhau = nhanKhauRepo.findById(hocSinh.getIdNhanKhau());
+            formDSPTChiTiet.setIdHocSinh(hocSinh.getMaHS());
+            formDSPTChiTiet.setIdHoKhau(thanhVienCuaHo.getIdHoKhau());
+            formDSPTChiTiet.setHoTen(nhanKhau.getHoTen());
+            formDSPTChiTiet.setNamSinh(Integer.parseInt(nhanKhau.getNamSinh().toString().substring(0, 4)));
+            formDSPTChiTiet.setDuocXacNhan(false);
+            formDSPTChiTiet.setMinhChung(false);
+            formDSPTChiTietArrayList.add(formDSPTChiTiet);
+        }
+        return formDSPTChiTietArrayList;
+    }
+
+    public FormDSPTChiTiet addDuocNhanThuongForThemMoi(int idHocSinh, String thanhTich, String xepLoai, double mucThuong) throws SQLException {
+        FormDSPTChiTiet formDSPTChiTiet = new FormDSPTChiTiet();
+        HocSinh hocSinh = hocSinhRepo.findById(idHocSinh);
+        NhanKhau nhanKhau = nhanKhauRepo.findById(hocSinh.getIdNhanKhau());
+        ThanhVienCuaHo thanhVienCuaHo = thanhVienCuaHoRepo.findByIdNhanKhau(hocSinh.getIdNhanKhau());
+        formDSPTChiTiet.setIdHocSinh(hocSinh.getMaHS());
+        formDSPTChiTiet.setIdHoKhau(thanhVienCuaHo.getIdHoKhau());
+        formDSPTChiTiet.setIdNhanKhau(hocSinh.getIdNhanKhau());
+        formDSPTChiTiet.setHoTen(nhanKhau.getHoTen());
+        formDSPTChiTiet.setMucThuong(mucThuong);
+        formDSPTChiTiet.setXepLoai(xepLoai);
+        formDSPTChiTiet.setThanhTich(thanhTich);
+        formDSPTChiTiet.setNamSinh(Integer.parseInt(nhanKhau.getNamSinh().toString().substring(0, 4)));
+        formDSPTChiTiet.setMinhChung(false);
+        formDSPTChiTiet.setDuocXacNhan(false);
+        return formDSPTChiTiet;
+    }
+
+    public void addDSPT(DSPhatThuong dsPhatThuong, List<FormDSPTChiTiet> formDSPTChiTietList) throws SQLException {
+        int maDS = dsPhatThuongRepo.insert(dsPhatThuong);
+        System.out.println("Mã dspt: "+maDS);
+        for(int i = 0; i < formDSPTChiTietList.size(); i++){
+            FormDSPTChiTiet formDSPTChiTiet = formDSPTChiTietList.get(i);
+            DuocNhanThuong duocNhanThuong = new DuocNhanThuong();
+            duocNhanThuong.setMaDS(maDS);
+            duocNhanThuong.setDuocXacNhan(false);
+            duocNhanThuong.setMinhChung(false);
+            duocNhanThuong.setMucThuong(formDSPTChiTiet.getMucThuong());
+            duocNhanThuong.setThanhTich(formDSPTChiTiet.getThanhTich());
+            duocNhanThuong.setMaHS(formDSPTChiTiet.getIdHocSinh());
+            duocNhanThuong.setXepLoai(formDSPTChiTiet.getXepLoai());
+            duocNhanThuongRepo.insert(duocNhanThuong);
+        }
     }
 }

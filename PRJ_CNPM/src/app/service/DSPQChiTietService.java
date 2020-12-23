@@ -89,10 +89,10 @@ public class DSPQChiTietService {
         return formDSPQChiTiet;
     }
 
-    public void addDSPQ(DSPhatQua dsPhatQua, List<FormDSPQChiTiet> formDSPQChiTietArrayList) throws SQLException {
+    public void addDSPQ(DSPhatQua dsPhatQua, List<FormDSPQChiTiet> formDSPQChiTietList) throws SQLException {
         int maDS = dsPhatQuaRepo.insert(dsPhatQua);
-        for(int i = 0; i < formDSPQChiTietArrayList.size(); i ++){
-            FormDSPQChiTiet formDSPQChiTiet = formDSPQChiTietArrayList.get(i);
+        for(int i = 0; i < formDSPQChiTietList.size(); i ++){
+            FormDSPQChiTiet formDSPQChiTiet = formDSPQChiTietList.get(i);
             DuocNhanQua duocNhanQua = new DuocNhanQua();
             duocNhanQua.setMaDS(maDS);
             duocNhanQua.setDuocXacNhan(false);

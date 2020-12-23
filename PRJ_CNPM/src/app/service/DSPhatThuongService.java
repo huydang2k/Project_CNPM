@@ -30,12 +30,7 @@ public class DSPhatThuongService  {
     public ArrayList<DSPhatThuong> getDSHoanThanh() throws SQLException {
         return dsPhatThuongRepo.findDSHoanThanh();
     }
-    public void insertDSPhatThuong(String suKien) throws SQLException{
-        Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-        System.out.println(date);
-        lastInsertedDS = new DSPhatThuong(null,suKien,date,0,0.0);
-        dsPhatThuongRepo.insert(lastInsertedDS);
-    }
+
     public void update(DSPhatThuong dsPhatThuong) throws SQLException{
         dsPhatThuongRepo.update(dsPhatThuong);
     }
