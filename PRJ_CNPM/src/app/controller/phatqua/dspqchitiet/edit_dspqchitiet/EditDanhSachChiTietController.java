@@ -122,9 +122,14 @@ public class EditDanhSachChiTietController implements Initializable {
         trangThaiComboBox.setItems(trangThaiComboBoxList);
         printPDFService = new PrintPDFService();
     }
-    void printpdf(){
+    public void printpdf(){
         try{
-        printPDFService.printDS(dsPhatQua.getMaDS(),true);}
+        printPDFService.printDS(dsPhatQua.getMaDS(),true);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("In danh sách");
+            alert.setHeaderText("In danh sách hoạt động phát quà " + dsPhatQua.getSuKien());
+            alert.setContentText("In thành công");
+            alert.show();}
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");

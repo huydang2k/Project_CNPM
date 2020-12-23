@@ -4,16 +4,14 @@ import app.controller.CommonController;
 import app.model.DSPhatQua;
 import app.model.form.FormDSPQChiTiet;
 import app.service.DSPQChiTietService;
+import app.service.PrintPDFService;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
@@ -70,14 +68,31 @@ public class ViewDanhSachChiTietController implements Initializable {
     TableColumn<FormDSPQChiTiet, String> ghiChuColumn;
 
     ObservableList<FormDSPQChiTiet> dspqChiTietObservableList;
-
+    PrintPDFService printPDFService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
         commonController.csslize(R);
         dspqChiTietService = new DSPQChiTietService();
+        printPDFService = new PrintPDFService();
     }
-
+    public void printpdf(){
+        try{
+            printPDFService.printDS(dsPhatQua.getMaDS(),true);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("In danh sách");
+            alert.setHeaderText("In danh sách hoạt động phát quà " + dsPhatQua.getSuKien());
+            alert.setContentText("In thành công");
+            alert.show();
+        }
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Đã có lỗi xảy ra");
+            alert.setContentText("Không thể in danh sách. Vui lòng thử lại sau");
+            alert.show();
+        }
+    }
     public void initData(DSPhatQua rowData){
         this.dsPhatQua = rowData;
         nameDSPQ.setText(dsPhatQua.getSuKien());

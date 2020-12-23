@@ -6,6 +6,7 @@ import app.model.NhanKhau;
 import app.model.form.FormDSPTChiTiet;
 import app.service.DSPTChiTietService;
 import app.service.DSPhatThuongService;
+import app.service.PrintPDFService;
 import app.view.button.DeleteButton;
 import app.view.button.EditButton;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -93,6 +94,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
     Button editOrSaveButton;
     @FXML
     TableColumn<FormDSPTChiTiet, Void> buttonsColumn;
+    PrintPDFService printPDFService;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
@@ -103,8 +105,24 @@ public class EditDanhSachPTChiTietController implements Initializable {
         editMode = false;
         daPhatHet = false;
         dsPhatThuongService = new DSPhatThuongService();
+        printPDFService = new PrintPDFService();
     }
-
+    public void printpdf(){
+        try{
+            printPDFService.printDS(dsPhatThuong.getMaDS(),false);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("In danh sách");
+            alert.setHeaderText("In danh sách hoạt động phát thưởng " + dsPhatThuong.getSuKien());
+            alert.setContentText("In thành công");
+            alert.show();}
+        catch (Exception ex){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText("Đã có lỗi xảy ra");
+            alert.setContentText("Không thể in danh sách. Vui lòng thử lại sau");
+            alert.show();
+        }
+    }
     public void initData(DSPhatThuong rowData){
         this.dsPhatThuong = rowData;
         tongChi = dsPhatThuong.getTongChiPhi();
