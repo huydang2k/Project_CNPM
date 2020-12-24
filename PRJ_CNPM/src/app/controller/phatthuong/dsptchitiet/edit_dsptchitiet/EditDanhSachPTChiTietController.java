@@ -73,23 +73,23 @@ public class EditDanhSachPTChiTietController implements Initializable {
     @FXML
     TableView<FormDSPTChiTiet> table;
     @FXML
-    TableColumn<FormDSPTChiTiet,String> numberColumn;
+    TableColumn<FormDSPTChiTiet, String> numberColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,String> hoTenColumn;
+    TableColumn<FormDSPTChiTiet, String> hoTenColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,Integer> namSinhColumn;
+    TableColumn<FormDSPTChiTiet, Integer> namSinhColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,Integer> hoGDColumn;
+    TableColumn<FormDSPTChiTiet, Integer> hoGDColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,String> thanhTichColumn;
+    TableColumn<FormDSPTChiTiet, String> thanhTichColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,String> minhChungColumn;
+    TableColumn<FormDSPTChiTiet, String> minhChungColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,String> xepLoaiColumn;
+    TableColumn<FormDSPTChiTiet, String> xepLoaiColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,Double> mucThuongColumn;
+    TableColumn<FormDSPTChiTiet, Double> mucThuongColumn;
     @FXML
-    TableColumn<FormDSPTChiTiet,String> ghiChuColumn;
+    TableColumn<FormDSPTChiTiet, String> ghiChuColumn;
     @FXML
     Button editOrSaveButton;
     @FXML
@@ -99,27 +99,32 @@ public class EditDanhSachPTChiTietController implements Initializable {
     Button themMoiButton;
 
     PrintPDFService printPDFService;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         commonController = new CommonController();
         commonController.csslize(R);
         dsptChiTietService = new DSPTChiTietService();
-        trangThaiComboBoxList = FXCollections.observableArrayList("Đợi nộp minh chứng","Đang phát", "Đã hoàn thành");
+        trangThaiComboBoxList = FXCollections.observableArrayList("Đợi nộp minh chứng", "Đang phát", "Đã hoàn thành");
         trangThaiComboBox.setItems(trangThaiComboBoxList);
         editMode = false;
         daPhatHet = false;
         dsPhatThuongService = new DSPhatThuongService();
         printPDFService = new PrintPDFService();
     }
-    public void printpdf(){
-        try{
-            printPDFService.printDS(dsPhatThuong.getMaDS(),false);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("In danh sách");
-            alert.setHeaderText("In danh sách hoạt động phát thưởng " + dsPhatThuong.getSuKien());
-            alert.setContentText("In thành công");
-            alert.show();}
-        catch (Exception ex){
+
+    public void printpdf() {
+        try {
+            String filePath = commonController.chooseDirectory();
+            if (filePath != null) {
+                printPDFService.printDS(dsPhatThuong.getMaDS(), false, filePath);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("In danh sách");
+                alert.setHeaderText("In danh sách hoạt động phát thưởng " + dsPhatThuong.getSuKien());
+                alert.setContentText("In thành công");
+                alert.show();
+            }
+        } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText("Đã có lỗi xảy ra");
@@ -127,13 +132,14 @@ public class EditDanhSachPTChiTietController implements Initializable {
             alert.show();
         }
     }
-    public void initData(DSPhatThuong rowData){
+
+    public void initData(DSPhatThuong rowData) {
         this.dsPhatThuong = rowData;
         tongChi = dsPhatThuong.getTongChiPhi();
         dip = dsPhatThuong.getSuKien();
         nameDSPT.setText(dip);
         String trangThai = "";
-        switch (dsPhatThuong.getTrangThai()){
+        switch (dsPhatThuong.getTrangThai()) {
             case -1:
                 trangThai = "Đã xóa";
                 break;
@@ -148,24 +154,25 @@ public class EditDanhSachPTChiTietController implements Initializable {
                 break;
         }
         trangThaiComboBox.setValue(trangThai);
-        trangThaiDSPT.setText("Trạng thái: "+trangThai);
-        ngayTaoDSPT.setText("Ngày tạo: "+dsPhatThuong.getNgayTao().toString());
-        tongChiDSPT.setText("Tổng chi: "+tongChi);
+        trangThaiDSPT.setText("Trạng thái: " + trangThai);
+        ngayTaoDSPT.setText("Ngày tạo: " + dsPhatThuong.getNgayTao().toString());
+        tongChiDSPT.setText("Tổng chi: " + tongChi);
         dipTextField.setText(dip);
-        dipDSPT.setText("Dịp: "+dip);
-        try{hanNop.setText("Hạn nộp minh chứng: "+new DSPhatThuongService().getHanNopMc(dsPhatThuong.getMaDS()).toString());}
-        catch (SQLException ex){
+        dipDSPT.setText("Dịp: " + dip);
+        try {
+            hanNop.setText("Hạn nộp minh chứng: " + new DSPhatThuongService().getHanNopMc(dsPhatThuong.getMaDS()).toString());
+        } catch (SQLException ex) {
             hanNop.setText("Hạn nộp minh chứng: NULL");
         }
         initTable();
         loadData();
     }
 
-    private void initTable(){
+    private void initTable() {
         initColumns();
     }
 
-    private void initColumns(){
+    private void initColumns() {
         numberColumn.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<FormDSPTChiTiet, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<FormDSPTChiTiet, String> param) {
@@ -178,9 +185,9 @@ public class EditDanhSachPTChiTietController implements Initializable {
                 String content = "";
                 FormDSPTChiTiet formDSPTChiTiet = param.getValue();
                 boolean daNop = formDSPTChiTiet.isMinhChung();
-                if(daNop){
+                if (daNop) {
                     content = "Đã nộp";
-                }else{
+                } else {
                     content = "Chưa nộp";
                 }
                 return new ReadOnlyObjectWrapper<>(content);
@@ -192,9 +199,9 @@ public class EditDanhSachPTChiTietController implements Initializable {
                 String content = "";
                 FormDSPTChiTiet formDSPTChiTiet = param.getValue();
                 boolean duocXacNhan = formDSPTChiTiet.isDuocXacNhan();
-                if(duocXacNhan){
+                if (duocXacNhan) {
                     content = "Đã trao";
-                }else{
+                } else {
                     content = "Chưa trao";
                 }
                 return new ReadOnlyObjectWrapper<>(content);
@@ -214,13 +221,13 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                             alert.setTitle("Xóa bản ghi");
                             alert.setHeaderText("Xác nhận xóa");
-                            alert.setContentText("Bạn có chắc xóa "+data.getHoTen()+" khỏi danh sách không?");
+                            alert.setContentText("Bạn có chắc xóa " + data.getHoTen() + " khỏi danh sách không?");
                             ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
                             ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
                             alert.getButtonTypes().clear();
                             alert.getButtonTypes().addAll(xacNhanButtonType, thoatButtonType);
                             Optional<ButtonType> result = alert.showAndWait();
-                            if(result.get() == xacNhanButtonType) {
+                            if (result.get() == xacNhanButtonType) {
                                 try {
                                     dsptChiTietService.deleteDuocNhanThuong(data);
                                     formDSPTChiTietObservableList.remove(data);
@@ -245,7 +252,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             FormDSPTChiTiet data = getTableView().getItems().get(getIndex());
                             Dialog<ButtonType> editDialog = new Dialog<>();
                             editDialog.setTitle("Sửa bản ghi");
-                            editDialog.setHeaderText("Sửa thông tin của "+data.getHoTen());
+                            editDialog.setHeaderText("Sửa thông tin của " + data.getHoTen());
 
                             ButtonType xacNhanButtonType = new ButtonType("Xác nhận", ButtonBar.ButtonData.OK_DONE);
                             ButtonType thoatButtonType = new ButtonType("Thoát", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -254,7 +261,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             GridPane gridPane = new GridPane();
                             gridPane.setHgap(10);
                             gridPane.setVgap(10);
-                            gridPane.setPadding(new Insets(20,150,10,10));
+                            gridPane.setPadding(new Insets(20, 150, 10, 10));
 
                             TextField thanhTichTextFiled = new TextField();
                             thanhTichTextFiled.setPromptText("Thành tích");
@@ -264,26 +271,26 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             ComboBox ghiChuComboBox = new ComboBox();
                             ObservableList<String> ghiChuComboBoxList = FXCollections.observableArrayList("Đã trao", "Chưa trao");
                             ghiChuComboBox.setItems(ghiChuComboBoxList);
-                            if(data.isDuocXacNhan()){
+                            if (data.isDuocXacNhan()) {
                                 ghiChuComboBox.setValue("Đã trao");
-                            }else{
+                            } else {
                                 ghiChuComboBox.setValue("Chưa trao");
                             }
 
                             ComboBox minhChungCmbBox = new ComboBox();
                             ObservableList<String> minhCHungCmbList = FXCollections.observableArrayList("Đã nộp", "Chưa nộp");
                             minhChungCmbBox.setItems(minhCHungCmbList);
-                            if(data.isMinhChung()){
+                            if (data.isMinhChung()) {
                                 minhChungCmbBox.setValue("Đã nộp");
-                            }else{
+                            } else {
                                 minhChungCmbBox.setValue("Chưa nộp");
                             }
 
                             ComboBox xepLoaiCmbBox = new ComboBox();
-                            ObservableList<String> xepLoaiCmbList = FXCollections.observableArrayList("A", "B","C");
+                            ObservableList<String> xepLoaiCmbList = FXCollections.observableArrayList("A", "B", "C");
                             xepLoaiCmbBox.setItems(xepLoaiCmbList);
                             xepLoaiCmbBox.setValue("Chọn xếp loại cho học sinh");
-                            if(data.getXepLoai() != null){
+                            if (data.getXepLoai() != null) {
                                 xepLoaiCmbBox.setValue(data.getXepLoai());
                             }
 
@@ -291,11 +298,11 @@ public class EditDanhSachPTChiTietController implements Initializable {
                             mucThuongTextField.setPromptText("Mức thưởng");
                             mucThuongTextField.setText(String.valueOf(data.getMucThuong()));
                             mucThuongTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-                                try{
-                                    if(!newValue.isEmpty()){
+                                try {
+                                    if (!newValue.isEmpty()) {
                                         Double.parseDouble(newValue);
                                     }
-                                }catch (NumberFormatException ex){
+                                } catch (NumberFormatException ex) {
                                     Alert alert = new Alert(Alert.AlertType.ERROR);
                                     alert.setContentText("Mức quà phải là số");
                                     alert.setTitle("LỖI");
@@ -305,61 +312,61 @@ public class EditDanhSachPTChiTietController implements Initializable {
                                 }
                             });
 
-                            gridPane.add(new Label("Thành  tích "),0,0);
-                            gridPane.add(thanhTichTextFiled, 1,0);
-                            gridPane.add(new Label("Minh chứng "),0,1);
-                            gridPane.add(minhChungCmbBox, 1,1);
+                            gridPane.add(new Label("Thành  tích "), 0, 0);
+                            gridPane.add(thanhTichTextFiled, 1, 0);
+                            gridPane.add(new Label("Minh chứng "), 0, 1);
+                            gridPane.add(minhChungCmbBox, 1, 1);
                             gridPane.add(new Label("Xếp loại "), 0, 2);
-                            gridPane.add(xepLoaiCmbBox, 1,2);
+                            gridPane.add(xepLoaiCmbBox, 1, 2);
                             gridPane.add(new Label("Mức thưởng "), 0, 3);
-                            gridPane.add(mucThuongTextField, 1,3);
+                            gridPane.add(mucThuongTextField, 1, 3);
                             gridPane.add(new Label("Ghi chú "), 0, 4);
-                            gridPane.add(ghiChuComboBox, 1,4);
+                            gridPane.add(ghiChuComboBox, 1, 4);
 
                             editDialog.getDialogPane().setContent(gridPane);
                             Optional<ButtonType> result = editDialog.showAndWait();
-                            if(result.get() == xacNhanButtonType){
+                            if (result.get() == xacNhanButtonType) {
                                 boolean duocXacNhan;
-                                if(ghiChuComboBox.getValue().toString().equalsIgnoreCase("Đã trao")){
+                                if (ghiChuComboBox.getValue().toString().equalsIgnoreCase("Đã trao")) {
                                     duocXacNhan = true;
-                                }else{
+                                } else {
                                     duocXacNhan = false;
                                 }
 
                                 boolean minhChung;
-                                if(minhChungCmbBox.getValue().toString().equalsIgnoreCase("Đã nộp")){
+                                if (minhChungCmbBox.getValue().toString().equalsIgnoreCase("Đã nộp")) {
                                     minhChung = true;
-                                }else{
+                                } else {
                                     minhChung = false;
                                 }
 
-                                if(duocXacNhan && !minhChung){
+                                if (duocXacNhan && !minhChung) {
                                     Alert alert1 = new Alert(Alert.AlertType.ERROR);
                                     alert1.setTitle("Lỗi");
                                     alert1.setHeaderText("Có lỗi xảy ra khi sửa bản ghi");
                                     alert1.setContentText("Không thể trao thưởng cho học sinh chưa nộp minh chứng");
                                     alert1.show();
-                                }else{
+                                } else {
                                     data.setThanhTich(thanhTichTextFiled.getText());
                                     String xepLoai = xepLoaiCmbBox.getValue().toString();
-                                    if(xepLoai.length() > 2){
+                                    if (xepLoai.length() > 2) {
                                         data.setXepLoai(null);
-                                    }else{
+                                    } else {
                                         data.setXepLoai(xepLoai);
                                     }
                                     data.setDuocXacNhan(duocXacNhan);
                                     data.setMinhChung(minhChung);
 
-                                    if(mucThuongTextField.getText().isEmpty()){
+                                    if (mucThuongTextField.getText().isEmpty()) {
                                         data.setMucThuong(0);
-                                    }else{
+                                    } else {
                                         data.setMucThuong(Double.parseDouble(mucThuongTextField.getText()));
                                     }
 
                                     try {
 
                                         dsptChiTietService.updateDuocNhanThuong(data);
-                                        formDSPTChiTietObservableList.set(getIndex(),data);
+                                        formDSPTChiTietObservableList.set(getIndex(), data);
                                         updateTongChi();
                                     } catch (SQLException throwables) {
                                         throwables.printStackTrace();
@@ -377,8 +384,9 @@ public class EditDanhSachPTChiTietController implements Initializable {
                     }
 
                     HBox buttonsBox = new HBox(editButton, deleteButton);
+
                     {
-                        buttonsBox.setMaxSize(1000,100);
+                        buttonsBox.setMaxSize(1000, 100);
                     }
 
 
@@ -408,46 +416,46 @@ public class EditDanhSachPTChiTietController implements Initializable {
         mucThuongColumn.setCellValueFactory(new PropertyValueFactory<>("mucThuong"));
     }
 
-    private void loadData(){
-        if(dsPhatThuong.getTrangThai() == 1) {
+    private void loadData() {
+        if (dsPhatThuong.getTrangThai() == 1) {
             try {
-            formDSPTChiTietObservableList = FXCollections.observableArrayList(dsptChiTietService.getFormPTChiTietDangPhat(dsPhatThuong.getMaDS()));
+                formDSPTChiTietObservableList = FXCollections.observableArrayList(dsptChiTietService.getFormPTChiTietDangPhat(dsPhatThuong.getMaDS()));
             } catch (SQLException throwables) {
-            throwables.printStackTrace();
-             }
-        table.setItems(formDSPTChiTietObservableList);}
-        else {
+                throwables.printStackTrace();
+            }
+            table.setItems(formDSPTChiTietObservableList);
+        } else {
             try {
                 formDSPTChiTietObservableList = FXCollections.observableArrayList(dsptChiTietService.getFormDSPTChiTietByMaDS(dsPhatThuong.getMaDS()));
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
-            table.setItems(formDSPTChiTietObservableList);}
+            table.setItems(formDSPTChiTietObservableList);
+        }
 
     }
 
 
-
-    private void tinhTongChi(){
+    private void tinhTongChi() {
         tongChi = 0;
-        for(int i = 0; i < formDSPTChiTietObservableList.size(); i++){
+        for (int i = 0; i < formDSPTChiTietObservableList.size(); i++) {
             tongChi += formDSPTChiTietObservableList.get(i).getMucThuong();
         }
     }
 
-    private void updateTongChi(){
+    private void updateTongChi() {
         tinhTongChi();
-        tongChiDSPT.setText("Tổng chi: "+String.valueOf(tongChi));
+        tongChiDSPT.setText("Tổng chi: " + String.valueOf(tongChi));
         updateDSPT();
     }
 
-    private void updateDSPT(){
+    private void updateDSPT() {
         dsPhatThuong.setTongChiPhi(tongChi);
         dsPhatThuong.setSuKien(dip);
         int trangThai;
-        if(trangThaiComboBox.getValue().equalsIgnoreCase("Đã hoàn thành")){
+        if (trangThaiComboBox.getValue().equalsIgnoreCase("Đã hoàn thành")) {
             trangThai = 2;
-        }else if (trangThaiComboBox.getValue().equalsIgnoreCase("Đang phát")){
+        } else if (trangThaiComboBox.getValue().equalsIgnoreCase("Đang phát")) {
             trangThai = 1;
         } else {
             trangThai = 0;
@@ -455,10 +463,10 @@ public class EditDanhSachPTChiTietController implements Initializable {
         dsPhatThuong.setTrangThai(trangThai);
         try {
             dsPhatThuongService.update(dsPhatThuong);
-            if(dsPhatThuong.getTrangThai() == 2){
+            if (dsPhatThuong.getTrangThai() == 2) {
                 buttonsColumn.setVisible(false);
                 themMoiButton.setVisible(false);
-            }else{
+            } else {
                 buttonsColumn.setVisible(true);
                 themMoiButton.setVisible(true);
                 loadData();
@@ -468,10 +476,10 @@ public class EditDanhSachPTChiTietController implements Initializable {
         }
     }
 
-    private void checkDaPhatHet(){
+    private void checkDaPhatHet() {
         boolean result = true;
-        for(int i = 0; i < formDSPTChiTietObservableList.size(); i ++){
-            if(!formDSPTChiTietObservableList.get(i).isDuocXacNhan()){
+        for (int i = 0; i < formDSPTChiTietObservableList.size(); i++) {
+            if (!formDSPTChiTietObservableList.get(i).isDuocXacNhan()) {
                 result = false;
                 break;
             }
@@ -479,14 +487,14 @@ public class EditDanhSachPTChiTietController implements Initializable {
         daPhatHet = result;
     }
 
-    public void editOrSaveClick(ActionEvent e){
+    public void editOrSaveClick(ActionEvent e) {
         checkDaPhatHet();
-        if(editMode == false){
+        if (editMode == false) {
             editOrSaveButton.setText("Lưu");
             editMode = true;
             trangThaiComboBox.setVisible(true);
             dipTextField.setVisible(true);
-        }else {
+        } else {
             if (trangThaiComboBox.getValue().equalsIgnoreCase("Đã hoàn thành")) {
                 if (!daPhatHet) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -503,7 +511,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-            } else{
+            } else {
                 try {
                     formDSPTChiTietObservableList = FXCollections.observableArrayList(dsptChiTietService.getFormDSPTChiTietByMaDS(dsPhatThuong.getMaDS()));
                     table.setItems(formDSPTChiTietObservableList);
@@ -514,25 +522,26 @@ public class EditDanhSachPTChiTietController implements Initializable {
             editOrSaveButton.setText("Chỉnh sửa");
             dip = dipTextField.getText();
             nameDSPT.setText(dip);
-            dipDSPT.setText("Dịp: "+dip);
+            dipDSPT.setText("Dịp: " + dip);
             dipTextField.setVisible(false);
 
             trangThaiComboBox.setVisible(false);
             editMode = false;
             updateDSPT();
-            trangThaiDSPT.setText("Trạng thái: "+ trangThaiComboBox.getValue());
+            trangThaiDSPT.setText("Trạng thái: " + trangThaiComboBox.getValue());
         }
     }
 
-    private boolean checkExist(int idNhanKhau){
-        for(int i = 0; i < formDSPTChiTietObservableList.size(); i++){
-            if(idNhanKhau == formDSPTChiTietObservableList.get(i).getIdNhanKhau()){
+    private boolean checkExist(int idNhanKhau) {
+        for (int i = 0; i < formDSPTChiTietObservableList.size(); i++) {
+            if (idNhanKhau == formDSPTChiTietObservableList.get(i).getIdNhanKhau()) {
                 return true;
             }
         }
         return false;
     }
-    public void themMoi(ActionEvent e){
+
+    public void themMoi(ActionEvent e) {
         Dialog<ButtonType> themMoiDiaglog = new Dialog<>();
         themMoiDiaglog.setTitle("Thêm mới");
         themMoiDiaglog.setHeaderText("Thêm bản ghi mới");
@@ -544,11 +553,11 @@ public class EditDanhSachPTChiTietController implements Initializable {
         TextField idHS = new TextField();
         idHS.setPromptText("Mã học sinh");
         idHS.textProperty().addListener(((observable, oldValue, newValue) -> {
-            try{
-                if(!newValue.isEmpty()){
+            try {
+                if (!newValue.isEmpty()) {
                     Integer.parseInt(newValue);
                 }
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Mã học sinh không hợp lệ");
                 alert.setTitle("LỖI");
@@ -566,18 +575,18 @@ public class EditDanhSachPTChiTietController implements Initializable {
         minhChungCmbBox.setValue("Chưa nộp");
 
         ComboBox xepLoaiCmbBox = new ComboBox();
-        ObservableList<String> xepLoaiCmbList = FXCollections.observableArrayList("A", "B","C");
+        ObservableList<String> xepLoaiCmbList = FXCollections.observableArrayList("A", "B", "C");
         xepLoaiCmbBox.setItems(xepLoaiCmbList);
         xepLoaiCmbBox.setValue("Chọn xếp loại cho học sinh");
 
         TextField mucThuongTextField = new TextField();
         mucThuongTextField.setPromptText("Mức thưởng");
         mucThuongTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            try{
-                if(!newValue.isEmpty()){
+            try {
+                if (!newValue.isEmpty()) {
                     Double.parseDouble(newValue);
                 }
-            }catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Mức thưởng phải là số");
                 alert.setTitle("LỖI");
@@ -588,18 +597,17 @@ public class EditDanhSachPTChiTietController implements Initializable {
         });
 
 
-
         Button detailNhanKhauButton = new Button("Chi tiết");
-        detailNhanKhauButton.setOnAction((ActionEvent event)->{
-            try{
+        detailNhanKhauButton.setOnAction((ActionEvent event) -> {
+            try {
                 int idHocSinh = Integer.parseInt(idHS.getText());
                 boolean exist = checkExist(idHocSinh);
                 NhanKhau nhanKhau = dsptChiTietService.getNhanKhauByMaHS(idHocSinh);
-                String content = "Mã nhân khẩu: "+nhanKhau.getID()+"\n"+
-                        "Họ tên: "+nhanKhau.getHoTen()+"\n"+
-                        "Năm sinh: "+nhanKhau.getNamSinh()+"\n"+
-                        "Giới tính: "+nhanKhau.getGioiTinh()+"\n";
-                if(exist){
+                String content = "Mã nhân khẩu: " + nhanKhau.getID() + "\n" +
+                        "Họ tên: " + nhanKhau.getHoTen() + "\n" +
+                        "Năm sinh: " + nhanKhau.getNamSinh() + "\n" +
+                        "Giới tính: " + nhanKhau.getGioiTinh() + "\n";
+                if (exist) {
                     content += "Học sinh này đã tồn tại trong danh sách!!!\n";
                 }
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -607,7 +615,7 @@ public class EditDanhSachPTChiTietController implements Initializable {
                 alert.setHeaderText("Thông tin nhân khẩu");
                 alert.setContentText(content);
                 alert.show();
-            }catch (SQLException ex){
+            } catch (SQLException ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Mã học sinh không hợp lệ");
                 alert.setTitle("LỖI");
@@ -619,48 +627,48 @@ public class EditDanhSachPTChiTietController implements Initializable {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        gridPane.setPadding(new Insets(20,150,10,10));
+        gridPane.setPadding(new Insets(20, 150, 10, 10));
 
-        gridPane.add(new Label("Mã học sinh "),0,0);
-        gridPane.add(idHS, 1,0);
-        gridPane.add(detailNhanKhauButton, 2,0);
-        gridPane.add(new Label("Thành tích "),0,1);
-        gridPane.add(thanhTichTextField,1,1);
-        gridPane.add(new Label("Minh chứng "),0,2);
-        gridPane.add(minhChungCmbBox, 1,2);
-        gridPane.add(new Label("Xếp loại "),0,3);
-        gridPane.add(xepLoaiCmbBox, 1,3);
-        gridPane.add(new Label("Mức thưởng "),0,4);
-        gridPane.add(mucThuongTextField, 1,4);
+        gridPane.add(new Label("Mã học sinh "), 0, 0);
+        gridPane.add(idHS, 1, 0);
+        gridPane.add(detailNhanKhauButton, 2, 0);
+        gridPane.add(new Label("Thành tích "), 0, 1);
+        gridPane.add(thanhTichTextField, 1, 1);
+        gridPane.add(new Label("Minh chứng "), 0, 2);
+        gridPane.add(minhChungCmbBox, 1, 2);
+        gridPane.add(new Label("Xếp loại "), 0, 3);
+        gridPane.add(xepLoaiCmbBox, 1, 3);
+        gridPane.add(new Label("Mức thưởng "), 0, 4);
+        gridPane.add(mucThuongTextField, 1, 4);
 
 
         themMoiDiaglog.getDialogPane().setContent(gridPane);
         Optional<ButtonType> result = themMoiDiaglog.showAndWait();
-        if(result.get() == xacNhanButtonType){
+        if (result.get() == xacNhanButtonType) {
             int idHocSinh = Integer.parseInt(idHS.getText());
-            if(checkExist(idHocSinh)){
+            if (checkExist(idHocSinh)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Lỗi");
                 alert.setHeaderText("Đã có lỗi xảy ra");
                 alert.setContentText("Học sinh này đã tồn tại trong danh sách, không thể thêm mới");
                 alert.show();
-            }else{
+            } else {
                 String thanhTich = thanhTichTextField.getText();
                 boolean minhChung = minhChungCmbBox.getValue().toString().equalsIgnoreCase("Đã nộp");
                 String xepLoai = xepLoaiCmbBox.getValue().toString();
-                if(xepLoai.length() > 2){
+                if (xepLoai.length() > 2) {
                     xepLoai = null;
                 }
                 double mucThuong = 0;
-                if(!mucThuongTextField.getText().isEmpty()){
+                if (!mucThuongTextField.getText().isEmpty()) {
                     mucThuong = Double.parseDouble(mucThuongTextField.getText());
                 }
-                try{
+                try {
                     int maDS = dsPhatThuong.getMaDS();
-                    FormDSPTChiTiet formDSPTChiTiet = dsptChiTietService.addDuocNhanThuong(maDS,idHocSinh,thanhTich,minhChung,xepLoai,mucThuong);
+                    FormDSPTChiTiet formDSPTChiTiet = dsptChiTietService.addDuocNhanThuong(maDS, idHocSinh, thanhTich, minhChung, xepLoai, mucThuong);
                     formDSPTChiTietObservableList.add(formDSPTChiTiet);
                     updateTongChi();
-                }catch (SQLException ex){
+                } catch (SQLException ex) {
                     ex.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Lỗi");
@@ -672,20 +680,23 @@ public class EditDanhSachPTChiTietController implements Initializable {
         }
     }
 
-    public void toThemMoiDsPT(){
+    public void toThemMoiDsPT() {
         commonController.toThemMoiDsPhatThuong();
     }
 
-    public void toHome(){
+    public void toHome() {
         commonController.toHome();
     }
-    public void toPhatThuong(){
+
+    public void toPhatThuong() {
         commonController.toPhatThuong();
     }
-    public void toThongKe(){
+
+    public void toThongKe() {
         commonController.toThongKe();
     }
-    public void toPhatQua(){
+
+    public void toPhatQua() {
         commonController.toPhatQua();
     }
 }

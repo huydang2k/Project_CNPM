@@ -53,7 +53,7 @@ public class PrintPDFService {
         return xn ? "V" : "O";
     }
 
-    public void printDS(int maDS, boolean type) throws IOException, DocumentException {
+    public void printDS(int maDS, boolean type, String filePath) throws IOException, DocumentException {
         Document doc = new Document();
         File fontFile = new File("font/vuArial.ttf");
         BaseFont bf = BaseFont.createFont(fontFile.getAbsolutePath(), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -66,7 +66,7 @@ public class PrintPDFService {
             try {
                 DSPhatQua dsPhatQua = dsPhatQuaRepo.findById(maDS);
                 String fileName = "DSPQ"+dsPhatQua.getMaDS();
-                PdfWriter.getInstance(doc, new FileOutputStream("pdf/"+fileName+".pdf"));
+                PdfWriter.getInstance(doc, new FileOutputStream(filePath+"\\"+fileName+".pdf"));
                 doc.open();
                 /**
                  * Tạo file PDF

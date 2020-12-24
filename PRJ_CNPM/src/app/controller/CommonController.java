@@ -5,13 +5,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 /*This class is used to switch scene*/
 public class CommonController implements Initializable {
     public static Stage primaryStage;
+
+    public String chooseDirectory(){
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        File dir = directoryChooser.showDialog(primaryStage);
+        if(dir!= null){
+            return dir.getAbsolutePath();
+        }else{
+            return null;
+        }
+    }
     public Scene makeScene(String fxmlpath){
         try{
             Parent root = FXMLLoader.load(getClass().getResource(fxmlpath));

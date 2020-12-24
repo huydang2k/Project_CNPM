@@ -123,14 +123,17 @@ public class EditDanhSachChiTietController implements Initializable {
         printPDFService = new PrintPDFService();
     }
     public void printpdf(){
-        try{
-        printPDFService.printDS(dsPhatQua.getMaDS(),true);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("In danh sách");
-            alert.setHeaderText("In danh sách hoạt động phát quà " + dsPhatQua.getSuKien());
-            alert.setContentText("In thành công");
-            alert.show();}
-        catch (Exception ex){
+        try {
+            String filePath = commonController.chooseDirectory();
+            if(filePath != null){
+                printPDFService.printDS(dsPhatQua.getMaDS(), true, filePath);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("In danh sách");
+                alert.setHeaderText("In danh sách hoạt động phát quà " + dsPhatQua.getSuKien());
+                alert.setContentText("In thành công");
+                alert.show();
+            }
+        } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
             alert.setHeaderText("Đã có lỗi xảy ra");

@@ -23,10 +23,10 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
             primaryStage.show();
-            PrintPDFService printPDF = new PrintPDFService();
+//            PrintPDFService printPDF = new PrintPDFService();
 //        //type = true: danh sách phát quà
 //        //type = false: danh sách phát thưởng
-            printPDF.printDS(1, false);
+//            printPDF.printDS(1, false);
 
         } catch (Exception ex) {
             ex.printStackTrace();

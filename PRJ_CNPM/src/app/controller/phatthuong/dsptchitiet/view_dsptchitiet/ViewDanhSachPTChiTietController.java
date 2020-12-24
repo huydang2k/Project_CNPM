@@ -148,12 +148,16 @@ public class ViewDanhSachPTChiTietController implements Initializable {
     }
     public void printpdf(){
         try{
-            printPDFService.printDS(dsPhatThuong.getMaDS(),false);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("In danh sách");
-            alert.setHeaderText("In danh sách hoạt động phát thưởng " + dsPhatThuong.getSuKien());
-            alert.setContentText("In thành công");
-            alert.show();}
+            String filePath = commonController.chooseDirectory();
+            if(filePath != null) {
+                printPDFService.printDS(dsPhatThuong.getMaDS(), false, filePath);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("In danh sách");
+                alert.setHeaderText("In danh sách hoạt động phát thưởng " + dsPhatThuong.getSuKien());
+                alert.setContentText("In thành công");
+                alert.show();
+            }
+        }
         catch (Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Lỗi");
