@@ -1,5 +1,10 @@
 package app.model;
 
+import app.model.form.FormThongTinHocSinh;
+import app.repository.NhanKhauRepo;
+
+import java.sql.SQLException;
+
 public class HocSinh {
     private Integer maHS;
     private Integer idNhanKhau;
@@ -19,6 +24,13 @@ public class HocSinh {
                 ", idNhanKhau = " + idNhanKhau +
                 ", hocVan = \'"+hocVan+"\' " +
                 "}";
+    }
+
+    public FormThongTinHocSinh toFormThongTinHocSinh() throws SQLException {
+        NhanKhauRepo nhanKhauRepo = new NhanKhauRepo();
+        NhanKhau nhanKhau = nhanKhauRepo.findById(idNhanKhau);
+        FormThongTinHocSinh formThongTinHocSinh = new FormThongTinHocSinh(maHS, idNhanKhau, nhanKhau.getHoTen(), nhanKhau.getNamSinh(), nhanKhau.getGioiTinh(), nhanKhau.getDiaChiHienNay(), nhanKhau.getTrinhDoHocVan());
+        return formThongTinHocSinh;
     }
 
     public Integer getMaHS() {

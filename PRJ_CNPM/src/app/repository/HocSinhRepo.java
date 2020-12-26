@@ -17,10 +17,6 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
         return hocSinh;
     }
 
-    @Override
-    protected ArrayList<HocSinh> findAll() throws SQLException {
-        return null;
-    }
 
     @Override
     public HocSinh findById(int maHS) throws SQLException {
@@ -53,7 +49,8 @@ public class HocSinhRepo extends BaseRepo<HocSinh> {
             return 0;
         }
     }
-    public ArrayList<HocSinh> findALl() throws SQLException,ClassNotFoundException{
+    @Override
+    public ArrayList<HocSinh> findAll() throws SQLException{
         String sql = "select * from hoc_sinh";
         PreparedStatement preparedStatement = prepare(sql);
         ResultSet rs = preparedStatement.executeQuery();

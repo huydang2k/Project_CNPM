@@ -139,7 +139,7 @@ public class DSPTChiTietService {
 
     public ArrayList<FormDSPTChiTiet> getAllHocSinh() throws SQLException, ClassNotFoundException {
         ArrayList<FormDSPTChiTiet> formDSPTChiTietArrayList = new ArrayList<>();
-        ArrayList<HocSinh> hocSinhArrayList = hocSinhRepo.findALl();
+        ArrayList<HocSinh> hocSinhArrayList = hocSinhRepo.findAll();
         for(int i = 0; i < hocSinhArrayList.size(); i++){
             FormDSPTChiTiet formDSPTChiTiet = new FormDSPTChiTiet();
             HocSinh hocSinh = hocSinhArrayList.get(i);
