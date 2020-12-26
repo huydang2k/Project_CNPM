@@ -134,7 +134,7 @@ public class PrintPDFService {
                 DSPhatThuong dsPhatThuong = dsPhatThuongRepo.findById(maDS);
                 ArrayList<FormDSPTChiTiet> dsptChiTiet = dsptChiTietService.getFormDSPTChiTietByMaDS(maDS);
                 String fileName = "DSPT"+dsPhatThuong.getMaDS();
-                PdfWriter.getInstance(doc, new FileOutputStream("pdf/"+fileName+".pdf"));
+                PdfWriter.getInstance(doc, new FileOutputStream(filePath+"\\"+fileName+".pdf"));
                 doc.open();
                 Paragraph title = new Paragraph("Danh sách Phát thưởng "+ dsPhatThuong.getSuKien(), font);
                 title.setAlignment(Element.ALIGN_CENTER);
