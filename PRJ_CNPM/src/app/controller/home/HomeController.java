@@ -24,6 +24,7 @@ public class HomeController implements Initializable {
     CommonController commonController;
     Stage thieuNhiStage;
     Stage hocSinhStage;
+    Stage hoKhauStage;
     @FXML
     private Label soLuongHocSinhLabel;
     @FXML
@@ -45,6 +46,8 @@ public class HomeController implements Initializable {
         thieuNhiStage.setTitle("Thiếu nhi trong khu vực");
         hocSinhStage = new Stage();
         hocSinhStage.setTitle("Học sinh trong khu vực");
+        hoKhauStage = new Stage();
+        hoKhauStage.setTitle("Hộ khẩu trong khu vực");
         hocSinhService = new HocSinhService();
         hoKhauService = new HoKhauService();
         nhanKhauService = new NhanKhauService();
@@ -64,7 +67,18 @@ public class HomeController implements Initializable {
         }
     }
 
-    public void toHoKhau(){}
+    public void toHoKhau(){
+        if(!hoKhauStage.isShowing()){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../../view/home/hokhau/HoKhauUI.fxml"));
+                Scene scene = new Scene(root);
+                hoKhauStage.setScene(scene);
+                hoKhauStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void toThieuNhi(){
         if(!thieuNhiStage.isShowing()){

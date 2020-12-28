@@ -1,6 +1,7 @@
 package app.repository;
 
 import app.model.HoKhau;
+import app.model.ThanhVienCuaHo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,8 +25,11 @@ public class HoKhauRepo extends BaseRepo<HoKhau> {
     }
 
     @Override
-    protected ArrayList<HoKhau> findAll() throws SQLException {
-        return null;
+    public ArrayList<HoKhau> findAll() throws SQLException {
+        String sql = "SELECT * FROM ho_khau";
+        PreparedStatement preparedStatement = prepare(sql);
+        ResultSet rs = preparedStatement.executeQuery();
+        return getList(rs);
     }
 
     @Override
