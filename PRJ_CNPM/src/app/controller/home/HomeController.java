@@ -22,9 +22,9 @@ public class HomeController implements Initializable {
     HoKhauService hoKhauService;
     NhanKhauService nhanKhauService;
     CommonController commonController;
-    Stage thieuNhiStage;
-    Stage hocSinhStage;
-    Stage hoKhauStage;
+    public static Stage thieuNhiStage;
+    public static Stage hocSinhStage;
+    public static Stage hoKhauStage;
     @FXML
     private Label soLuongHocSinhLabel;
     @FXML
@@ -42,12 +42,18 @@ public class HomeController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        thieuNhiStage = new Stage();
-        thieuNhiStage.setTitle("Thiếu nhi trong khu vực");
-        hocSinhStage = new Stage();
-        hocSinhStage.setTitle("Học sinh trong khu vực");
-        hoKhauStage = new Stage();
-        hoKhauStage.setTitle("Hộ khẩu trong khu vực");
+        if(thieuNhiStage == null){
+            thieuNhiStage = new Stage();
+            thieuNhiStage.setTitle("Thiếu nhi trong khu vực");
+        }
+        if(hocSinhStage == null){
+            hocSinhStage = new Stage();
+            hocSinhStage.setTitle("Học sinh trong khu vực");
+        }
+        if(hoKhauStage == null){
+            hoKhauStage = new Stage();
+            hoKhauStage.setTitle("Hộ khẩu trong khu vực");
+        }
         hocSinhService = new HocSinhService();
         hoKhauService = new HoKhauService();
         nhanKhauService = new NhanKhauService();
