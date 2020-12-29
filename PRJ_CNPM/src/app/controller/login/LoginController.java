@@ -44,6 +44,7 @@ public class LoginController implements Initializable {
                 commonController.primaryStage.setWidth(bounds.getWidth());
                 commonController.primaryStage.setHeight(bounds.getHeight());
                 commonController.primaryStage.setMaximized(true);
+                commonController.primaryStage.setResizable(true);
                 commonController.toHome();
             }else {
                 Alert alert = new Alert(AlertType.ERROR);

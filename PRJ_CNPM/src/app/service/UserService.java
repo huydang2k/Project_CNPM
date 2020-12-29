@@ -1,5 +1,6 @@
 package app.service;
 
+import app.model.User;
 import app.repository.UserRepo;
 
 import java.sql.SQLException;
@@ -13,12 +14,11 @@ public class UserService {
     }
 
     public boolean getUser(String username, String password) throws SQLException, ClassNotFoundException{
-//        User user = userRepo.findUserByUserNameAndPassWord(username,password);
-//        if (user == null){
-//            return false;
-//        }else{
-//            return true;
-//        }
-        return true;
+        User user = userRepo.findUserByUserNameAndPassWord(username,password);
+        if (user == null){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
