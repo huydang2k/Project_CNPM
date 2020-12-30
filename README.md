@@ -18,5 +18,5 @@ Chỉnh sửa các thông số trong common.DatabaseConfig:
 
 
 
-# Thêm thư viện itext trong directory Lib của Project để thực hiện chức năng in file
+# Thêm thư viện itext trong directory Lib của Project để thực hiện chức năng in file (tương tự như thêm thư viện JDBC)
      
